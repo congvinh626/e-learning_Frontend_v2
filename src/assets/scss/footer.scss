@@ -1,0 +1,259 @@
+.footer {
+    color: var(--white);
+    --column: 3;
+
+    &-first {
+        padding: 120px 0px;
+        background: #1E293B;
+    }
+
+    &-second {
+        background: #090A0B;
+        padding: 40px 0px;
+    }
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(var(--column), 1fr);
+        grid-gap: 48px;
+    }
+
+    &-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 36px;
+        border-radius: 100rem;
+    }
+
+    &-heading {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 133%;
+        // padding-bottom: 16px;
+        // margin-bottom: 35px;
+        // position: relative;
+
+        &--mb-11 {
+            margin-bottom: 11px !important;
+        }
+
+        // &:before {
+        //     content: "";
+        //     position: absolute;
+        //     width: 60px;
+        //     height: 2px;
+        //     background-color: var(--white);
+        //     left: 0;
+        //     bottom: 0;
+        // }
+
+
+    }
+
+    &-desc {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        margin-bottom: 24px;
+        color: var(--white);
+
+        span {
+            font-weight: 700;
+        }
+
+        &--mb-0 {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    &-desc2 {
+        font-size: 18px;
+        line-height: 156%;
+        margin-bottom: 30px;
+        color: var(--white);
+    }
+
+    &-logo-bct {
+        width: 240px;
+        height: 75px;
+        object-fit: cover;
+    }
+
+    &-news {
+        display: -webkit-box;
+        padding: 24px 0px;
+
+        &--mb-0 {
+            margin-bottom: 0px !important;
+        }
+    }
+
+    &-img {
+        width: 80px;
+        height: 80px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-content {
+        max-width: 188px;
+        padding-left: 16px;
+    }
+
+    &-second-list {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 24px;
+    }
+
+    &-right {
+        margin-left: auto;
+    }
+
+    @media screen and (max-width: 1500px) {
+        &-first {
+            padding: 50px 0px;
+        }
+
+        &-heading {
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        &-desc {
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        &-desc2 {
+            font-size: 16px;
+        }
+
+        &-logo-bct {
+            width: 160px;
+        }
+
+        &-img {
+            width: 70px;
+            height: 70px;
+        }
+
+        &-second {
+            background: #090A0B;
+            padding: 25px 0px;
+        }
+    }
+
+
+    @media screen and (max-width: 1023px) {
+        --column: 2;
+
+        &-img {
+            width: 80px;
+            height: 80px;
+        }
+
+
+        &-content {
+            max-width: 180px;
+            padding-left: 16px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        --column: 1;
+
+        &-first {
+            padding: 16px 0px;
+        }
+
+        &-second {
+            padding: 16px 0px;
+        }
+
+        &-list {
+            grid-gap: 16px;
+        }
+
+
+        &-logo {
+            margin-bottom: 16px;
+        }
+
+        &-heading {
+            font-size: 18px;
+            line-height: 28px;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+
+            &--mb-11 {
+                margin-bottom: 11px !important;
+            }
+        }
+
+        &-desc {
+            font-size: 12px;
+            line-height: 20px;
+            margin-bottom: 16px;
+
+            &--mb-0 {
+                margin-bottom: 0px !important;
+            }
+        }
+
+        &-desc2 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 143%;
+        }
+
+        &-logo-bct {
+            width: 160px;
+            height: 50px;
+        }
+    
+        &-news {
+            display: -webkit-box;
+            padding: 24px 0px;
+    
+            &--mb-0 {
+                margin-bottom: 0px !important;
+            }
+        }
+    
+
+        &-content {
+            max-width: 185px !important;
+            padding-left: 12px;
+        }
+
+        &-second-list {
+            flex-direction: column;
+            display: block;
+        }
+
+        .mb-16{
+            margin-bottom: 16px !important;
+        }
+    }
+
+}
+
+.mb-4 {
+    margin-bottom: 4px !important;
+}
+
+.mb-8 {
+    margin-bottom: 8px !important;
+}
+
+.bb {
+    border-bottom: 1px solid #172026;
+}

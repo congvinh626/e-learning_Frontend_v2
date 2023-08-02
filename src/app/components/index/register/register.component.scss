@@ -1,0 +1,15 @@
+.body {
+    // width: 484px;
+    .check-success {
+        display: flex;
+        gap: 14px;
+
+        input {
+            transform: translate(0px, -10px);
+        }
+
+        input:focus{
+            outline: none;
+        }
+    }
+}

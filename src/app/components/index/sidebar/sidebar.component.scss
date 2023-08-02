@@ -1,0 +1,112 @@
+.sidebar {
+  background-color: white;
+
+  &-header {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 0px;
+
+  }
+
+  &-logo {
+    margin-right: auto;
+
+    img {
+      width: 55px;
+    }
+  }
+
+  &-account {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+  }
+}
+
+
+
+.menu {
+  background-color: #0e65d1;
+
+
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  ul {
+    // height: 40px;
+  }
+
+  ul li {
+    padding: 8px 14px;
+  }
+
+  li {
+    position: relative;
+  }
+
+  li:hover {
+    background-color: #03559f;
+    transition: 0.3s;
+  }
+
+  .icon-item {
+    margin-right: 6px;
+  }
+
+  .icon-down {
+    margin-left: 4px;
+    font-size: 10px;
+  }
+
+  ul.list-child {
+    min-width: 200px;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.22) !important;    
+    display: none;
+    z-index: 9;
+  }
+
+  ul.list-child li {
+    display: block;
+    color: #52606b;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  ul.list-child li a{
+    color: #52606b;
+    font-size: 16px;
+  }
+
+
+  ul.list-child li:hover {
+    background-color: #dddada;
+    color: black;
+  }
+
+  li:hover ul.list-child {
+    display: block;
+  }
+
+  .child-item {
+    width: 100%;
+
+  }
+
+  
+}
+
+.container-sidebar{
+  padding: 0 10px;
+}
+

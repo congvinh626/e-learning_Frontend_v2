@@ -1,0 +1,45 @@
+input{
+    width: 100%;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #c7c7c7;
+    padding: 4px 10px;
+}
+
+.dropdown-menu{
+    padding: 0;
+}
+
+ul{
+    // display: grid;
+    max-height: 250px;
+    overflow-y: auto;
+    // border: 1px solid gray;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+}
+
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+li{
+    padding: 8px 10px;
+    display: block;
+    border-bottom: 1px dashed var(--gray-line);
+    cursor: pointer;
+}
+
+.item-hover:hover{
+    background-color: var(--gray-line);
+}
+// {
+//     padding: 4px 10px;
+// }
+
+.btn-group{
+    width: 100%;
+}

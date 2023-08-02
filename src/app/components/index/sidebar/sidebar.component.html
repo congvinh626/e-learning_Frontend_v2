@@ -1,0 +1,45 @@
+<div>
+  <section class="sidebar">
+    <div class="container-sidebar">
+
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <img src="./assets/image/logo.png" alt="">
+        </div>
+        <div class="sidebar-account">
+          <i class="bi bi-bell"></i>
+          <div class="text-16">
+            Admin
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <ul>
+        <li *ngFor="let item of menu">
+          <a [routerLink]="item.url" class="text-16">
+            <span class="icon-item" [innerHTML]="item.icon"></span>
+            {{item.name}}
+            <i *ngIf="item.children" class="bi bi-caret-down-fill icon-down"></i>
+          </a>
+          <ul *ngIf="item.children" class="list-child">
+            <li *ngFor="let child of item.children" class="child-item">
+              <span class="icon-item" [innerHTML]="child.icon"></span>
+              <a [routerLink]="child.url">{{child.name}}</a>
+              
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <ng-container>
+    <div class="container-sidebar">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-container>
+</div>

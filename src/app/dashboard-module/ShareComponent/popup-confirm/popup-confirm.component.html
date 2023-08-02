@@ -1,0 +1,16 @@
+<div class="dialog">
+    <h5 class="dialog-header">{{title}}</h5>
+
+    <div class="acc-detail">
+        <p>{{message}}</p>
+
+        <div class="list-btn-modal">
+            <button (click)="onSubmit()" class="btn btn--blue">
+                <i class="bi bi-clipboard-plus"></i> Lưu <span>(F9)</span>
+            </button>
+            <button (click)="Close()" class="btn btn--white">
+                <i class="bi bi-x"></i> Đóng <span>(F10)</span> 
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+/* Set the style for the a tag */
+/* set the style for the active class */
+/* add background color when user hovers on inactive class */
+.pagination {
+    display: flex;
+    // margin-left: auto;
+    // margin-right: auto;
+    margin-top: 20px;
+}
+
+.pageDisplay {
+    margin-left: 20px;
+
+}
+
+.list_page a.active {
+    // background-color: dodgerblue;
+    color: #172026;
+    border: 1px solid var(--gray);
+    /*Circle Design with CSS*/
+    // border-radius: 10%;
+  }
+
+  a{
+    cursor: pointer;
+  }
+
+select {
+    width: 70px;
+    height: 40px;
+    border: 1px solid var(--gray-line);
+    border-radius: 5px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #172026;
+    padding: 0 10px;
+}
+
+.list_page {
+    display: contents;
+
+    &_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--gray-line);
+        // border-radius: 12px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #98A5AE;
+    border-radius: 5px;
+
+        // margin: 0 4px;
+    }
+}
+
+
+@media (max-width: 768px) {
+	// .pagination {
+	// 	justify-content: center;
+	// 	margin-top: 10px;
+	// }
+	// .pageDisplay {
+	// 	justify-content: center;
+	// 	margin-top: 10px;
+	// }
+	// .displayPage {
+	// 	display: none;
+	// }
+}

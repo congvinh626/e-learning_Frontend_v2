@@ -1,0 +1,14 @@
+.input-custom {
+  input {
+    padding: 12px 12px 12px 16px;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    margin-right: 12px;
+    min-width: 260px;
+    &:focus {
+      outline: none;
+      border: 1px solid #0060A6;
+      border-radius: 12px;
+    }
+  }
+}

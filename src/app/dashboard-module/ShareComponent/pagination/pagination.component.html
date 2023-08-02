@@ -1,0 +1,49 @@
+  <div class="pagination">
+    
+    <div class="list_page">
+        <a (click)="ChoosePage(Pagination.currentPage -1)" *ngIf="Pagination.currentPage-1 >= 1" class="list_page_item">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-chevron-left">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </a>
+        <a *ngIf="Pagination.currentPage > 1" (click)="ChoosePage(1)" class="list_page_item">
+            1
+        </a>
+        <a *ngIf="Pagination.currentPage-2 > 1" class="list_page_item">...</a>
+        <a class="list_page_item" (click)="ChoosePage(Pagination.currentPage -1)" *ngIf="Pagination.currentPage-1 > 1">{{Pagination.currentPage - 1}}</a>
+        <a class="active list_page_item" *ngIf="Pagination.currentPage">{{Pagination.currentPage}}</a>
+        <a class=" list_page_item" (click)="ChoosePage(Pagination.currentPage +1)" *ngIf="Pagination.currentPage+1 < Pagination.totalPage">{{Pagination.currentPage +1}}</a>
+        <a *ngIf="Pagination.currentPage+2 < Pagination.totalPage" class="list_page_item">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-more-horizontal">
+                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="19" cy="12" r="1"></circle>
+                <circle cx="5" cy="12" r="1"></circle>
+            </svg>
+        </a>
+        <a  (click)="ChoosePage(Pagination.totalPage)" *ngIf="Pagination.totalPage>1 && Pagination.currentPage<Pagination.totalPage" class="list_page_item">
+            {{Pagination.totalPage}}
+        </a>
+        <a (click)="ChoosePage(Pagination.currentPage +1)" *ngIf="Pagination.currentPage+1 < Pagination.totalPage" class="list_page_item">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </a>
+    </div>
+    <div class="pageDisplay">
+        <select (change)="selectSizePage($event)">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+        Bản ghi hiển thị
+    </div>
+</div>

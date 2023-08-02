@@ -1,0 +1,429 @@
+
+
+<div class="wrapper" id="home">
+    <header class="header">
+      <div class="header-first">
+        <div class="container-home">
+          <div class="header-info">
+            <div class="header-info-item">
+              <i class="bi bi-envelope"></i> cskhdn@viettel.com.vn
+            </div>
+            <div class="header-info-item">
+              <i class="bi bi-telephone"></i> 18008000 nhánh 4
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+      <a routerLink="/login" class="logout btn btn--red">
+        Đăng nhập
+      </a>
+      <div class="header-second">
+        <div class="container-home">
+  
+  
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <div class="header-logo">
+              <img src="./assets/image/logo.png" alt="">
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item" *ngFor="let item of listMenu" (click)="clickMenu(item.name)">
+                  <a class="nav-link" [ngStyle]="{'color': item.check  ? '#de222f' : ''}" (click)="navigateTo(item.nav)">{{item.name}}</a>
+                </li>
+              
+               
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+            <div class="header-btn">
+  
+                <div class="login btn btn--white">
+                Đăng ký dùng thử
+              </div>
+              
+            </div>
+              </form>
+            </div>
+          </nav>
+  
+        </div>
+      </div>
+    </header>
+    
+  
+    
+  
+  
+    <section class="intro bg-cover"  style="background: url(./assets/image/background.jpg)">
+      <div class="container-home">
+        <div class="intro-main">
+  
+          <div class="intro-content">
+  
+            <h2 class="white intro-heading global-heading ">Phần mềm quản lý nhà thuốc thông minh, thông tin tin cậy</h2>
+            <div class="intro-detail">
+  
+              <img class="intro-detail-imgCar" src="./assets/image/intro1.png" alt="">
+              <div class="intro-detail-title">Đối tác tiêu thụ, đầu vào, vận chuyển</div>
+              <img class="intro-detail-imgStar" src="./assets/image/sparkle.png" alt="">
+              <img class="intro-detail-imgCar" src="./assets/image/intro2.png" alt="">
+              <div class="intro-detail-title">Nhà máy, đơn vị sản xuất, kinh doanh</div>
+            </div>
+            <div class="intro-desc"></div>
+            <!-- <div class="intro-more">
+                  
+                </div> -->
+            <button class="btn btn--yellow btn-try">
+              Đăng ký dùng thử
+            </button>
+          </div>
+          <div class="intro-img">
+            <!-- <img [srcset]="'http://'+newsintro.imageUrl + ' 2x'" alt=""> -->
+            <img src="./assets/image/layer.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="strength">
+      <div class="container-home">
+  
+        <div class="strength-header">
+          <div class="strength-item">
+            <div class="strength-item-icon">
+              <i class="bi bi-arrow-repeat "></i>
+            </div>
+            <h3 class="strength-item-title">Quy trình</h3>
+            <div>Quản lý tổng thể quy trình hoạt động nhà thuốc</div>
+          </div>
+          <div class="strength-item">
+            <div class="strength-item-icon">
+              <i class="bi bi-bag-check-fill"></i>
+            </div>
+            <h3 class="strength-item-title">Đơn giản</h3>
+            <div>Giao diện đơn giản, dễ sử dụng</div>
+          </div>
+          <div class="strength-item">
+            <div class="strength-item-icon">
+              <i class="bi bi-currency-exchange"></i>
+            </div>
+            <h3 class="strength-item-title">Tiết kiệm</h3>
+            <div>Tiết kiệm chi phí</div>
+          </div>
+          <div class="strength-item">
+            <div class="strength-item-icon">
+              <i class="bi bi-gem"></i>
+            </div>
+            <h3 class="strength-item-title">Tiện ích</h3>
+            <div>Tích hợp hóa đơn điện tử</div>
+          </div>
+        </div>
+  
+      </div>
+    </section>
+    <section class="feature" id="feature">
+      <div class="container-home">
+        <h1 class="global-heading global-heading--center global-heading-content feature-header"><span>Giải pháp</span> quản lý hiệu quả</h1>
+        <div class="feature-form feature-form--red">
+          <div class="feature-icon feature-icon--right">
+            <i class="bi bi-pin-angle"></i>
+          </div>
+          <div class="feature-img">
+            <img src="https://evernote.com/c/assets/homepage-repackaging/feature_task__en.png?4a5f5e352220299f" alt="">
+          </div>
+          <div class="feature-content">
+  
+            <h2 class="feature-heading global-heading ">Phần mềm quản lý nhà thuốc thông minh, thông tin tin cậy</h2>
+            <div class="feature-desc">
+              Lên một lịch làm việc chỉ trong vài phút với phần mềm quản lý lịch làm việc. Dễ dàng đăng ký ca làm việc,
+              tìm người thay thế, đổi lịch
+            </div>
+            <div class="feature-more">
+              Xem thêm <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="feature-form feature-form--yellow">
+          <div class="feature-icon feature-icon--left">
+            <i class="bi bi-pin"></i>
+          </div>
+  
+          <div class="feature-content">
+  
+            <h2 class="feature-heading global-heading ">Phần mềm quản lý nhà thuốc thông minh, thông tin tin cậy</h2>
+            <div class="feature-desc">
+              Lên một lịch làm việc chỉ trong vài phút với phần mềm quản lý lịch làm việc. Dễ dàng đăng ký ca làm việc,
+              tìm người thay thế, đổi lịch
+            </div>
+            <div class="feature-more">
+              Xem thêm <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+          <div class="feature-img">
+            <img src="https://evernote.com/c/assets/homepage-repackaging/feature_task__en.png?4a5f5e352220299f" alt="">
+          </div>
+        </div>
+  
+  
+        <!-- <div class="feature-form feature-form--yellow">
+            
+              <div class="feature-content">
+                <h2 class="feature-heading global-heading ">Phần mềm quản lý nhà thuốc thông minh, thông tin tin cậy</h2>
+                <div class="feature-desc">
+                  Lên một lịch làm việc chỉ trong vài phút với phần mềm quản lý lịch làm việc. Dễ dàng đăng ký ca làm việc, tìm người thay thế, đổi lịch
+                </div>
+              </div>
+              <div class="feature-img">
+                <img src="https://www.kiotviet.vn/wp-content/uploads/2022/08/banner-web.1-1.png" alt="">
+              </div>
+            </div> -->
+  
+        <div class="feature-form feature-form--blue">
+          <div class="feature-icon feature-icon--right">
+            <i class="bi bi-pin-angle"></i>
+          </div>
+          <div class="feature-img">
+            <img src="https://evernote.com/c/assets/homepage-repackaging/feature_task__en.png?4a5f5e352220299f" alt="">
+          </div>
+          <div class="feature-content">
+  
+            <h2 class="feature-heading global-heading ">Phần mềm quản lý nhà thuốc thông minh, thông tin tin cậy</h2>
+            <div class="feature-desc">
+              Lên một lịch làm việc chỉ trong vài phút với phần mềm quản lý lịch làm việc. Dễ dàng đăng ký ca làm việc,
+              tìm người thay thế, đổi lịch
+            </div>
+            <div class="feature-more">
+              Xem thêm <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="price" id="price">
+      <div class="container-home">
+        <h1 class="global-heading global-heading--center global-heading-content price-header"><span>Bảng giá</span> dịch vụ</h1>
+        <!-- <div class="line line--center"></div> -->
+        <div class="price-list">
+          <div class="price-item price-item--green">
+            <h3 class="price-item-title">
+              GÓI HỖ TRỢ
+            </h3>
+            <div class="price-item-desc">
+              Dành cho những mô hình kinh doanh
+              nhỏ, cho người bắt đầu kinh doanh hoặc bán hàng online.
+            </div>
+            <div class="price-item-money price-item-money--green">
+              180.000 đ
+            </div>
+            <div class="price-item-list-feature">
+            
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+            </div>
+            <button class="price-item-btn  price-item-btn--green">Đăng ký dùng thử</button>
+  
+          </div>
+          <div class="price-item price-item--blue">
+            <h3 class="price-item-title">
+              GÓI CHUYÊN NGHIỆP
+            </h3>
+            <div class="price-item-desc">
+              Dành cho những mô hình kinh doanh
+              nhỏ, cho người bắt đầu kinh doanh hoặc bán hàng online.
+            </div>
+            <div class="price-item-money price-item-money--blue">
+              250.000 đ
+            </div>
+            <div class="price-item-list-feature">
+             
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature ">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature price-item-item-feature-hidden">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+            </div>
+            <button class="price-item-btn  price-item-btn--blue">Đăng ký dùng thử</button>
+          </div>
+          <div class="price-item price-item--yellow">
+            <h3 class="price-item-title">
+              GÓI CAO CẤP
+            </h3>
+            <div class="price-item-desc">
+              Dành cho những mô hình kinh doanh
+              nhỏ, cho người bắt đầu kinh doanh hoặc bán hàng online.
+            </div>
+            <div class="price-item-money price-item-money--yellow">
+              350.000 đ
+            </div>
+            <div class="price-item-list-feature">
+              
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+              <p class="price-item-item-feature">
+                <i class="bi bi-check-circle"></i> Không giới hạn tính năng
+              </p>
+            </div>
+            <button class="price-item-btn  price-item-btn--yellow">Đăng ký dùng thử</button>
+  
+          </div>
+        </div>
+  
+       
+      </div>
+    </section>
+  
+    <section class="about" id="about">
+      <div class="container-home">
+        <h1 class="global-heading global-heading--center global-heading-content feature-header"><span>Đội ngũ</span> của chúng tôi</h1>
+        <div class="about-form">
+          <div class="about-content">
+            <div class="about-content-item">
+              <div class="about-content-item-img">
+                <i class="bi bi-people"></i>
+              </div>
+              <div class="about-content-item-content--mt3">Đội ngũ nhân sự lập trình chất lượng cao, trên 10 năm kinh nghiệm phát triển phần mềm</div>
+            </div>
+  
+            <div class="about-content-item">
+              <div class="about-content-item-img">
+                <i class="bi bi-chat-dots"></i>            
+              </div>
+              <div class="about-content-item-content--mt17">Đội ngũ tư vấn chuyên nghiệp</div>
+            </div>
+  
+            <div class="about-content-item">
+              <div class="about-content-item-img">
+                <i class="bi bi-envelope-at-fill"></i>
+              </div>
+              <div class="about-content-item-content--mt17">
+                Hỗ trợ trực tiếp hoặc qua mail & hotline 24/7</div>
+            </div>
+          </div>
+          <div class="about-img">
+            <img src="https://tanca.io/templates/tanca2020/images/trang-chu/hr-software-of-people-experience.png" alt="">
+          </div>
+          
+        </div>
+       
+      </div>
+    </section>
+  
+    <section class="search" id="search">
+      <div class="container-home">
+        <!-- <h1 class="global-heading global-heading-content feature-header">Tra cứu xét nghiệm</h1> -->
+        <div class="search-form">
+          <div class="search-img">
+            <img src="https://evernote.com/c/assets/homepage-repackaging/feature_task__en.png?4a5f5e352220299f" alt="">
+          </div>
+          <div class="search-content">
+  
+            <h2 class="search-heading global-heading global-heading--white">Tra cứu kết quả xét nghiệm</h2>
+            <div class="search-desc">
+              Nhập thông tin ...
+            </div>
+            <div class="search-list">
+                <input [(ngModel)]="code" type="text" name="code" placeholder="Nhập mã">
+                <button (click)="getResultMachinePdf()" class="btn btn--yellow"> Tra cứu kết quả </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+    <footer class="footer">
+      <div class="footer-first">
+        <div class="container-home">
+          <img class="footer-logo" src="./assets/image/logo.png" alt="">
+  
+          <div class="footer-list">
+            <div class="footer-item">
+              <h3 class="footer-heading">Phần mềm quản lý nhà thuốc thông minh, tin cậy</h3>
+              <div class="footer-desc2">Công ty phần mềm Trung Việt</div>
+              <div class="footer-desc2">GIỜ LÀM VIỆC</div>
+              <div class="footer-desc">Thứ Hai - Thứ Bảy 08:00 đến 17:00</div>
+            </div>
+         
+            <div class="footer-item">
+              <h3 class="footer-heading">Liên hệ</h3>
+              <div class="footer-desc2"><i class="bi bi-geo-alt"></i> Đường 32, thành phố Vinh, Nghệ An</div>
+              <div class="footer-desc2"><i class="bi bi-telephone"></i> 0912345678</div>
+              <div class="footer-desc2"><i class="bi bi-envelope"></i> email@gmail.com</div>
+  
+            </div>
+  
+            <div class="footer-item">
+              <h3 class="footer-heading">Liên kết</h3>
+              <div class="footer-desc2"> Tính năng</div>
+              <div class="footer-desc2">Chính sách bảo mật</div>
+              <div class="footer-desc2">Điều khoản sử dụng website</div>
+              <div class="footer-desc2">Điều khoản sử dụng sản phẩm</div>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <div class="footer-second">
+        <div class="container-home">
+          <div class="footer-second-list">
+            <div class="footer-desc footer-desc--mb-0 mb-16">Copyright @ 2022 <span>Trung Việt</span>. All Rights Reserved.
+            </div>
+            <div class="footer-desc footer-desc--mb-0 footer-right mb-16">Dịch vụ của chúng tôi</div>
+            <div class="footer-desc footer-desc--mb-0 mb-16">Điều khoản & Chính sách</div>
+            <div class="footer-desc footer-desc--mb-0 mb-16">Sitemap</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
