@@ -1,6 +1,6 @@
 <div>
   <section class="sidebar">
-    <div class="container-sidebar">
+    <div class="container">
 
       <div class="sidebar-header">
         <div class="sidebar-logo">
@@ -16,6 +16,8 @@
       </div>
     </div>
     <div class="menu">
+    <div class="container">
+
       <ul>
         <li *ngFor="let item of menu">
           <a [routerLink]="item.url" class="text-16">
@@ -34,11 +36,12 @@
 
       </ul>
     </div>
+  </div>
   </section>
 
 
   <ng-container>
-    <div class="container-sidebar">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
   </ng-container>

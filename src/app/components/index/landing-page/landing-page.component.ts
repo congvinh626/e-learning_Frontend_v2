@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from 'src/app/service/loading.service';
 import { ShareService } from 'src/app/service/ShareService';
 import { listMenu } from './memu';
-import { ToastrcustomService } from 'src/app/dashboard-module/ShareComponent/toastrcustom/toastrcustom';
+import { ToastrcustomService } from 'src/app/service/toastrcustom';
 
 @Component({
   selector: 'app-landing-page',
@@ -28,7 +28,9 @@ export class LandingPageComponent {
 
   }
 
+  handleUploadFIle2(e: any){
 
+  }
 
   navigateTo(path: string): void {
     this.viewportScroller.scrollToAnchor(path)

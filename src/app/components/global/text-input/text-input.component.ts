@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-text-input',
@@ -10,5 +10,10 @@ export class TextInputComponent {
   @Input() error: string = '';
   @Input() request: Boolean = false;
   @Input() placeholder: string = '';
+  @Output() senData = new EventEmitter();
   
+  handleInput(e: any) {
+    this.senData.emit(e.target.value);
+  }
+
 }

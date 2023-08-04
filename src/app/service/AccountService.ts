@@ -14,7 +14,12 @@ export class AccountService {
  
 
   login(data: any) {
-    return this.httpService.postRequest("Account/Login", data);
+    return this.httpService.postRequest("login", data).pipe(map((data: any) => {
+      if (data) {
+        localStorage.setItem('UserInfo', JSON.stringify(data));
+      }
+      return data;
+    }))
   }
 
   sendEmailOrPhone(data: any) {

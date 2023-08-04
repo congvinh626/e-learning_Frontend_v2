@@ -1,101 +1,33 @@
-<!-- https://gpp.com.vn/libs/bootstrap/css/bootstrap.min.css?v=638085246437153804 -->
-<link rel="stylesheet" type="text/css" href="https://gpp.com.vn/libs/bootstrap/css/bootstrap.min.css?v=638085246437153804">
-<body class="page-md login" cz-shortcut-listen="true">
-  <div class="hl-ring">
-    <a id="phone-ring" target="_blank" href="tel:18008000" class="phone">
-      <div class="phone-circle">
+<div class="login">
+  <div class="login-main">
 
-        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10.2667 0.0230485C4.42444 0.38942 0 5.34135 0 11.0024V18.9089C0 20.8708 1.63778 22.4545 3.66667 22.4545H4.88889C6.23333 22.4545 7.33333 21.3908 7.33333 20.0908V15.3634C7.33333 14.0634 6.23333 12.9997 4.88889 12.9997H2.44444V10.9788C2.44444 6.44047 6.06222 2.4931 10.7433 2.3631C15.5956 2.2331 19.5556 5.97955 19.5556 10.636V12.9997H17.1111C15.7667 12.9997 14.6667 14.0634 14.6667 15.3634V20.0908C14.6667 21.3908 15.7667 22.4545 17.1111 22.4545H19.5556V23.6363H12.2222C11.55 23.6363 11 24.1681 11 24.8182C11 25.4682 11.55 26 12.2222 26H18.3333C20.3622 26 22 24.4163 22 22.4545V10.636C22 4.52588 16.6711 -0.378779 10.2667 0.0230485Z"
-            fill="white"></path>
-        </svg>
+    <h3 class="login-title">Đăng nhập</h3>
+    <div class="login-form">
+      <form class="grid">
+        <app-text-input-icon placeholder="Tên đăng nhập" [request]="true" iconStart="bi bi-person"
+          [error]="errors.username ? errors.username[0] : ''" (senData)="handleInputUsername($event) ">
+        </app-text-input-icon>
 
-      </div>
-      <div class="animated host-circle"></div>
-      <div class="animated host-circle-fill"></div>
-      <span>
-       0904.686.357
-      </span>
-    </a>
-  </div>
+        <app-text-input-icon class="mt-4" placeholder="Mật khẩu" [request]="true" inputType="password"
+          iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye"
+          [error]="errors.password ? errors.password[0] : ''" (senData)="handleInputPassword($event)">
+        </app-text-input-icon>
 
-  <div class="menu-toggler sidebar-toggler">
-  </div>
-  <div class="main-content">
-    <!-- <link rel="stylesheet" type="text/css" href="/Template/css/style-login.css"> -->
-    <div class="login-main">
-      <div class="main-left">
-        <div class="margin-top-30">
-          <h3 class="form-title uppercase">Đăng nhập</h3>
-          <div class="alert alert-danger display-hide" style="display: none;">
-            <button class="close" data-close="alert"></button>
-            <span>
-              <em class="fa fa-warning"></em> Vui lòng nhập thông tin đăng nhập
-            </span>
+        <div class="login-more mt-6">
+          <div class="save-info">
+            <input type="checkbox" name="" id="save-info">
+            <label for="save-info">Lưu thông tin đăng nhập</label>
           </div>
-          <app-text-input></app-text-input>
-          <form class="login-form" action="/Account/Login?returnUrl=/Application" method="post" novalidate="novalidate">
-            <div class="form-group"><span style="color: red;font-weight: 600;">*** Chú ý: Vui lòng kiểm tra và tắt các ứng dụng gõ tiếng việt UniKey, VietKey... trước khi gõ mật khẩu đăng nhập </span></div>
-            <div class="form-group">
-              <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-              <label class="control-label">Tên Đăng Nhập</label>
-              <input id="usernameOrEmailAddressID" class="form-control form-control-solid placeholder-no-fix input-ltr"
-                type="text" autocomplete="off" name="usernameOrEmailAddress" value="" required="" aria-required="true"
-                aria-invalid="false" aria-describedby="usernameOrEmailAddressID-error">
-            </div>
-            <div class="form-group">
-              <label class="control-label">Mật Khẩu</label>
-              <input class="form-control form-control-solid placeholder-no-fix input-ltr" type="password"
-                autocomplete="off" name="password" id="password-field" aria-required="true" aria-invalid="false"
-                aria-describedby="password-field-error">
-              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-            </div>
-            <div class="form-actions">
-              <div class="row">
-                <div class="col-sm-6">
-                  <button type="submit" class="btn btn-red uppercase">Đăng nhập</button>
-                </div>
-                <div class="col-sm-6">
-                  <button type="submit" class="btn btn-outline-red uppercase" id="btnGoToBanHang"
-                    name="btnGoToBanHang">Bán hàng</button>
-                </div>
-              </div>
-            </div>
-            <div class="form-actions">
-              <div class="pull-left  forget-password-block">
-                <a href="/" id="email-activation-btn" class="forget-password">Về trang chủ</a> <br>
-              </div>
-              <div class="pull-right forget-password-block">
-                <a href="/quen-mat-khau" id="email-activation-btn" class="forget-password">Quên mật khẩu?</a>
-                <br>
-                <a href="https://ultraviewer.net/vi/download.html" target="_blank" class="forget-password">Tải công cụ
-                  hỗ trợ từ xa</a> <br>
-              </div>
-            </div>
-          </form>
+          <div class="login-sendPage forgotPassword">
+            <a routerLink="/forgot-password">Quên mật khẩu?</a>
+          </div>
         </div>
+        <button (click)="login()" class="login-btn login-btn--mb-40">Đăng nhập</button>
+      </form>
+
+      <div class="login-sendPage">Bạn chưa có tài khoản?
+        <a routerLink="/register">Đăng ký</a>
       </div>
     </div>
   </div>
-  <div class="copyright">
-    Copyright © 2023 TVS GPC ONLINE. All rights reserved.
-  </div>
-  <div
-    style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;">
-    <div
-      style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;">
-    </div>
-    <div class="g-recaptcha-bubble-arrow"
-      style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;">
-    </div>
-    <div class="g-recaptcha-bubble-arrow"
-      style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;">
-    </div>
-    <div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge expires in two minutes"
-        src="https://www.google.com/recaptcha/api2/bframe?hl=en&amp;v=NZrMWHVy58-S9gVvad9HVGxk&amp;k=6Lc9kcIZAAAAACix83lR2-OE5X1RGXqBUriNt_u4"
-        name="c-memiazajovnm" frameborder="0" scrolling="no"
-        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"
-        style="width: 100%; height: 100%;"></iframe></div>
-  </div>
-</body>
+</div>

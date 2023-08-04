@@ -1,0 +1,12 @@
+<div>
+    <div class="login-input">
+        <span><i [class]="iconStart" class="icon-input"></i></span>
+        <input (keyup)="handleInput($event)" [type]="checkIcon ? inputType : inputTypeChange" class="w-full" [placeholder]="placeholder" autocomplete="off">
+        <span>
+            <i (click)="checkIcon = !checkIcon" [class]="checkIcon ? iconEnd : iconEndChange" class="icon-input"></i>
+        </span>
+    </div>
+    <div *ngIf="error" class="text-red-600 text-sm mt-3 flex">
+        <i class="bi bi-exclamation-circle  mr-2"></i> {{ error }}
+    </div>
+</div>

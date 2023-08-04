@@ -10,7 +10,7 @@ export const environment = {
   // urlApi: 'https://localhost:5003/api/'
   // urlApi: 'http://45.124.94.191:2468/api/'
   // urlApi: 'http://103.107.182.150:8019/api/',
-  urlApi: 'http://103.107.182.150:8018/api/',
+  urlApi: 'http://127.0.0.1:8000/api/',
 };
 
 /*

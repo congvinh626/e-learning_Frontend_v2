@@ -1,11 +1,9 @@
 <div>
     <div >
-        <label  *ngIf="label"
-            class="block font-medium mb-2 text-gray-600"
-        >
+        <label  *ngIf="label" class="block font-medium mb-2 text-gray-600" >
             {{ label }} <span *ngIf="request" class="text-red-700">*</span>
         </label>
-        <input 
+        <input  (keyup)="handleInput($event)"
             [placeholder]="placeholder"
             class="appearance-none
                 block

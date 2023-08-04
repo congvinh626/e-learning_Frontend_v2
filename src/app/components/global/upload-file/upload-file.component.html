@@ -1,0 +1,20 @@
+<div>
+  <label *ngIf="label" class="block font-medium mb-2 text-gray-600">
+    {{ label }} <span *ngIf="request" class="text-red-700">*</span>
+  </label>
+  <label
+    class="inline-block  font-medium text-white  no-underline  px-4  py-1  text-white  rounded border  hover:border-transparent"
+    [class]="bgColor == 'green' ? 'bg-green-700  hover:bg-green-800  active:bg-green-900  focus:ring focus:ring-green-300 border-green-500' :
+        'bg-blue-600 hover:bg-blue-700  active:bg-blue-900  focus:ring focus:ring-blue-300 border-blue-500'"
+    for="upload-file">
+    <div *ngIf="quantityFile == 0"> <i :class="icon" class="mr-1"></i> {{ name }} </div>
+    <div *ngIf="quantityFile != 0"><i class="bi bi-plus mr-1"></i> {{ quantityFile }} file</div>
+  </label>
+  <input type="file" name="file" id="upload-file" (change)="getUploadedImage($event)" />
+
+  <!-- <label v-if="label" for="" class="block font-medium mb-2 text-gray-600">{{ label }}</label>
+    <input type="file" name="file[]" id="file" @change="getUploadedImage" multiple>
+    <span v-if="error" class="text-red-500">
+      {{ error }}
+    </span> -->
+</div>

@@ -1,0 +1,9 @@
+<div class="flex">
+    <span class="w-20 text-center py-2 bg-gray-100 rounded-l-lg">
+        {{ label }}
+
+    </span>
+    <input (keyup)="handleInput($event)" [type]="inputType" class="w-20 border border-gray rounded-r-lg text-right px-4 focus:outline-none
+        focus:bg-white
+        focus:border-blue-500">
+</div>

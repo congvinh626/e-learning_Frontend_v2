@@ -1,0 +1,44 @@
+.login-input {
+        display: flex;
+        gap: 1rem;
+        border-radius: 4px;
+        padding: 10px 14px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        color: gray;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+  
+        &--mb-16 {
+            margin-bottom: 16px;
+        }
+  
+        &--mb-32 {
+            margin-bottom: 16px;
+        }
+  
+        input {
+            all: unset;
+            width: 100%;
+        }
+  
+        .icon-input {
+            font-size: 20px;
+        }
+    }
+  
+    ::-webkit-input-placeholder {
+        /* Edge */
+        font-weight: 400;
+    }
+  
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        font-weight: 400;
+    }
+  
+    ::placeholder {
+        font-weight: 400;
+    }
+  

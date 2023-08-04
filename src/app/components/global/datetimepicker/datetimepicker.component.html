@@ -1,0 +1,10 @@
+<div>
+    <label *ngIf="label" class="block font-medium mb-2 text-gray-600">
+        {{ label }} <span *ngIf="request" class="text-red-700">*</span>
+    </label>
+    <input type="datetime-local" displayFormat="DD/MM/YYYY HH:mm" [ngModel]="DateItem | date:'yyyy-MM-ddTHH:mm'"
+        (change)="onSearchDate($event)" class="form-control">
+    <div *ngIf="error" class="text-red-500 mt-3">
+        {{ error }}
+    </div>
+</div>

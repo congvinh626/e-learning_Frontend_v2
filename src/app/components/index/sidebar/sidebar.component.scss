@@ -5,7 +5,7 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    padding: 5px 0px;
+    padding: 10px 0px;
 
   }
 
@@ -13,7 +13,7 @@
     margin-right: auto;
 
     img {
-      width: 55px;
+      width: 135px;
     }
   }
 
@@ -28,7 +28,7 @@
 
 
 .menu {
-  background-color: #0e65d1;
+  background-color: #de222f;
 
 
 
@@ -42,7 +42,7 @@
   }
 
   ul li {
-    padding: 8px 14px;
+    padding: 8px 25px;
   }
 
   li {
@@ -50,7 +50,7 @@
   }
 
   li:hover {
-    background-color: #03559f;
+    background-color: #b70000;
     transition: 0.3s;
   }
 
@@ -106,7 +106,8 @@
   
 }
 
-.container-sidebar{
+.container{
+  max-width: 1300px;
   padding: 0 10px;
 }
 

@@ -7,7 +7,7 @@ import { LandingPageComponent } from './components/index/landing-page/landing-pa
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
-  { path: 'nha-thuoc', loadChildren: () => import('./Module/dashboard-module.module').then((m) => m.DashboardModuleModule), },
+  { path: 'elearning', loadChildren: () => import('./Module/dashboard-module.module').then((m) => m.DashboardModuleModule), },
   { path: 'Home', component: LandingPageComponent},
   { path: 'login', component: LoginComponent },
   { path: 'quen-mat-khau', component: ForgotPasswordComponent },

@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,10 +13,26 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
-import { SelectSearchComponent } from '../dashboard-module/ShareComponent/select-search/select-search.component';
-import { PopupConfirmComponent } from '../dashboard-module/ShareComponent/popup-confirm/popup-confirm.component';
-import { PaginationComponent } from '../dashboard-module/ShareComponent/pagination/pagination.component';
+import { SelectSearchComponent } from '../components/global/select-search/select-search.component';
+import { PopupConfirmComponent } from '../components/global/popup-confirm/popup-confirm.component';
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
+import { ShareModule } from './share-module.module';
+import { CourseIndexComponent } from '../components/courses/course/course-index/course-index.component';
+import { CourseEditComponent } from '../components/courses/course/course-edit/course-edit.component';
+import { LessonEditComponent } from '../components/courses/lesson/lesson-edit/lesson-edit.component';
+import { LessonIndexComponent } from '../components/courses/lesson/lesson-index/lesson-index.component';
+import { TextInputComponent } from '../components/global/text-input/text-input.component';
+import { SubmitBtnOutlineComponent } from '../components/global/submit-btn-outline/submit-btn-outline.component';
+import { SubmitFormButtonComponent } from '../components/global/submit-form-button/submit-form-button.component';
+import { TextAreaComponent } from '../components/global/text-area/text-area.component';
+import { TextInputV2Component } from '../components/global/text-input-v2/text-input-v2.component';
+import { UploadFileComponent } from '../components/global/upload-file/upload-file.component';
+import { TextInputWithLabelComponent } from '../components/global/text-input-with-label/text-input-with-label.component';
+import { UploadMultipleFileComponent } from '../components/global/upload-multiple-file/upload-multiple-file.component';
+import { AutocomplateComponent } from '../components/global/autocomplate/autocomplate.component';
+import { DatepickerComponent } from '../components/global/datepicker/datepicker.component';
+import { DatetimepickerComponent } from '../components/global/datetimepicker/datetimepicker.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -24,12 +40,27 @@ import { DashboardModuleRoutingModule } from './dashboard-module-routing.module'
     NotFoundComponent,
     SelectSearchComponent,
     PopupConfirmComponent,
-    PaginationComponent
-
+    
+    CourseIndexComponent,
+    CourseEditComponent,
+    LessonEditComponent,
+    LessonIndexComponent,
+    TextInputComponent,
+    SubmitBtnOutlineComponent,
+    SubmitFormButtonComponent,
+    TextAreaComponent,
+    TextInputV2Component,
+    TextInputWithLabelComponent,
+    UploadFileComponent,
+    UploadMultipleFileComponent,
+    AutocomplateComponent,
+    DatepickerComponent,
+    DatetimepickerComponent,
   ],
   imports: [
     CommonModule,
     DashboardModuleRoutingModule,
+
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
@@ -41,8 +72,13 @@ import { DashboardModuleRoutingModule } from './dashboard-module-routing.module'
     MatTabsModule,
     MatCheckboxModule,
     MatTreeModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    ShareModule,
+    MatAutocompleteModule,
 
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class DashboardModuleModule {}

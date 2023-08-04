@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, map} from 'rxjs';
 import {CommonService} from './CommonService';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupConfirmComponent } from '../dashboard-module/ShareComponent/popup-confirm/popup-confirm.component';
+import { PopupConfirmComponent } from '../components/global/popup-confirm/popup-confirm.component';
 
 @Injectable({
   providedIn: 'root',

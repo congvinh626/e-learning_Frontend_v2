@@ -1,0 +1,14 @@
+<div class="p-4">
+    <h2 class="font-bold text-lg border-b border-gray-400">Thêm mới khóa học</h2>
+    <form class="mt-6">
+        <div class="grid">
+            <app-upload-file name="Chọn ảnh đại diện" bgColor="blue"></app-upload-file>
+            <app-text-input class="mt-5" (senData)="hendleTitle($event)" label="Tên khóa học" [request]="true"></app-text-input>
+            <app-text-area class="mt-5" (senData)="hendleDesc($event)" label="Giới thiệu thêm"></app-text-area>
+        </div>
+        <div class="flex mt-6">
+            <app-submit-btn-outline (click)="Close()" class="ml-auto mr-5" btnText="Đóng" icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" btnText="Thêm mới" icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </form>
+</div>
