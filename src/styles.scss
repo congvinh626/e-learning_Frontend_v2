@@ -6,6 +6,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 $font-primary: 'Roboto', sans-serif;
 $font-secondary: 'Inter', sans-serif;
 $wrapper: 1920px;
@@ -36,6 +38,7 @@ $wrapper: 1920px;
   --tran-03: all 0.3s ease;
   --tran-04: all 0.4s ease;
   --tran-05: all 0.5s ease;
+  
 }
 
 
@@ -62,6 +65,17 @@ a {
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
   background-size: cover !important;
+}
+
+.height-scroll{
+  max-height: 80vh !important;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none
+}
+
+.height-scroll::-webkit-scrollbar {
+  display: none; /* cho Chrome, Safari, and Opera */
 }
 
 .container {

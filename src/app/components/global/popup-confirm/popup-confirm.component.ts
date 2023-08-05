@@ -12,16 +12,16 @@ export class PopupConfirmComponent {
   
   constructor( public dialogRef: MatDialogRef<PopupConfirmComponent>) {
   }
-  @HostListener('document:keydown', ['$event'])
+  // @HostListener('document:keydown', ['$event'])
 
-  handleKeyboardEvent(event: KeyboardEvent) {
-      if (event.key === 'F9') {
-        this.onSubmit();
-      } else if (event.key === 'F10') {
-        this.Close();
-      }
+  // handleKeyboardEvent(event: KeyboardEvent) {
+  //     if (event.key === 'F9') {
+  //       this.onSubmit();
+  //     } else if (event.key === 'F10') {
+  //       this.Close();
+  //     }
 
-  }
+  // }
   
   onSubmit(){
     this.dialogRef.close(true);

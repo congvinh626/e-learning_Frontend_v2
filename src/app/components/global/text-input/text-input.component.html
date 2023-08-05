@@ -20,11 +20,13 @@
                 focus:bg-white
                 focus:border-blue-500
                 " 
-            :type="inputType"
-            v-model="inputComputed" autocomplete="off"
+            [type]="inputType" [(ngModel)]="value" autocomplete="off"
         >
-        <div *ngIf="error" class="text-red-500 mt-3">
-            {{ error }}
+        <div *ngIf="error" class="text-red-600 mt-3 flex">
+            <p *ngIf="error['required']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường bắt buộc nhập</p>
+            <p *ngIf="error['maxlength']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường tối đa {{error['maxlength']['requiredLength']}} ký tự</p>
+            <p *ngIf="error['minlength']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường tối thiểu {{error['minlength']['requiredLength']}} ký tự</p>
+            <p *ngIf="error['pattern']">  <i class="bi bi-exclamation-circle  mr-2"></i> Ký tự không hợp lệ</p>
         </div>
     </div>
 </div>

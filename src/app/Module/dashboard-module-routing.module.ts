@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: '404-not-found', component: NotFoundComponent },
 
     { path: 'khoa-hoc', component: CourseIndexComponent },
-    { path: 'bai-hoc/:slug', component: LessonIndexComponent },
+    { path: 'khoa-hoc/:slug', component: LessonIndexComponent },
    
   ]},
 

@@ -7,9 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TextInputComponent {
   @Input() label: string = '';
-  @Input() error: string = '';
+  @Input() error: any = '';
   @Input() request: Boolean = false;
   @Input() placeholder: string = '';
+  @Input() inputType: string = '';
+  @Input() value: string = '';
   @Output() senData = new EventEmitter();
   
   handleInput(e: any) {

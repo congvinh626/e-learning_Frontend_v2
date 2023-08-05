@@ -1,1 +1,128 @@
-<p>lesson-index works!</p>
+<div class="grid grid-cols-12 gap-5 mt-5">
+    <div class="col-span-9">
+        <div class="lesson">
+            <div class="lesson-header">
+                <div class="lesson-breadcrumb">
+                    <router-link to="/side-bar/course">Khóa học</router-link>
+                    &nbsp;
+                    <i class="bi bi-chevron-right text-sm"></i>
+                    <span>&nbsp; {{ listData.title }}</span>
+                </div>
+                <div class="lesson-header-top">
+                    <h4 class="lesson-header-title">{{ listData.title }}</h4>
+                    <!-- <button (click)="openModal()" class="btn-thin btn--red"><i class="bi bi-plus-circle"></i> Thêm
+                        mới</button> -->
+                        <app-submit-form-button (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
+                    btnText="Thêm mới"></app-submit-form-button>
+                    <!-- <router-link class="btn-thin btn--red" to="/side-bar/lesson/create/ngon-ngu-may"><i class="bi bi-plus-circle"></i> Khóa học</router-link> -->
+
+
+                </div>
+
+                <div class="lesson-header-desc">{{ listData.description }}
+                </div>
+                <div class="lesson-item-footer" style="border-top: 0;">
+                    <div>
+                        <i class="bi bi-person-check fsize-18"></i> Hoàng Thị Mai
+                    </div>
+                    <div>
+                        <i class="bi bi-calendar3"></i> 21 bài
+                    </div>
+                    <div>
+                        <i class="bi bi-people fsize-18"></i> 343 thành viên
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="lesson !mt-5" style="padding-top: 20px;">
+            <div *ngFor="let item of listData.lessons" class="lesson-item">
+                <div class="lesson-header-top">
+                    <!-- <router-link class="lesson-header-title lesson-title" :to="`/side-bar/lesson/${item.slug}`">{{ item.title }}</router-link>
+                    <el-dropdown trigger="click" class="lesson-item-icon">
+                        <span class="el-dropdown-link">
+                            <i class="bi bi-three-dots"></i>
+                        </span>
+                        <template #dropdown>
+                            <el-dropdown-menu>
+                                <el-dropdown-item class="clearfix " @click="editModal(item.slug)">
+                                    <div class="icon-dropdown">
+                                        <i class="bi bi-pencil-square"></i> Sửa
+                                    </div>
+                                </el-dropdown-item>
+                                <el-dropdown-item class="clearfix " @click="editModal(item.slug)">
+                                    <div class="icon-dropdown">
+                                        <i class="bi bi-pencil-square"></i> Thêm bài thi
+                                    </div>
+                                </el-dropdown-item>
+                                <el-dropdown-item class="clearfix" @click="deleteItem(item.slug)">
+                                    <div class="icon-dropdown">
+                                        <i class="bi bi-trash3"></i> Xóa
+                                    </div>
+
+                                </el-dropdown-item>
+                            </el-dropdown-menu>
+                        </template>
+                    </el-dropdown> -->
+                    <a routerLink="{{item.slug}}" class="lesson-header-title lesson-title">{{ item.title }}</a>
+                    <button class="lesson-item-icon" mat-button [matMenuTriggerFor]="menu">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+
+                        <button (click)="editModal(item.slug)"
+                            class="w-full p-2 text-start text-blue-500 hover:bg-gray-200 border-b border-solid border-gray-200 ">
+                            <i class="mr-2 bi bi-pencil-square"></i> Sửa
+
+                        </button>
+                        <button (click)="confirmDelete(item.slug, item.title)"
+                            class="w-full p-2 text-start text-red-600 hover:bg-gray-200 border-b border-solid border-gray-200">
+                            <i class="mr-2 bi bi-trash3"></i> Xóa
+                        </button>
+                      
+                    </mat-menu>
+                </div>
+                <!-- <div  v-for="file in item.files" :key="item" class="lesson-content">
+                    <img src="../../../../src/assets/images/video.png" alt="">
+                    <router-link class="lesson-header-title lesson-title" to="/side-bar/lesson/gioi-thieu-chung">{{ file.name }}</router-link>
+                </div> -->
+                <div *ngFor="let file of item.files" class="lesson-content">
+                    <img *ngIf="file.type == 'docx'" src="../../../../../assets/image/word.png" alt="">
+                    <img *ngIf="file.type == 'xlsx'" src="../../../../../assets/image/excel.jpg" alt="">
+                    <img *ngIf="file.type == 'pdf'" src="../../../../../assets/image/pdf.png" alt="">
+                    <img *ngIf="file.type == 'pptx'" src="../../../../../assets/image/powerpoint.jpg" alt="">
+                    
+                    <a>
+                        {{ file.name }}
+                    </a>
+                </div>
+                <!-- <div class="lesson-content">
+                    <img src="../../../../src/assets/images/pdf.png" alt="">
+                    <a href="video.html">
+                        Giới thiệu môn học
+                    </a>
+                </div> -->
+                <div *ngFor="let exam of item.exams" class="lesson-content">
+                    <div class="lesson-content-item">
+                        <img src="../../../../src/assets/images/exam.png" alt="">
+                        <a>{{ exam.title }}</a>
+
+                        <span class="lesson-time lesson-time--green">
+                            Đã mở
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="col-span-3">
+        <!-- <chatList></chatList> -->
+    </div>
+    <!-- <lessonTabs style="width: 80vw;" v-if="openModal" v-model="openModal"></lessonTabs> -->
+
+</div>

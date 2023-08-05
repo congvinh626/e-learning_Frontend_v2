@@ -7,6 +7,7 @@ import { CourseService } from 'src/app/service/CourseService';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrcustomService } from 'src/app/service/toastrcustom';
+import { PopupConfirmComponent } from 'src/app/components/global/popup-confirm/popup-confirm.component';
 
 @Component({
   selector: 'app-course-index',
@@ -66,9 +67,8 @@ export class CourseIndexComponent {
   }
 
   openModal() {
-    this.isCreate = true;
     const dialogRef = this.dialog.open(CourseEditComponent, { width: '750px' });
-    // dialogRef.componentInstance.id = this.idPackage;
+    dialogRef.componentInstance.isCreate = true;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.Pagingdata();
@@ -78,8 +78,10 @@ export class CourseIndexComponent {
 
   editModal(slug: string) {
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CourseEditComponent, { maxWidth: '750px' });
-    // dialogRef.componentInstance.id = this.idPackage;
+    const dialogRef = this.dialog.open(CourseEditComponent, { width: '750px' });
+    dialogRef.componentInstance.isCreate = false;
+    dialogRef.componentInstance.slug = slug;
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.Pagingdata();
@@ -87,19 +89,29 @@ export class CourseIndexComponent {
     });
   }
 
+  confirmDelete(slug: string, title: string) {
+    const dialogRef = this.dialog.open(PopupConfirmComponent);
+    dialogRef.componentInstance.title = "Xóa khóa học";
+    dialogRef.componentInstance.message = `Bạn có chắc chắn muốn xóa khóa học '${title}' không?`;
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteItem(slug);
+      }
+    });
+  }
+
   deleteItem(slug: string) {
+
     this.LoadingService.setValue(true);
     this.CourseService.deleteCourse(slug).subscribe(response => {
       this.Pagingdata();
-      this.ToastrService.showSuccess('Xóa khóa học thành công!')
+      this.ToastrService.showSuccess('Xóa khóa học thành công!');
       this.LoadingService.setValue(false);
-
     },
       (error) => {
-
         this.ToastrService.showError('Có lỗi xảy ra, xin tải lại !!!');
         this.LoadingService.setValue(false);
-
       });
   }
 

@@ -4,15 +4,12 @@
         <div class="course-header">
             <div class="flex items-center border-b border-solid border-gray-200 pb-3">
                 <h5 class="course-header-title">Khóa học</h5>
-                <!-- <button (click)="openModal()" class="btn-thin btn--red course-header-btn"><i class="bi bi-plus-circle"></i>
-                    Thêm mới</button> -->
                 <app-submit-form-button (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
             </div>
             <div class=" grid grid-cols-12 gap-5 mt-5">
                 <div class="col-span-3 grid">
                     <label for="" class="!mb-2 ">Trạng thái</label>
-                    <!-- <input type="text" placeholder="Tìm kiếm khóa học"> -->
                     <select (change)="statusCourse($event)"
                         class="appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                         <option value="1">Đang hoạt động</option>
@@ -21,14 +18,9 @@
                 </div>
                 <div class="col-span-6">
                     <app-text-input label="Từ khóa tìm kiếm" (senData)="handleSearch($event)"></app-text-input>
-                    <!-- <label for="">Từ khóa tìm kiếm</label>
-                    <input (keyup)="searchItem($event)" type="text" placeholder="Tìm kiếm theo tên khóa học"> -->
                 </div>
                 <div class="col-span-3">
-                    <!-- <label for="">Mã khóa học</label>
-                    <input type="text" placeholder="Tìm kiếm theo mã"> -->
                     <app-text-input label="Mã khóa học"></app-text-input>
-
                 </div>
             </div>
         </div>
@@ -36,66 +28,30 @@
             <div class="course-item" *ngFor="let item of listData">
                 <div class="grid grid-cols-12 gap-5">
                     <div class="col-span-3">
-                        <img :src="item.avatar? item.avatar: '../../../assets/images/book.jpeg' " alt="">
-                        <!-- <img v-else src="../../../assets/images/book.jpeg" alt=""> -->
-                        <!-- <img :src="item.avatar" alt=""> -->
+                        <img [src]="item.avatar? item.avatar : '../../../../../assets/image/book.jpeg' " alt="">
 
                     </div>
                     <div class="col-span-9">
                         <div class="course-item-header">
-                            <!-- <router-link class="course-item-title" :to="`/side-bar/course/${item.slug}`">{{ item.title
-                            }}</router-link> -->
-                            <a routerLink="" class="course-item-title">{{ item.title }}</a>
-                            <!-- <el-dropdown trigger="click" class="course-item-icon">
-                                <span class="el-dropdown-link">
-                                    <i class="bi bi-three-dots"></i>
-
-                                </span>
-                                <template #dropdown>
-                                    <el-dropdown-menu>
-                                        <el-dropdown-item class="clearfix ">
-                                            <div class="icon-dropdown" @click="editModal(item.slug)">
-                                                <i class="bi bi-pencil-square"></i> Sửa
-                                            </div>
-                                        </el-dropdown-item>
-                                        <el-dropdown-item class="clearfix" @click="deleteItem(item.slug)">
-                                            <div class="icon-dropdown">
-                                                <i class="bi bi-trash3"></i> Xóa
-                                            </div>
-
-                                        </el-dropdown-item>
-                                        <el-dropdown-item class="clearfix" @click="changeStatus(item.slug)">
-                                            <div class="icon-dropdown">
-                                                <i class="bi bi-repeat"></i> {{ item.status == 0 ? 'Hoạt động' : 'Tạm dừng' }}
-                                            </div>
-
-                                        </el-dropdown-item>
-
-                                    </el-dropdown-menu>
-                                </template>
-                            </el-dropdown> -->
+                            <a routerLink="{{item.slug}}" class="course-item-title">{{ item.title }}</a>
                                 <button class="course-item-icon" mat-button [matMenuTriggerFor]="menu">
                                     <i class="bi bi-three-dots"></i>
                                 </button>
                                 <mat-menu #menu="matMenu">
-                                    <!-- <div class="icon-dropdown" @click="editModal(item.slug)">
-                                        <i class="bi bi-pencil-square"></i> Sửa
-                                    </div> -->
+                                  
                                      <button (click)="editModal(item.slug)" class="w-full p-2 text-start text-blue-500 hover:bg-gray-200 border-b border-solid border-gray-200 ">
                                         <i class="mr-2 bi bi-pencil-square"></i> Sửa
 
                                      </button>
-                                     <button (click)="deleteItem(item.slug)" class="w-full p-2 text-start text-red-600 hover:bg-gray-200 border-b border-solid border-gray-200">
+                                     <button (click)="confirmDelete(item.slug, item.title)" class="w-full p-2 text-start text-red-600 hover:bg-gray-200 border-b border-solid border-gray-200">
                                         <i class="mr-2 bi bi-trash3"></i> Xóa
                                      </button>
                                      <button (click)="changeStatus(item.slug)" class="w-full p-2 text-start hover:bg-gray-200">
                                         <i class="bi bi-repeat"></i> {{ item.status == 0 ? 'Hoạt động' : 'Tạm dừng' }}
 
                                      </button>
-                                    <!--<button mat-menu-item>Item 2</button> -->
                                 </mat-menu>
 
-                            <!-- </div> -->
                         </div>
                         <div>{{ item.description }}</div>
                         <div class="course-item-footer">
@@ -105,12 +61,12 @@
                             <div>
                                 <i class="bi bi-calendar3"></i> 343 thành viên
                             </div>
-                            <!-- <button v-if="item.status" class="btn-thin btn--green">
+                            <button *ngIf="item.status" class="btn-thin bg-green-600 text-white py-1 px-3 rounded">
                                 <i class="bi bi-check-circle"></i> Đang hoạt động
                             </button>
-                            <button v-else class="btn-thin btn--red">
+                            <button *ngIf="!item.status" class="btn-thin bg-red-600 text-white py-1 px-3 rounded">
                                 <i class="bi bi-x-circle"></i> Ngừng hoạt động
-                            </button> -->
+                            </button>
                         </div>
                     </div>
                 </div>

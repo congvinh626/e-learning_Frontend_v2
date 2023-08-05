@@ -8,5 +8,13 @@
     </div>
     <div *ngIf="error" class="text-red-600 text-sm mt-3 flex">
         <i class="bi bi-exclamation-circle  mr-2"></i> {{ error }}
+        
+    </div>
+
+    <div *ngIf="error" class="text-red-600 text-sm mt-3 flex">
+        <div *ngIf="error['required']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường bắt buộc nhập</div>
+        <div *ngIf="error['maxlength']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường tối đa {{error['maxlength']['requiredLength']}} ký tự</div>
+        <div *ngIf="error['minlength']"> <i class="bi bi-exclamation-circle  mr-2"></i> Trường tối thiểu {{error['minlength']['requiredLength']}} ký tự</div>
+        <div *ngIf="error['pattern']"> <i class="bi bi-exclamation-circle  mr-2"></i> Ký tự không hợp lệ</div>
     </div>
 </div>

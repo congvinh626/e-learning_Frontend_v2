@@ -1,1 +1,39 @@
-<p>lesson-edit works!</p>
+<div class="p-4">
+    <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold ">Thêm mới bài học</h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div>
+    <form>
+        <div class="grid">
+         
+
+            <app-text-input class="mt-4" 
+                (senData)="hendleTitle($event)" 
+                label="Tên bài học" 
+                [request]="true" 
+                [value]="formItem.value.title"
+                [error]="submited ? f['title'].errors : ''">
+            </app-text-input>
+
+            <app-text-input class="mt-4" 
+                (senData)="hendleLink($event)" 
+                label="Link youtube" 
+                [value]="formItem.value.link">
+            </app-text-input>
+           
+            <app-text-area class="mt-4" (senData)="hendleDesc($event)" label="Giới thiệu" [value]="formItem.value.description"></app-text-area>
+        
+            <app-upload-multiple-file (senData)="hendleFile($event)" class="mt-4" icon="bi bi-file-earmark-pdf" label="Import tài liệu" bgColor="blue"></app-upload-multiple-file>
+            <div *ngFor="let file of filesArray; index as i ">
+                <div class="flex bg-blue-50 mt-2 px-2 py-1 rounded text-sm">{{file.name}}
+                    <i (click)="deleteFile(i, file?.id)" class="bi bi-x-circle ml-auto cursor-pointer hover:text-blue-500"></i>
+                </div>
+                
+            </div>
+        </div>
+        <div class="flex mt-6">
+            <app-submit-btn-outline (click)="Close()" class="ml-auto mr-5" btnText="Đóng" icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" btnText="Thêm mới" icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </form>
+</div>

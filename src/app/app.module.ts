@@ -20,6 +20,10 @@ import { AutocomplateComponent } from './components/global/autocomplate/autocomp
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ShareModule } from './Module/share-module.module';
+import { LessonTypeComponent } from './components/courses/lesson/lesson-type/lesson-type.component';
+import { LessonExamComponent } from './components/courses/lesson/lesson-exam/lesson-exam.component';
+import { ExamIndexComponent } from './components/courses/exam/exam-index/exam-index.component';
+import { VideoIndexComponent } from './components/courses/video/video-index/video-index.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +31,10 @@ import { ShareModule } from './Module/share-module.module';
     ForgotPasswordComponent,
     RegisterComponent,
     LandingPageComponent,
+    LessonTypeComponent,
+    LessonExamComponent,
+    ExamIndexComponent,
+    VideoIndexComponent,
     
    
 

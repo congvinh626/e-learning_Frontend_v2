@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class UploadMultipleFileComponent {
   @Input() label: string = '';
   @Input() error: string = '';
+  @Input() icon: string = '';
   @Input() request: Boolean = false;
   @Input() bgColor: string = 'green';
 

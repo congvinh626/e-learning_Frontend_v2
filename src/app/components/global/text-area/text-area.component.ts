@@ -11,6 +11,7 @@ export class TextAreaComponent {
   @Input() placeholder: string = '';
   @Input() error: string = '';
   @Input() request: boolean = false;
+  @Input() value: string = '';
   
   @Output() senData = new EventEmitter();
 

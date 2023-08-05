@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TextInputIconComponent {
   @Input() label: string = '';
-  @Input() error: string = '';
+  @Input() error: any = '';
   @Input() request: Boolean = false;
   @Input() placeholder: string = '';
   @Input() inputType: string = 'text';

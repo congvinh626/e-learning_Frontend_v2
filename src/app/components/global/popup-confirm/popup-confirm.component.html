@@ -1,16 +1,20 @@
 <div class="dialog">
-    <h5 class="dialog-header">{{title}}</h5>
+    <h2 class="font-medium text-xl border-b border-gray-400">{{title}}</h2>
 
     <div class="acc-detail">
         <p>{{message}}</p>
 
-        <div class="list-btn-modal">
+        <div class="flex mt-6">
+            <app-submit-btn-outline (click)="Close()" class="ml-auto mr-5" btnText="Đóng" icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" btnText="Xác nhận" icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+        <!-- <div class="list-btn-modal">
             <button (click)="onSubmit()" class="btn btn--blue">
                 <i class="bi bi-clipboard-plus"></i> Lưu <span>(F9)</span>
             </button>
             <button (click)="Close()" class="btn btn--white">
                 <i class="bi bi-x"></i> Đóng <span>(F10)</span> 
             </button>
-        </div>
+        </div> -->
     </div>
 </div>

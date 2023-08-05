@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { infoCourse } from 'src/app/Model/Course';
 import { CourseService } from 'src/app/service/CourseService';
 import { convertSlug } from 'src/app/service/convertSlug';
+import { LoadingService } from 'src/app/service/loading.service';
 import { ToastrcustomService } from 'src/app/service/toastrcustom';
 
 @Component({
@@ -10,27 +13,48 @@ import { ToastrcustomService } from 'src/app/service/toastrcustom';
   styleUrls: ['./course-edit.component.scss']
 })
 export class CourseEditComponent {
-  @Input() id: number = 0;
+  @Input() slug: string = '';
   @Input() isCreate: boolean = true;
 
   isMenuVisible: boolean = false;
   formItem!: FormGroup;
   submited: boolean = false;
   formData = new FormData();
-
+  detailItem: any = [];
   menu: string = 'home';
-  constructor( 
-    private CourseService: CourseService, 
-    private toastr: ToastrcustomService,
-    private convertSlug: convertSlug
-    ) {
+  constructor(
+    private CourseService: CourseService,
+    private ToastrcustomService: ToastrcustomService,
+    private convertSlug: convertSlug,
+    private LoadingService: LoadingService,
+    public dialogRef: MatDialogRef<CourseEditComponent>,
+
+  ) {
     this.formFirst();
   }
+
+  ngOnInit(): void {
+    if (!this.isCreate) {
+      this.getDetail();
+    }
+  }
+
 
   formFirst() {
     this.formItem = new FormGroup({
       title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      file: new FormControl(''),
+    });
+  }
+
+  getDetail() {
+    this.CourseService.getDetail(this.slug).subscribe((response: infoCourse) => {
+      this.detailItem = response;
+      this.formItem.patchValue({
+        title: response.title,
+        description: response.description
+      });
     });
   }
 
@@ -38,18 +62,23 @@ export class CourseEditComponent {
     return this.formItem.controls;
   }
 
-  hendleTitle(value: string){
-    // this.formItem.value.title = value;
+  hendleTitle(value: string) {
     this.formItem.patchValue({
       title: value
     });
   }
 
-  hendleDesc(value: string){
+  hendleDesc(value: string) {
     this.formItem.patchValue({
       description: value
     });
     // this.formItem.value.description = value;
+  }
+
+  hendleFile(value: string) {
+    this.formItem.patchValue({
+      file: value
+    });
   }
 
   onSubmit() {
@@ -59,49 +88,53 @@ export class CourseEditComponent {
     this.formData.append('slug', this.convertSlug.convertSlug(this.formItem.value.title));
     this.formData.append('code', (Math.random() + 1).toString(36).slice(2, 17));
     this.formData.append('status', '1');
+    if(this.formItem.value.file){
+      this.formData.append('avatar', this.formItem.value.file);
+    }
 
-    console.log(this.formData);
-    console.log('this.formItem.valid', this.formItem.valid);
-    
     if (this.formItem.valid) {
-      if(this.isCreate){
+      if (this.isCreate) {
         this.createItem();
-      }else{
+      } else {
         this.editItem();
-
       }
     }
   }
 
-  createItem(){
+  createItem() {
+    this.LoadingService.setValue(true);
     this.CourseService.createCourse(this.formData).subscribe((data: any) => {
       if (data.statusCode == 200) {
-        this.toastr.showSuccess('Đăng ký thành công !!!');
-        this.submited = false;
-        this.formFirst();
-        
+        this.ToastrcustomService.showSuccess('Đăng ký thành công !!!');
+        this.dialogRef.close('reload');
+
       } else {
-        this.toastr.showSuccess(data.message);
+        this.ToastrcustomService.showSuccess(data.message);
+        this.LoadingService.setValue(false);
+
       }
 
     });
   }
 
-  editItem(){
+  editItem() {
+    this.formData.append('id', this.detailItem.id);
+    console.log(this.formData);
+
     this.CourseService.updateCourse(this.formData).subscribe((data: any) => {
       if (data.statusCode == 200) {
-        this.toastr.showSuccess('Đăng ký thành công !!!');
-        this.submited = false;
-        this.formFirst();
+        this.ToastrcustomService.showSuccess('Đăng ký thành công !!!');
+        this.dialogRef.close('reload');
 
       } else {
-        this.toastr.showSuccess(data.message);
+        this.ToastrcustomService.showSuccess(data.message);
+        this.LoadingService.setValue(false);
       }
 
     });
   }
 
-  Close(){
-
+  Close() {
+    this.dialogRef.close();
   }
 }
