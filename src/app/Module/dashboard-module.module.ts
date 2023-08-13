@@ -39,6 +39,9 @@ import { ExamIndexComponent } from '../components/courses/exam/exam-index/exam-i
 import { VideoIndexComponent } from '../components/courses/video/video-index/video-index.component';
 import { LessonImportExamComponent } from '../components/courses/lesson/lesson-import-exam/lesson-import-exam.component';
 import { LessonExamFormComponent } from '../components/courses/lesson/lesson-exam-form/lesson-exam-form.component';
+import { ExamInfoComponent } from '../components/courses/exam/exam-info/exam-info.component';
+import { ExamResultComponent } from '../components/courses/exam/exam-result/exam-result.component';
+import { ExamHistoryComponent } from '../components/courses/exam/exam-history/exam-history.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,9 @@ import { LessonExamFormComponent } from '../components/courses/lesson/lesson-exa
     LessonImportExamComponent,
     LessonExamFormComponent,
 
+    ExamInfoComponent,
+    ExamResultComponent,
+    ExamHistoryComponent,
   ],
   imports: [
     CommonModule,

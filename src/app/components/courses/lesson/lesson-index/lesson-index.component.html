@@ -77,11 +77,11 @@
                             <i class="mr-2 bi bi-pencil-square"></i> Sửa bài học
 
                         </button>
-                        <button (click)="editModalExam(item.exams)"
+                        <!-- <button (click)="editModalExam(item.exams)"
                             class="w-full p-2 text-start text-green-500 hover:bg-gray-200 border-b border-solid border-gray-200 ">
                             <i class="mr-2 bi bi-pencil-square"></i> Bài kiểm tra
 
-                        </button>
+                        </button> -->
                         <button (click)="confirmDelete(item.slug, item.title)"
                             class="w-full p-2 text-start text-red-600 hover:bg-gray-200 border-b border-solid border-gray-200">
                             <i class="mr-2 bi bi-trash3"></i> Xóa bài học
@@ -112,7 +112,7 @@
                 <div *ngFor="let exam of item.exams" class="lesson-content">
                     <div class="lesson-content-item">
                         <img src="../../../../../assets/image/exam.png" alt="">
-                        <a>{{ exam.title }}</a>
+                        <a (click)="examInfoModal(exam.slug)">{{ exam.title }}</a>
 
                         <span class="px-2 py-1 bg-green-600 text-white rounded text-sm">
                             Đã mở

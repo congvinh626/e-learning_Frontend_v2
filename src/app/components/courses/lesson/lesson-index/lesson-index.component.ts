@@ -10,6 +10,7 @@ import { LessonEditComponent } from '../lesson-edit/lesson-edit.component';
 import { LessonService } from 'src/app/service/LessonService';
 import { LessonTypeComponent } from '../lesson-type/lesson-type.component';
 import { LessonExamComponent } from '../lesson-exam/lesson-exam.component';
+import { ExamInfoComponent } from '../../exam/exam-info/exam-info.component';
 
 @Component({
   selector: 'app-lesson-index',
@@ -115,6 +116,18 @@ export class LessonIndexComponent {
     dialogRef.componentInstance.isCreate = false;
     dialogRef.componentInstance.listExam = item;
     console.log('itemitem', item);
+    
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.Pagingdata();
+      }
+    });
+  }
+
+  examInfoModal(slug: string) {
+    this.isCreate = false;
+    const dialogRef = this.dialog.open(ExamInfoComponent);
+    dialogRef.componentInstance.slug = slug;
     
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
