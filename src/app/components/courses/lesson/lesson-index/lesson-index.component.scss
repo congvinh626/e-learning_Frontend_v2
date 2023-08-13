@@ -19,7 +19,10 @@ $green: #2eb15e;
 $green-dark: #08b681;
 $green-darker: #038d35;
 
-
+::ng-deep .mat-mdc-menu-content{
+    padding: 0 !important;
+    width: 145px;
+  }
 .lesson {
     padding: 10px 15px;
     background-color: $white;

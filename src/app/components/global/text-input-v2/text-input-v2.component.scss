@@ -1,0 +1,16 @@
+::ng-deep .mdc-text-field--filled{
+    background-color: white;
+}
+
+textarea::-webkit-scrollbar {
+    display: none; /* cho Chrome, Safari, and Opera */
+  }
+
+  textarea {
+    resize: horizontal;
+    overflow: hidden;
+    min-height: 34px !important;
+    line-height: 20px;
+    padding: 5px 10px;
+
+}

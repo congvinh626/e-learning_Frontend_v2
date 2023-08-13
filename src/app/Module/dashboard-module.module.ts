@@ -33,6 +33,12 @@ import { AutocomplateComponent } from '../components/global/autocomplate/autocom
 import { DatepickerComponent } from '../components/global/datepicker/datepicker.component';
 import { DatetimepickerComponent } from '../components/global/datetimepicker/datetimepicker.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { LessonTypeComponent } from '../components/courses/lesson/lesson-type/lesson-type.component';
+import { LessonExamComponent } from '../components/courses/lesson/lesson-exam/lesson-exam.component';
+import { ExamIndexComponent } from '../components/courses/exam/exam-index/exam-index.component';
+import { VideoIndexComponent } from '../components/courses/video/video-index/video-index.component';
+import { LessonImportExamComponent } from '../components/courses/lesson/lesson-import-exam/lesson-import-exam.component';
+import { LessonExamFormComponent } from '../components/courses/lesson/lesson-exam-form/lesson-exam-form.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     AutocomplateComponent,
     DatepickerComponent,
     DatetimepickerComponent,
+    LessonTypeComponent,
+    LessonExamComponent,
+    ExamIndexComponent,
+    VideoIndexComponent,
+    LessonImportExamComponent,
+    LessonExamFormComponent,
+
   ],
   imports: [
     CommonModule,

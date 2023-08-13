@@ -22,7 +22,7 @@ export class LessonEditComponent {
   formItem!: FormGroup;
   submited: boolean = false;
   formData = new FormData();
-  menu: string = 'home';
+  title: string = 'Thêm mới';
   filesArray: any = [];
   detailItem: infoLesson = {
     id: 0,
@@ -50,6 +50,7 @@ export class LessonEditComponent {
   ngOnInit(): void {
     if (!this.isCreate) {
       this.getDetail();
+      this.title = "Chỉnh sửa"
     }
   }
 
@@ -63,16 +64,18 @@ export class LessonEditComponent {
   }
 
   getDetail() {
+    this.LoadingService.setValue(true);
     this.LessonService.getDetail(this.lesson_slug).subscribe((response: infoLesson) => {
       this.detailItem = response;
       this.filesArray = response.files;
-      console.log('this.detailItem', this.detailItem);
 
       this.formItem.patchValue({
         title: response.title,
         link: response.link,
         description: response.description
       });
+      this.LoadingService.setValue(false);
+
     });
   }
 

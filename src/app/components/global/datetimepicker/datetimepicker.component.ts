@@ -11,9 +11,12 @@ export class DatetimepickerComponent {
   @Input() request: boolean = false;
   @Output() senData = new EventEmitter();
 
+ 
   DateItem!: Date;
 
   onSearchDate(event: any){
       this.senData.emit(event.target.value);
   }
+
+ 
 }

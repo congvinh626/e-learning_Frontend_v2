@@ -1,8 +1,22 @@
 <form class="example-form">
-    <label  *ngIf="label" class="block font-medium mb-2 text-gray-600" >
+    <label  *ngIf="label" class="block font-medium mb-2 text-gray-600 text-sm" >
         {{ label }} <span *ngIf="request" class="text-red-700">*</span>
     </label>
-      <input class="form-control" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input class="appearance-none
+      block
+      w-full
+      bg-white
+      text-gray-700
+      border
+      border-gray-400
+      rounded
+      py-1.5
+      px-4
+      leading-tight
+      focus:outline-none
+      focus:bg-white
+      focus:border-blue-500
+      "  type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option[display]}}

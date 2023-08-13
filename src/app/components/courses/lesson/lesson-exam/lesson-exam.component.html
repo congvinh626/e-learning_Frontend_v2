@@ -1,1 +1,55 @@
-<p>lesson-exam works!</p>
+<div class="p-4">
+    <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold ">{{title}} bài kiểm tra</h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div>
+    <form>
+        <div class="grid grid-cols-12 gap-5">
+            <app-autocomplate *ngIf="isCreate" class="mt-4 col-span-6" (senData)="hendleCourse($event)" label="Chọn bài học" [options]="listLesson" display="title" 
+                [request]="true" [error]="submited ? f['title'].errors : ''"></app-autocomplate>
+
+            <app-autocomplate *ngIf="!isCreate" class="mt-4 col-span-6" (senData)="hendleExam($event)" label="Chọn bài kiểm tra" [options]="listExam" display="title" [value]="detailItem.title"
+            [request]="true" [error]="submited ? f['title'].errors : ''"></app-autocomplate>
+
+            <app-text-input *ngIf="isCreate" class="mt-4 col-span-6" (senData)="hendleTitle($event)" label="Tên bài kiểm tra" [request]="true" [error]="submited ? f['title'].errors : ''"
+                [value]="formItem.value.title">
+            </app-text-input>
+
+            <app-text-input class="col-span-3" (senData)="hendleTime($event)" label="Thời gian thi" [request]="true" [error]="submited ? f['title'].errors : ''"
+                [value]="formItem.value.time">
+            </app-text-input>
+
+            <app-text-input class="col-span-3" (senData)="hendleNumberOfQuestion($event)" label="Số câu hiển thị" [value]="formItem.value.numberOfQuestion">
+            </app-text-input>
+
+            <app-datetimepicker class="col-span-3" (senData)="hendleStartTime($event)" label="Bắt đầu" [value]="formItem.value.startTime"></app-datetimepicker>
+            <app-datetimepicker class="col-span-3" (senData)="hendleEndTime($event)" label="Kết thúc" [value]="formItem.value.endTime"></app-datetimepicker>
+
+            <div class="col-span-12">
+                <div class="font-medium mb-2 text-gray-600 text-sm">Phân loại câu hỏi (câu) <span (click)="insertForm()"><i
+                            class="bi bi-plus-circle-fill text-red-700 ml-2 cursor-pointer"></i> </span></div>
+                <div class="grid grid-cols-12 gap-4" v-if="typeQuestion2.length > 0">
+                    <div *ngFor="let item of typeQuestion2; index as i" class="col-span-2">
+                        <app-text-input-with-label (senData)="addToTest($event)" inputType="number" [index]="i">
+                        </app-text-input-with-label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12">
+                <label for="display" class="mr-4 text-sm font-medium">Hiển thị đáp án</label>
+                <input type="checkbox" name="display" id="display" [(ngModel)]="formItem.value.showResult">
+            </div>
+            
+        </div>
+        <div class="flex mt-6">
+            <app-upload-file (senData)="hendleFile($event)" class="ml-auto mr-5" icon="bi bi-file-earmark-spreadsheet" name="Import Excel"></app-upload-file>
+
+            <app-submit-form-button (click)="openImportExam()" class="mr-5" bgColor="blue" btnText="Nhập đề thi" icon="bi bi-plus-circle"></app-submit-form-button>
+                
+            <app-submit-btn-outline (click)="Close()" class="mr-5" btnText="Đóng"
+                icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" [btnText]="title"
+                icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </form>
+</div>

@@ -22,6 +22,8 @@ export class CourseEditComponent {
   formData = new FormData();
   detailItem: any = [];
   menu: string = 'home';
+  title: string = 'Thêm mới';
+  
   constructor(
     private CourseService: CourseService,
     private ToastrcustomService: ToastrcustomService,
@@ -36,6 +38,7 @@ export class CourseEditComponent {
   ngOnInit(): void {
     if (!this.isCreate) {
       this.getDetail();
+      this.title = 'Chỉnh sửa';
     }
   }
 

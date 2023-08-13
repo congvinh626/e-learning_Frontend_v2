@@ -1,5 +1,8 @@
 <div class="p-4">
-    <h2 class="font-bold text-lg border-b border-gray-400">Thêm mới khóa học</h2>
+    <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold ">{{title}} bài học</h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div>
     <form class="mt-6">
         <div class="grid height-scroll">
             <app-upload-file (senData)="hendleFile($event)" name="Chọn ảnh" bgColor="blue" icon="bi bi-image-fill" [nameFile]="true"></app-upload-file>
@@ -22,7 +25,7 @@
         </div>
         <div class="flex mt-6">
             <app-submit-btn-outline (click)="Close()" class="ml-auto mr-5" btnText="Đóng" icon="bi bi-x-lg"></app-submit-btn-outline>
-            <app-submit-form-button (click)="onSubmit()" btnText="Thêm mới" icon="bi bi-card-checklist"></app-submit-form-button>
+            <app-submit-form-button (click)="onSubmit()" [btnText]="title" icon="bi bi-card-checklist"></app-submit-form-button>
         </div>
     </form>
 </div>

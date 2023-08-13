@@ -78,6 +78,14 @@ a {
   display: none; /* cho Chrome, Safari, and Opera */
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 .container {
   max-width: 1820px;
   margin: 0 auto;
@@ -107,13 +115,13 @@ textarea {
   padding: 10px;
   /* outline: 1px solid white; */
   /* outline-color: red; */
-  border: 1px solid #bfbfbf;
+  // border: 1px solid #bfbfbf;
   border-radius: 5px;
 }
 
 textarea:focus {
-  border: 1px solid #1670BE;
-  box-shadow: 0 0 3px #1670BE;
+  // border: 1px solid #1670BE;
+  // box-shadow: 0 0 3px #1670BE;
   outline-offset: 0px;
   outline: none;
 }

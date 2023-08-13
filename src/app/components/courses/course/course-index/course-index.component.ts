@@ -67,7 +67,7 @@ export class CourseIndexComponent {
   }
 
   openModal() {
-    const dialogRef = this.dialog.open(CourseEditComponent, { width: '750px' });
+    const dialogRef = this.dialog.open(CourseEditComponent, { width: '550px', disableClose: true });
     dialogRef.componentInstance.isCreate = true;
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -78,7 +78,7 @@ export class CourseIndexComponent {
 
   editModal(slug: string) {
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CourseEditComponent, { width: '750px' });
+    const dialogRef = this.dialog.open(CourseEditComponent, { width: '550px', disableClose: true });
     dialogRef.componentInstance.isCreate = false;
     dialogRef.componentInstance.slug = slug;
 

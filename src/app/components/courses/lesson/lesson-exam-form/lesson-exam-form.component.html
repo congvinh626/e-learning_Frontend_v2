@@ -1,0 +1,64 @@
+<div class="mt-5 rounded border border-blue-500 border-solid px-6 pb-4">
+    <div class="label-form">Câu hỏi {{ index + 1 }}</div>
+    <form>
+        <div class="grid grid-cols-12 gap-5">
+            <div class="col-span-10">
+                <app-text-input-v2 (senData)="hendleQuestion($event)" label="Nhập câu hỏi"></app-text-input-v2>
+            </div>
+            <div class="col-span-2">
+                <app-text-input (senData)="hendleType($event)" label="Loại câu hỏi" inputType="number"></app-text-input>
+            </div>
+        </div>
+
+        <label class="block font-medium mb-2 text-gray-600 text-sm">
+            Nhập đáp án
+        </label>
+        <div class="grid grid-cols-12 gap-5">
+            <div class="col-span-6">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-11">
+                        <app-text-input-v2 (senData)="hendleAnswer($event, 0)" class="w-full"></app-text-input-v2>
+                    </div>
+                    <div class="col-span-1 text-right">
+                        <input name="answers1" (click)="hendleCheckbox(0)" type="checkbox" id="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-11">
+                        <app-text-input-v2 (senData)="hendleAnswer($event, 1)" class="w-full"></app-text-input-v2>
+                    </div>
+                    <div class="col-span-1 text-right">
+                        <input name="answers2" (click)="hendleCheckbox(1)" type="checkbox" id="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-11">
+                        <app-text-input-v2 (senData)="hendleAnswer($event, 2)" class="w-full"></app-text-input-v2>
+                    </div>
+                    <div class="col-span-1 text-right">
+                        <input name="answers3" (click)="hendleCheckbox(2)" type="checkbox" id="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-11">
+                        <app-text-input-v2 (senData)="hendleAnswer($event, 3)" class="w-full"></app-text-input-v2>
+                    </div>
+                    <div class="col-span-1 text-right">
+                        <input name="answers4" (click)="hendleCheckbox(3)" type="checkbox" id="">
+
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </form>
+</div>
+

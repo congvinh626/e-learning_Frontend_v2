@@ -6,11 +6,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./text-input-with-label.component.scss']
 })
 export class TextInputWithLabelComponent {
-  @Input() label: string = '';
+  // @Input() label: any = '';
   @Input() inputType: string = '';
+  @Input() index: number = 0;
   @Output() senData = new EventEmitter();
 
   handleInput(e: any) {
-    this.senData.emit(e.target.value);
+    let item = {
+      'index': this.index,
+      'value': e.target.value
+    }
+    this.senData.emit(item);
   }
 }

@@ -12,8 +12,8 @@ export class AutocomplateComponent {
   @Input() display: string = '';
   @Input() label: string = '';
   @Input() request: boolean = false;
-  @Input() error: string = '';
-  @Output() changeCompany = new EventEmitter();
+  @Input() error: any = '';
+  @Output() senData = new EventEmitter();
   
   myControl = new FormControl<any>({});
   // options: any = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
@@ -41,7 +41,7 @@ export class AutocomplateComponent {
 
   displayFn = (user: any) => {
     console.log('user', user);
-    this.changeCompany.emit(user)
+    this.senData.emit(user)
     return user && user[this.display] ? user[this.display] : '';
   }
 

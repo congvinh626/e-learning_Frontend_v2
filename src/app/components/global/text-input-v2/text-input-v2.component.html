@@ -1,1 +1,13 @@
-<p>text-input-v2 works!</p>
+<!-- <mat-form-field> -->
+    <div>
+        <label  *ngIf="label" class="block font-medium mb-2 text-gray-600 text-sm" >
+            {{ label }} <span *ngIf="request" class="text-red-700">*</span>
+        </label>
+        <textarea (keyup)="handleInput($event)" class="w-full border-gray-400 border border-solid" matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"></textarea>
+    </div>
+   
+  <!-- </mat-form-field> -->

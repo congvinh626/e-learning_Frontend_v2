@@ -77,7 +77,7 @@ export class LessonIndexComponent {
       
       if (result == 'course') {
         this.openModalCourse();
-      }else{
+      }else if(result == 'exam'){
         this.openModalExam();
       }
     });
@@ -98,9 +98,9 @@ export class LessonIndexComponent {
 
   openModalExam() {
     this.isCreate = false;
-    const dialogRef = this.dialog.open(LessonExamComponent, { width: '550px', disableClose: true });
-    // dialogRef.componentInstance.isCreate = true;
-    // dialogRef.componentInstance.course_slug = this.slug;
+    const dialogRef = this.dialog.open(LessonExamComponent, { width: '900px', disableClose: true });
+    dialogRef.componentInstance.isCreate = true;
+    dialogRef.componentInstance.listLesson = this.listData.lessons;
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -109,6 +109,19 @@ export class LessonIndexComponent {
     });
   }
 
+  editModalExam(item: any) {
+    this.isCreate = false;
+    const dialogRef = this.dialog.open(LessonExamComponent, { width: '900px', disableClose: true });
+    dialogRef.componentInstance.isCreate = false;
+    dialogRef.componentInstance.listExam = item;
+    console.log('itemitem', item);
+    
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.Pagingdata();
+      }
+    });
+  }
 
   editModal(slug: string) {
     this.isCreate = false;
@@ -122,6 +135,7 @@ export class LessonIndexComponent {
       }
     });
   }
+
 
   confirmDelete(slug: string, title: string) {
     const dialogRef = this.dialog.open(PopupConfirmComponent);

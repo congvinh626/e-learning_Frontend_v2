@@ -1,0 +1,20 @@
+<div class="p-4">
+    <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold ">{{title}} đề thi</h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div>
+
+        <div class="mt-10" *ngFor="let item of listform; index as i">
+            <app-lesson-exam-form (senData)="hendleFormQuestion($event, i)" [index]="i"></app-lesson-exam-form>
+
+        </div>
+        <div class="flex mt-6">
+
+            <app-submit-form-button (click)="insertForm()" class="mr-5 ml-auto" bgColor="blue" btnText="Thêm câu hỏi" icon="bi bi-plus-circle"></app-submit-form-button>
+                
+            <app-submit-btn-outline (click)="Close()" class="mr-5" btnText="Đóng"
+                icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" btnText="Hoàn thành"
+                icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+</div>

@@ -3,9 +3,9 @@
     {{ label }} <span *ngIf="request" class="text-red-700">*</span>
   </label>
   <label
-    class="inline-block  font-medium text-white  no-underline  px-4  py-1  text-white  rounded border  hover:border-transparent"
-    [class]="bgColor == 'green' ? 'bg-green-700  hover:bg-green-800  active:bg-green-900  focus:ring focus:ring-green-300 border-green-500' :
-        'bg-blue-600 hover:bg-blue-700  active:bg-blue-900  focus:ring focus:ring-blue-300 border-blue-500'"
+    class="inline-block  font-medium text-white  no-underline  px-4 text-white  rounded border  hover:border-transparent"
+    [class]="bgColor == 'green' ? 'bg-green-700  hover:bg-green-800  active:bg-green-900  focus:ring focus:ring-green-300 border-green-500 py-1.5' :
+        'bg-blue-600 hover:bg-blue-700  active:bg-blue-900  focus:ring focus:ring-blue-300 border-blue-500 py-1'"
     for="upload-file">
     <div> <i [class]="!file ? icon : 'bi bi-check2'" class="mr-1"></i> {{ name }} </div>
   </label>
