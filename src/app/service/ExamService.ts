@@ -21,7 +21,9 @@ export class ExamService {
         return this.httpService.getRequest(`exam/${slug}`);
     }
 
-
+    getQuestionExam(slug: string) {
+        return this.httpService.getRequest(`getExam/${slug}`);
+    }
 
     createExam(item: any) {
         return this.httpService.uploadRequest('exam', item);

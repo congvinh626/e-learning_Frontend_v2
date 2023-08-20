@@ -42,6 +42,9 @@ import { LessonExamFormComponent } from '../components/courses/lesson/lesson-exa
 import { ExamInfoComponent } from '../components/courses/exam/exam-info/exam-info.component';
 import { ExamResultComponent } from '../components/courses/exam/exam-result/exam-result.component';
 import { ExamHistoryComponent } from '../components/courses/exam/exam-history/exam-history.component';
+import { SafePipe } from '../safe.pipe';
+import { CountdownModule } from 'ngx-countdown';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,7 @@ import { ExamHistoryComponent } from '../components/courses/exam/exam-history/ex
     VideoIndexComponent,
     LessonImportExamComponent,
     LessonExamFormComponent,
+    SafePipe,
 
     ExamInfoComponent,
     ExamResultComponent,
@@ -78,6 +82,7 @@ import { ExamHistoryComponent } from '../components/courses/exam/exam-history/ex
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     DashboardModuleRoutingModule,
 
     MatInputModule,
@@ -94,6 +99,7 @@ import { ExamHistoryComponent } from '../components/courses/exam/exam-history/ex
     MatIconModule,
     ShareModule,
     MatAutocompleteModule,
+    CountdownModule
 
   ],
   schemas: [

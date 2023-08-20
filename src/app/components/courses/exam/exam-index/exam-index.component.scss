@@ -1,0 +1,127 @@
+$text-color: #4f5665;
+$heading-color: #0b132a;
+$primary-color: #de222f;
+$gray-color: #dde0e4;
+
+$gray-light: #f3f5f9;
+$gray-dark: #52606b;
+$gray-darker: #293741;
+
+$gray-lighter-color: #7f7f7f;
+$red-dark: #C3001A;
+$red-darker: #C3001A;
+$red-light: #ce6c6c;
+$white: #ffffff;
+$blue: #2c90ec;
+$blue-dark: #0d81eb;
+$yellow: #b7af40;
+$green: #2eb15e;
+$green-dark: #08b681;
+$green-darker: #038d35;
+
+.exam {
+    padding: 15px;
+    background-color: $white;
+    box-shadow: 0 2px 3px 2px rgba(0, 0, 0, .03);
+
+    &-title {
+        text-align: center;
+        color: $red-dark;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 40px !important;
+        border-bottom: 1px solid;
+        padding: 0 10px 10px;
+    }
+
+    &-item {
+        margin-top: 40px;
+    }
+
+    &-question {
+        margin-bottom: 15px !important;
+        font-size: 18px;
+        font-weight: 500;
+
+    }
+
+    &-answer {
+        label {
+            margin-left: 10px;
+            margin-bottom: 10px !important;
+        }
+
+        ul li{
+            display: block;
+        }
+    }
+
+    &-right {
+        position: sticky;
+        top: 10px;
+    }
+
+    &-time {
+        padding: 10px 0;
+        background-color: $blue;
+        border-radius: 5px;
+        color: $white;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+
+        &--red {
+            background-color: $red-dark;
+            color: $white;
+            border: 1px solid;
+        }
+    }
+
+    &-number {
+        background-color: $white;
+        color: $gray-dark;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 5px;
+        border: 1px solid $gray-dark;
+        font-weight: 500;
+
+        &--blue {
+            background-color: $blue;
+            color: $white;
+            border: 1px solid;
+
+        }
+
+       
+    }
+}
+
+li {
+    margin-bottom: 8px;
+
+}
+
+.listNumber {
+    padding: 10px 15px;
+    background-color: $white;
+    box-shadow: 0 2px 3px 2px rgba(0, 0, 0, .03);
+    // margin-top: 20px;
+    margin-bottom: 20px;
+
+
+
+    &-item {
+        border: 1px solid $gray-color;
+        text-align: center;
+        padding: 5px 0;
+        width: 100%;
+        margin-bottom: 5px;
+        border-radius: 5px;
+
+        &--blue {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+}

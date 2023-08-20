@@ -1,1 +1,86 @@
-<p>video-index works!</p>
+    <div class="grid grid-cols-12 gap-5">
+        <div class="col-span-9">
+
+            <!-- <div class="video">
+                
+                <h4 class="video-header-title">Ngôn ngữ máy</h4>
+            </div> -->
+
+            <div class="video">
+                <div class="video-breadcrumb">
+                    <!-- Khóa học &nbsp; > &nbsp; Ngôn ngữ máy &nbsp; > <span>&nbsp; Chương 1</span> -->
+                    <!-- <router-link to="/side-bar/course">Khóa học</router-link> -->
+                    <a routerLink="/elearning/khoa-hoc">Khóa học</a>
+                    &nbsp;
+                    <i class="bi bi-chevron-right text-sm"></i>
+
+                    &nbsp; <a href=""> Ngôn ngữ máy</a> &nbsp;
+                    <i class="bi bi-chevron-right text-sm"></i>
+
+                    <span>&nbsp; {{ detailItem.title }}</span>
+                </div>
+                <div class="mb-4">
+                    {{ detailItem.description }}
+                </div>
+                <!-- <h5 class="video-title">Chương 1</h5> -->
+                <iframe width="100%" height="450" [src]="detailItem.link | safe">
+                </iframe>
+
+            </div>
+            <div class="video !mt-5">
+
+                <h5 class="video-question">Câu hỏi tới giảng viên</h5>
+                <div class="video-textForm">
+                    <!-- <textarea name="" id="" cols="30" rows="4" placeholder="Đặt câu hỏi"></textarea> -->
+                <!-- <TextArea  placeholder="Đặt câu hỏi" v-model:description="description"></TextArea> -->
+
+                    <button class="btn-thin btn--red video-submit mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
+                </div>
+
+
+
+                <div class="video-comment">
+                    <div class="video-comment-header">
+                        <img class="video-comment-avatar" src="../../../../../assets/image/avatar.png" alt="">
+                        <div>
+                            <p class="video-comment-title">Nguyễn Hoàng Anh</p>
+                            <p class="video-comment-desc">10/09/2023 | 8:30</p>
+                        </div>
+                    </div>
+                    <div class="video-comment-content">
+                        Cái giao diện của em nó chỉ có background màu xanh, không có from để chat là sai cái gì anh ?
+                    </div>
+                    <div class="video-comment-more">
+                        <span class="video-comment-more--blue">Trả lời |</span>
+                        <span class="video-comment-more--blue">Sửa |</span>
+                        <span class="video-comment-more--red">Xóa</span>
+
+                    </div>
+                </div>
+                <div class="video-comment">
+                    <div class="video-comment-header">
+                        <img class="video-comment-avatar" src="../../../../../assets/image/avatar.png" alt="">
+                        <div>
+                            <p class="video-comment-title">Nguyễn Hoàng Anh</p>
+                            <p class="video-comment-desc">10/09/2023 | 8:30</p>
+                        </div>
+                    </div>
+                    <div class="video-comment-content">
+                        Cái giao diện của em nó chỉ có background màu xanh, không có from để chat là sai cái gì anh ?
+                    </div>
+                    <div class="video-comment-more">
+                        <span class="video-comment-more--blue">Trả lời | </span>
+                        <span class="video-comment-more--blue">Sửa | </span>
+                        <span class="video-comment-more--red">Xóa</span>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-span-3">
+            <!-- <chatList></chatList> -->
+        </div>
+
+
+    </div>

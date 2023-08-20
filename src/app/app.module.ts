@@ -20,6 +20,7 @@ import { AutocomplateComponent } from './components/global/autocomplate/autocomp
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ShareModule } from './Module/share-module.module';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,6 @@ import { ShareModule } from './Module/share-module.module';
     TextFieldModule,
     MatFormFieldModule,
     ShareModule,
-
     ToastrModule.forRoot()
   ],
   providers: [

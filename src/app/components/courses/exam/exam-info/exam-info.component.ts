@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ExamService } from 'src/app/service/ExamService';
 import { LoadingService } from 'src/app/service/loading.service';
 
@@ -15,12 +16,13 @@ export class ExamInfoComponent {
     private LoadingService: LoadingService,
     private ExamService: ExamService,
     public dialogRef: MatDialogRef<ExamInfoComponent>,
-
+    private router: Router,
+    
   ) {}
 
   ngOnInit(): void {
-      this.getDetail();
-    }
+    this.getDetail();
+  }
 
   getDetail() {
     
@@ -35,10 +37,12 @@ export class ExamInfoComponent {
 
 
   onSubmit(){
+    this.dialogRef.close();
+    this.router.navigate([`elearning/kiem-tra/${this.detailItem.slug}`]);
 
   }
 
   Close(){
-    
+    this.dialogRef.close();
   }
 }
