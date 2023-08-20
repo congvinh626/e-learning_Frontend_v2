@@ -18,25 +18,18 @@ import { CountdownComponent } from 'ngx-countdown';
 })
 export class ExamIndexComponent {
   @ViewChild('elementToScroll') elementToScroll!: ElementRef;
+  @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
+
   // @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
   // @ViewChild("otpInput", { static: false }) otpInput: any;
   slug: any = '';
   listData: any = [];
   countQuestion: number[] = [];
   itemQuestion: string = '';
-  timerConfig = { 'leftTime': 3610, 'notify': [3600] };
-  config = {
-    leftTime: 120,
-    format: 'mm:ss',
-    allowNumbersOnly: true,
-    length: 6,
-    isPasswordInput: false,
-    disableAutoFocus: false,
-    placeholder: ".",
-    inputClass: 'each_input',
-    inputStyles: { width: "34px", height: "34px", border: 'none', },
-    demand: true
-  };
+  config: any = {
+    leftTime: 0, 
+  }
+  dataExam: any = [];
   constructor(
     private router: Router,
     private dialog: MatDialog,
@@ -54,29 +47,30 @@ export class ExamIndexComponent {
   Pagingdata() {
     this.LoadingService.setValue(true);
     this.ExamService.getQuestionExam(this.slug).subscribe(response => {
-
       this.listData = response;
       this.countQuestion = new Array<number>(response.question.length);
-      
+      const timeInSeconds = response.time * 60;
+      this.config = { ...this.config, leftTime: timeInSeconds };
       this.LoadingService.setValue(false);
-
+      this.getDataExam();
     },
       (error) => {
-
         this.ToastrService.showError('Có lỗi xảy ra, xin tải lại !!!');
       });
   }
 
-  // scrollQuestion(el: HTMLElement) {
-  //   el.scrollIntoView({behavior: "smooth"});
-  // }
+  getDataExam(){
+    const listQuestion = this.listData.question;
+    for (let i = 0; i < listQuestion.length; i++) {
+      this.dataExam.push({
+        'question_id': listQuestion[i].id,
+        'answer_id': null
+      })
+    }
 
-  //  scrollQuestion(day: any) {
-  //   const item = this.listData.question.find((x: any) => x === day)
-  //   console.log(item);
+    console.log('this.dataExam', this.dataExam);
     
-  //   item.scrollIntoView();
-  // }
+  }
 
   scrollToElement(index: number) {
     const element = this.elementToScroll.nativeElement.querySelector('#item' + index);
@@ -84,13 +78,4 @@ export class ExamIndexComponent {
   }
 
  
-  handleEvent(event: any) {
-    console.log(event.target.value);
-
-    // this.checkEndTime = false;
-
-    // if (event["action"] == "done") {
-    //   this.checkEndTime = true;
-    // }
-  }
 }

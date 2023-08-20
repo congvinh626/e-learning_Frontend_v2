@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./submit-form-button.component.scss']
 })
 export class SubmitFormButtonComponent {
-  @Input() btnText: string = '';
+  @Input() btnText!: string | number ;
   @Input() bgColor: string = 'red';
   @Input() icon: string = '';
   
