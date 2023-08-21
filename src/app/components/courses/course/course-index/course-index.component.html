@@ -3,7 +3,7 @@
 
         <div class="course-header">
             <div class="flex items-center border-b border-solid border-gray-200 pb-3">
-                <h5 class="course-header-title">Khóa học</h5>
+                <h5 class="course-header-title">Khóa học của tôi</h5>
                 <app-submit-form-button (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
             </div>
@@ -11,17 +11,15 @@
                 <div class="col-span-3 grid">
                     <label for="" class="!mb-2 text-sm">Trạng thái</label>
                     <select (change)="statusCourse($event)"
-                        class="appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                        class="text-sm appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                         <option value="1">Đang hoạt động</option>
                         <option value="0">Ngừng hoạt động</option>
                     </select>
                 </div>
-                <div class="col-span-6">
+                <div class="col-span-9">
                     <app-text-input label="Từ khóa tìm kiếm" (senData)="handleSearch($event)"></app-text-input>
                 </div>
-                <div class="col-span-3">
-                    <app-text-input label="Mã khóa học"></app-text-input>
-                </div>
+             
             </div>
         </div>
         <div class="course-container mt-5">

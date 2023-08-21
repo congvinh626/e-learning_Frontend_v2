@@ -11,6 +11,9 @@ import { LoadingService } from 'src/app/service/loading.service';
 })
 export class ExamInfoComponent {
   @Input() slug: string = '';
+  @Input() lesson_slug: string = '';
+  @Input() checkTime: string = '';
+  
   detailItem: any = {};
   constructor(
     private LoadingService: LoadingService,
@@ -38,7 +41,7 @@ export class ExamInfoComponent {
 
   onSubmit(){
     this.dialogRef.close();
-    this.router.navigate([`elearning/kiem-tra/${this.detailItem.slug}`]);
+    this.router.navigate([`elearning/kiem-tra/${this.lesson_slug}/${this.detailItem.slug}`]);
 
   }
 

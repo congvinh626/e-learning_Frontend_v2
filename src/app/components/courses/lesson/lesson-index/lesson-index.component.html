@@ -12,10 +12,11 @@
                     <h4 class="lesson-header-title">{{ listData.title }}</h4>
                     <!-- <button (click)="openModal()" class="btn-thin btn--red"><i class="bi bi-plus-circle"></i> Thêm
                         mới</button> -->
-                        <app-submit-form-button (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
+                        <app-submit-form-button (click)="openNewMember()" class="ml-auto mr-5" icon="bi bi-bell" bgColor="blue"
+                        btnText="Thành viên mới ( +8 )"></app-submit-form-button>
+                        <app-submit-form-button (click)="openModal()" class="" icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
                     <!-- <router-link class="btn-thin btn--red" to="/side-bar/lesson/create/ngon-ngu-may"><i class="bi bi-plus-circle"></i> Khóa học</router-link> -->
-
 
                 </div>
 
@@ -112,16 +113,15 @@
                 <div *ngFor="let exam of item.exams" class="lesson-content">
                     <div class="lesson-content-item">
                         <img src="../../../../../assets/image/exam.png" alt="">
-                        <a (click)="examInfoModal(exam.slug)">{{ exam.title }}</a>
+                        <a (click)="examInfoModal(exam.slug, exam.checkTime)">{{ exam.title }}</a>
 
-                        <span class="px-2 py-1 bg-green-600 text-white rounded text-sm">
-                            Đã mở
+                        <span  class="px-2 py-1 text-white rounded text-sm" [ngClass]="exam.checkTime == 'Hết hạn' ? 'bg-red-600' : exam.checkTime == 'Đã mở' ? 'bg-green-600' : 'bg-yellow-600'">
+                            {{ exam.checkTime}}
                         </span>
+                       
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     </div>

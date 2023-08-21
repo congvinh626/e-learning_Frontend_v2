@@ -1,1 +1,17 @@
-<p>exam-result works!</p>
+<div class="dialog">
+    <!-- <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold ">Chúc mừng bạn đã hoàn thành bài thi</h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div> -->
+    <div >
+        <h2 class="font-bold text-xl mb-5">Chúc mừng bạn đã hoàn thành bài thi</h2>
+        <p class="mb-3">-  Kết quả thi: {{result.numberOfCorrectAnswers}} câu</p>
+        <p class="mb-3">-  Điểm thi: <span class="text-red-600">{{result.scores}} điểm</span>  </p>
+        <!-- <p >-  Số lần thi: 1/1 lần</p> -->
+
+        <div class="flex mt-6 gap-3">
+            <app-submit-btn-outline (click)="Close()" class="ml-auto"  btnText="Trở về" icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button *ngIf="result.showResult == 1" (click)="onSubmit()" btnText="Xem lại bài" icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </div>
+</div>

@@ -21,6 +21,10 @@ export class ExamService {
         return this.httpService.getRequest(`exam/${slug}`);
     }
 
+    getHistory(id: string) {
+        return this.httpService.getRequest(`historyExam/${id}`);
+    }
+
     getQuestionExam(slug: string) {
         return this.httpService.getRequest(`getExam/${slug}`);
     }
@@ -31,6 +35,10 @@ export class ExamService {
 
     updateExam(item: any) {
         return this.httpService.postRequest('exam/update', item);
+    }
+
+    uploadExam(item: any) {
+        return this.httpService.putRequest('uploadExam', item);
     }
 
     deleteExam(slug: string) {

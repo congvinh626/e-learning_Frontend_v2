@@ -20,15 +20,15 @@
 
       <ul>
         <li *ngFor="let item of menu">
-          <a [routerLink]="item.url" class="text-16">
+          <a [routerLink]="item.url" class="text-16 menu-icon">
             <span class="icon-item" [innerHTML]="item.icon"></span>
             {{item.name}}
             <i *ngIf="item.children" class="bi bi-caret-down-fill icon-down"></i>
           </a>
           <ul *ngIf="item.children" class="list-child">
             <li *ngFor="let child of item.children" class="child-item">
-              <span class="icon-item" [innerHTML]="child.icon"></span>
-              <a [routerLink]="child.url">{{child.name}}</a>
+              
+              <a [routerLink]="child.url"> <span class="icon-item" [innerHTML]="child.icon"></span> {{child.name}}</a>
               
             </li>
           </ul>

@@ -65,9 +65,10 @@ export class LessonExamComponent {
     this.formItem = new FormGroup({
       title: new FormControl('', Validators.required),
       time: new FormControl('', Validators.required),
+      numberOfExam: new FormControl(''),
       numberOfQuestion: new FormControl(''),
       classify: new FormControl(''),
-      showResult: new FormControl(false),
+      showResult: new FormControl(false), 
       lesson_id: new FormControl(''),
       startTime: new FormControl(''),
       endTime: new FormControl(''),
@@ -85,6 +86,7 @@ export class LessonExamComponent {
       this.formItem.patchValue({
         title: response.title,
         numberOfQuestion: response.numberOfQuestion,
+        numberOfExam: response.numberOfExam,
         time: response.time,
         classify: response.classify,
         showResult: response.showResult,
@@ -132,6 +134,12 @@ export class LessonExamComponent {
       time: value
     });
     // this.formItem.value.description = value;
+  }
+
+  hendleNumberOfExam(value: string) {
+    this.formItem.patchValue({
+      numberOfExam: value
+    });
   }
 
   hendleCourse(value: any) {
@@ -192,7 +200,8 @@ export class LessonExamComponent {
     this.formData.append('slug', this.convertSlug.convertSlug(this.formItem.value.title));
     this.formData.append('startTime', this.formItem.value.startTime);
     this.formData.append('endTime', this.formItem.value.endTime);
-
+    this.formData.append('numberOfExam', this.formItem.value.numberOfExam);
+    
     this.formData.append('file', this.fileExam);
     this.formData.append('importQuestion', this.formItem.value.importQuestion);
     console.log( this.formData);

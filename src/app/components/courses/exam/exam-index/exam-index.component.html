@@ -3,15 +3,6 @@
 
 
     <div class="col-span-9">
-
-        <!-- <div class="course-header">
-            <div class="course-breadcrumb">
-                Khóa học &nbsp; > &nbsp; Ngôn ngữ máy &nbsp; > <span>&nbsp; Bài kiểm tra chương
-                    1</span>
-            </div>
-            <h4 class="course-header-title">Ngôn ngữ máy</h4>
-        </div> -->
-
         <div class="exam">
             <h5 class="exam-title ">{{listData.title}}</h5>
             <div class="exam-list" #elementToScroll>
@@ -19,8 +10,8 @@
                     <h6 class="exam-question">Câu {{i + 1}}: {{item.title}}</h6>
                     <div class="exam-answer">
                         <ul>
-                            <li  *ngFor="let answer of item.answers" #home>
-                                <input type="radio" [id]="answer.id" [name]="answer.question_id" value="30">
+                            <li  *ngFor="let answer of item.answers">
+                                <input (click)="handleAnswer(answer.id, item.id, i)" type="radio" [id]="answer.id" [name]="answer.question_id">
                                 <label [for]="answer.id">{{answer.title}}</label><br>
                             </li>
                         </ul>
@@ -32,28 +23,19 @@
 
         </div>
 
-
     </div>
     <div class="col-span-3">
         <div class="sticky top-5">
             <div class="exam">
-                <div class="exam-time mb-5"><i class="bi bi-alarm mr-5"></i> <countdown [config]="config" #cd></countdown></div>
-                <div>
-                
-
-                </div>
+                <div class="exam-time mb-5"><i class="bi bi-alarm mr-5"></i> <countdown [config]="config" #cd (event)="handleEvent($event)"></countdown></div>
                 <div  class=" grid grid-cols-4 gap-2">
-                    <button *ngFor="let item of countQuestion; index as i" (click)="scrollToElement(i)"  class="exam-number exam-number--blue">
+                    <button *ngFor="let item of dataExam; index as i" (click)="scrollToElement(i)"  class="exam-number" [ngClass]="item.answer_id ? ' exam-number--blue' : ''">
                         {{i + 1}}
                     </button>
-    
                 </div>
             </div>
             <div class="exam !mt-5">
-                
-                <div  class="exam-time exam-time--red"> Nạp bài</div>
-    
-            
+                <button (click)="onSubmit()" class="exam-time exam-time--red w-full"> Nạp bài</button>
             </div>
         </div>
         

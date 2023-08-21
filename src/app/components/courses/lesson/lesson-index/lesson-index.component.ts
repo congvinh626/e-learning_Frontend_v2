@@ -11,6 +11,7 @@ import { LessonService } from 'src/app/service/LessonService';
 import { LessonTypeComponent } from '../lesson-type/lesson-type.component';
 import { LessonExamComponent } from '../lesson-exam/lesson-exam.component';
 import { ExamInfoComponent } from '../../exam/exam-info/exam-info.component';
+import { CourseNewMemberComponent } from '../../course/course-new-member/course-new-member.component';
 
 @Component({
   selector: 'app-lesson-index',
@@ -32,6 +33,7 @@ export class LessonIndexComponent {
     status: 1
   };
   listData: any = [];
+  status: number = 0;
   constructor(
     private router: Router,
     private dialog: MatDialog,
@@ -51,12 +53,9 @@ export class LessonIndexComponent {
     this.LessonService.getLesson(this.slug).subscribe(response => {
 
       this.listData = response;
-     
       this.LoadingService.setValue(false);
-
     },
       (error) => {
-
         this.ToastrService.showError('Có lỗi xảy ra, xin tải lại !!!');
       });
   }
@@ -110,6 +109,17 @@ export class LessonIndexComponent {
     });
   }
 
+  openNewMember() {
+    this.isCreate = false;
+    const dialogRef = this.dialog.open(CourseNewMemberComponent, { width: '550px', disableClose: true });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.Pagingdata();
+      }
+    });
+  }
+
   editModalExam(item: any) {
     this.isCreate = false;
     const dialogRef = this.dialog.open(LessonExamComponent, { width: '900px', disableClose: true });
@@ -124,10 +134,12 @@ export class LessonIndexComponent {
     });
   }
 
-  examInfoModal(slug: string) {
+  examInfoModal(slug: string, checkTime: string) {
     this.isCreate = false;
     const dialogRef = this.dialog.open(ExamInfoComponent);
     dialogRef.componentInstance.slug = slug;
+    dialogRef.componentInstance.lesson_slug = this.slug;
+    dialogRef.componentInstance.checkTime = checkTime;
     
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

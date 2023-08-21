@@ -1,0 +1,18 @@
+<div class="p-4">
+    <div class="flex text-lg border-b border-gray-300 pb-2">
+        <h2 class="font-bold "></h2>
+        <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
+    </div>
+    <form>
+        <div class="grid grid-cols-12 gap-5">
+            
+        </div>
+        <div class="flex mt-6">
+            
+            <app-submit-btn-outline (click)="Close()" class="mr-5" btnText="Đóng"
+                icon="bi bi-x-lg"></app-submit-btn-outline>
+            <app-submit-form-button (click)="onSubmit()" btnText="title"
+                icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </form>
+</div>

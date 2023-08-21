@@ -15,12 +15,17 @@
                 [value]="formItem.value.title">
             </app-text-input>
 
-            <app-text-input class="col-span-3" (senData)="hendleTime($event)" label="Thời gian thi" [request]="true" [error]="submited ? f['title'].errors : ''"
+            <app-text-input class="col-span-2" (senData)="hendleNumberOfExam($event)" label="Số lần thi" [value]="formItem.value.numberOfExam">
+            </app-text-input>
+
+            <app-text-input class="col-span-2" (senData)="hendleNumberOfQuestion($event)" label="Số câu hiển thị" [value]="formItem.value.numberOfQuestion">
+            </app-text-input>
+
+            <app-text-input class="col-span-2" (senData)="hendleTime($event)" label="Thời gian thi" [request]="true" [error]="submited ? f['title'].errors : ''"
                 [value]="formItem.value.time">
             </app-text-input>
 
-            <app-text-input class="col-span-3" (senData)="hendleNumberOfQuestion($event)" label="Số câu hiển thị" [value]="formItem.value.numberOfQuestion">
-            </app-text-input>
+           
 
             <app-datetimepicker class="col-span-3" (senData)="hendleStartTime($event)" label="Bắt đầu" [value]="formItem.value.startTime"></app-datetimepicker>
             <app-datetimepicker class="col-span-3" (senData)="hendleEndTime($event)" label="Kết thúc" [value]="formItem.value.endTime"></app-datetimepicker>
@@ -42,6 +47,15 @@
             
         </div>
         <div class="flex mt-6">
+            <!-- <a href="../../../../../assets/Template.xlsx">
+                <app-submit-form-button class="mr-5" bgColor="red" btnText="Tải file mẫu" icon="bi bi-box-arrow-down"></app-submit-form-button>
+            </a> -->
+            <a href="../../../../../assets/Template.xlsx" class="inline-block  font-medium text-white  no-underline  px-4  py-1.5  text-white  rounded border  hover:border-transparent bg-green-700  hover:bg-green-800  active:bg-green-900  focus:ring focus:ring-green-300 border-green-500">
+                <i class="bi bi-box-arrow-down mr-1"></i>
+                Tải file mẫu
+               
+            </a>
+
             <app-upload-file (senData)="hendleFile($event)" class="ml-auto mr-5" icon="bi bi-file-earmark-spreadsheet" name="Import Excel"></app-upload-file>
 
             <app-submit-form-button (click)="openImportExam()" class="mr-5" bgColor="blue" btnText="Nhập đề thi" icon="bi bi-plus-circle"></app-submit-form-button>

@@ -41,9 +41,9 @@
     // height: 40px;
   }
 
-  ul li {
-    padding: 8px 25px;
-  }
+  // ul li {
+  //   padding: 8px 25px;
+  // }
 
   li {
     position: relative;
@@ -74,18 +74,26 @@
     z-index: 9;
   }
 
+  .menu-icon{
+    padding: 8px 25px;
+    display: inline-block;
+  }
+
   ul.list-child li {
     display: block;
     color: #52606b;
     border-bottom: 1px solid white;
-    padding: 10px;
     cursor: pointer;
     font-size: 16px;
+
   }
 
   ul.list-child li a{
     color: #52606b;
     font-size: 16px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
   }
 
 

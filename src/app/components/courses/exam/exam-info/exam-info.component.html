@@ -15,16 +15,16 @@
             </tr>
             <tr>
                 <td>Thời gian mở:</td>
-                <td>{{detailItem.startTime | date:'HH:mm - dd/MM/YYYY '}} - {{detailItem.endTime | date:'HH:mm - dd/MM/YYYY '}}</td>
+                <td>{{detailItem.startTime | date:'dd/MM/YYYY | HH:mm'}} - {{detailItem.endTime | date:'dd/MM/YYYY | HH:mm  '}}</td>
             </tr>
         </table>
 
-        <div class="flex mt-6">
+        <div class="flex mt-6 gap-3">
 
                 
-            <app-submit-btn-outline (click)="Close()" class="mr-5 ml-auto" btnText="Đóng"
+            <app-submit-btn-outline (click)="Close()" class="ml-auto" btnText="Đóng"
                 icon="bi bi-x-lg"></app-submit-btn-outline>
-            <app-submit-form-button (click)="onSubmit()" btnText="Vào thi"
+            <app-submit-form-button *ngIf="checkTime == 'Đã mở'" (click)="onSubmit()" btnText="Vào thi"
                 icon="bi bi-card-checklist"></app-submit-form-button>
         </div>
     </div>

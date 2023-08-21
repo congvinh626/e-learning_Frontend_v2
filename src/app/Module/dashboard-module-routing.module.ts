@@ -6,6 +6,8 @@ import { CourseIndexComponent } from "../components/courses/course/course-index/
 import { LessonIndexComponent } from "../components/courses/lesson/lesson-index/lesson-index.component";
 import { VideoIndexComponent } from "../components/courses/video/video-index/video-index.component";
 import { ExamIndexComponent } from "../components/courses/exam/exam-index/exam-index.component";
+import { ExamHistoryComponent } from "../components/courses/exam/exam-history/exam-history.component";
+import { CourseMoreComponent } from "../components/courses/course/course-more/course-more.component";
 
 const routes: Routes = [
   { path: '', component: SidebarComponent,
@@ -13,9 +15,11 @@ const routes: Routes = [
     { path: '404-not-found', component: NotFoundComponent },
 
     { path: 'khoa-hoc', component: CourseIndexComponent },
+    { path: 'them-khoa-hoc', component: CourseMoreComponent },
     { path: 'khoa-hoc/:slug', component: LessonIndexComponent },
     { path: 'bai-hoc/:slug', component: VideoIndexComponent },
-    { path: 'kiem-tra/:slug', component: ExamIndexComponent },
+    { path: 'kiem-tra/:lesson_slug/:slug', component: ExamIndexComponent },
+    { path: 'lich-su/:id', component: ExamHistoryComponent },
     
   ]},
 

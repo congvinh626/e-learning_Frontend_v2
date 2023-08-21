@@ -18,11 +18,21 @@ export const ROUTE_DATA: TypeRoute[] = [
 
   {
     name: 'Khóa học',
-    url: 'khoa-hoc',
-    icon: '<i class="bi bi-cart"></i>',
-   
+    url: '#',
+    icon: '<i class="bi bi-bookmark-check"></i>',
+    children: [
+      {
+        icon: '<i class="bi bi-book"></i>',
+        name: 'Khóa học của tôi',
+        url: 'khoa-hoc',
+      },
+      {
+        icon: '<i class="bi bi-plus-circle"></i>',
+        name: 'Thêm khóa học',
+        url: 'them-khoa-hoc',
+      },
+    ]
   },
-
  
   {
     name: 'Trang cá nhân',

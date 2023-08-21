@@ -45,6 +45,10 @@ import { ExamHistoryComponent } from '../components/courses/exam/exam-history/ex
 import { SafePipe } from '../safe.pipe';
 import { CountdownModule } from 'ngx-countdown';
 import { BrowserModule } from '@angular/platform-browser';
+import { CourseMoreComponent } from '../components/courses/course/course-more/course-more.component';
+import { CourseInfoComponent } from '../components/courses/course/course-info/course-info.component';
+import { CourseNewMemberComponent } from '../components/courses/course/course-new-member/course-new-member.component';
+import { NotificationComponent } from '../components/home/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,11 @@ import { BrowserModule } from '@angular/platform-browser';
     ExamInfoComponent,
     ExamResultComponent,
     ExamHistoryComponent,
+    CourseMoreComponent,
+    CourseInfoComponent,
+    CourseNewMemberComponent,
+    NotificationComponent,
+
   ],
   imports: [
     CommonModule,
