@@ -1,18 +1,17 @@
 <div class="p-4">
     <div class="flex text-lg border-b border-gray-300 pb-2">
-        <h2 class="font-bold "></h2>
+        <h2 class="font-bold ">Xác nhận thành viên mới</h2>
         <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
     </div>
     <form>
-        <div class="grid grid-cols-12 gap-5">
-            
+        <div >
+            <div *ngFor="let item of detailItem" class="flex gap-4 items-center py-3 border-b border-dashed border-gray-200">
+                <img [src]="item.avatar ? item.avatar : '../../../../../assets/image/user.png'" alt="" class="h-10 w-10 rounded-full">
+                <div>{{item.name}}</div>
+                <button (click)="addMember(item.user_id)" class="ml-auto inline-block  font-medium text-white  no-underline  px-3  py-1 text-sm  text-white  rounded border  hover:border-transparent bg-red-600  hover:bg-red-700  active:bg-red-900  focus:ring focus:ring-red-300 border-red-500">Xác nhận</button>
+                <button (click)="removeMember(item.user_id)" class="bg-transparent bg-white font-semibold hover:text-white px-3  py-1 text-sm border  hover:border-transparent rounded focus:outline-none bg-red-600  hover:bg-red-700  active:bg-red-900  focus:ring focus:ring-red-300 border-red-500">Xóa</button>
+            </div>
         </div>
-        <div class="flex mt-6">
-            
-            <app-submit-btn-outline (click)="Close()" class="mr-5" btnText="Đóng"
-                icon="bi bi-x-lg"></app-submit-btn-outline>
-            <app-submit-form-button (click)="onSubmit()" btnText="title"
-                icon="bi bi-card-checklist"></app-submit-form-button>
-        </div>
+        
     </form>
 </div>

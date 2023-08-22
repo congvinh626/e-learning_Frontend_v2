@@ -13,7 +13,7 @@
                     <!-- <button (click)="openModal()" class="btn-thin btn--red"><i class="bi bi-plus-circle"></i> Thêm
                         mới</button> -->
                         <app-submit-form-button (click)="openNewMember()" class="ml-auto mr-5" icon="bi bi-bell" bgColor="blue"
-                        btnText="Thành viên mới ( +8 )"></app-submit-form-button>
+                        [btnText]="'Thành viên mới ( + ' + listData.numberOfMemberWaiting + ' )'"></app-submit-form-button>
                         <app-submit-form-button (click)="openModal()" class="" icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
                     <!-- <router-link class="btn-thin btn--red" to="/side-bar/lesson/create/ngon-ngu-may"><i class="bi bi-plus-circle"></i> Khóa học</router-link> -->
@@ -24,13 +24,13 @@
                 </div>
                 <div class="lesson-item-footer" style="border-top: 0;">
                     <div>
-                        <i class="bi bi-person-check fsize-18"></i> Hoàng Thị Mai
+                        <i class="bi bi-person-check fsize-18"></i> {{listData.nameTeacher}}
                     </div>
                     <div>
-                        <i class="bi bi-calendar3"></i> 21 bài
+                        <i class="bi bi-calendar3"></i> {{listData.numberOfLesson}} bài
                     </div>
                     <div>
-                        <i class="bi bi-people fsize-18"></i> 343 thành viên
+                        <i class="bi bi-people fsize-18"></i> {{listData.numberOfMember}} thành viên
                     </div>
 
                 </div>

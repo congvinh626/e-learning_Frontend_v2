@@ -112,6 +112,7 @@ export class LessonIndexComponent {
   openNewMember() {
     this.isCreate = false;
     const dialogRef = this.dialog.open(CourseNewMemberComponent, { width: '550px', disableClose: true });
+    dialogRef.componentInstance.course_id = this.listData.id;
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

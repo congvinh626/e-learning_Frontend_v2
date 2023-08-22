@@ -39,4 +39,22 @@ changeStatusCourse(slug: string) {
     return this.httpService.postRequest(`course/changeStatus/${slug}`, '');
 }
 
+//////////////////// 
+
+waitConfirmMember(id: number) {
+    return this.httpService.getRequest(`course/waitConfirmMember/${id}`);
+}
+
+addMember(item: any) {
+    return this.httpService.postRequest(`course/addMember`, item);
+}
+
+removeMember(item: any) {
+    return this.httpService.postRequest(`course/removeMember`, item);
+}
+
+registerCourse(item: any) {
+    return this.httpService.postRequest(`course/register`, item);
+}
+
 }
