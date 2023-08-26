@@ -16,6 +16,7 @@
     focus:outline-none
     focus:bg-white
     focus:border-blue-500
+    text-sm
     " type="datetime-local" displayFormat="DD/MM/YYYY HH:mm" [ngModel]="DateItem | date:'yyyy-MM-ddTHH:mm'"
         (change)="onSearchDate($event)">
     <div *ngIf="error" class="text-red-500 mt-3">

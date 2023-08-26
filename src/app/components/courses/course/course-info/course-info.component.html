@@ -1,20 +1,31 @@
 <div class="p-4">
     <div class="flex text-lg border-b border-gray-300 pb-2">
-        <h2 class="font-bold ">Bài kiểm tra: 1111111</h2>
+        <h2 class="font-bold ">Khóa học: {{detailItem.title}}</h2>
         <i class="bi bi-x-lg ml-auto cursor-pointer hover:text-red-600" (click)="dialogRef.close()"></i>
     </div>
 
-    <table class="mt-6">
-        <tr>
-            <td>Số câu hỏi:</td>
-            <td class="form-thin">43 câu</td>
-        </tr>
-        <tr>
-            <td>Thời gian:</td>
-            <td>443 phút</td>
-        </tr>
-      
-    </table>
+    <div class="mt-6">
+        <div>
+            {{detailItem.description}}
+        </div>
+        <div class="flex gap-5 mt-5">
+            <div>
+                <i class="bi bi-person"></i> {{detailItem.nameTeacher}}
+            </div>
+            <div>
+                <i class="bi bi-calendar3"></i> {{detailItem.numberOfLesson}} bài
+            </div>
+            <div>
+                <i class="bi bi-people"></i> {{detailItem.numberOfMember}} thành viên
+            </div>
+            <!-- <button *ngIf="item.status" class="btn-thin bg-green-600 text-white py-1 px-3 rounded">
+                <i class="bi bi-check-circle"></i> Đang hoạt động
+            </button>
+            <button *ngIf="!item.status" class="btn-thin bg-red-600 text-white py-1 px-3 rounded">
+                <i class="bi bi-x-circle"></i> Ngừng hoạt động
+            </button> -->
+        </div>
+    </div>
 
     <div class="flex mt-6">
             

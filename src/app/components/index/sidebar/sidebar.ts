@@ -20,25 +20,30 @@ export const ROUTE_DATA: TypeRoute[] = [
     name: 'Khóa học',
     url: '#',
     icon: '<i class="bi bi-bookmark-check"></i>',
+    roles: [ "teacher", "student"],
+
     children: [
       {
         icon: '<i class="bi bi-book"></i>',
         name: 'Khóa học của tôi',
         url: 'khoa-hoc',
+        roles: [ "teacher", "student"],
+
       },
       {
         icon: '<i class="bi bi-plus-circle"></i>',
         name: 'Thêm khóa học',
         url: 'them-khoa-hoc',
+        roles: ["student"],
+
       },
     ]
   },
  
   {
     name: 'Trang cá nhân',
-    url: '404-not-found',
+    url: 'trang-ca-nhan',
     icon: '<i class="bi bi-cart"></i>',
-
   },
 
 
@@ -46,6 +51,8 @@ export const ROUTE_DATA: TypeRoute[] = [
     name: 'Quản trị',
     url: '#',
     icon: '<i class="bi bi-gear-fill"></i>',
+    roles: ["admin"],
+
     children: [
       {
         icon: '<i class="bi bi-people"></i>',

@@ -44,4 +44,8 @@ export class LessonService {
         return this.httpService.postRequest('comment', item);
     }
 
+    getOffCourse(id: number) {
+        return this.httpService.postRequest(`course/getOff/${id}`, '');
+    }
+
 }

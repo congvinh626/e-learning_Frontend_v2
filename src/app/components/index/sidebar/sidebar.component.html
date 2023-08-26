@@ -9,9 +9,13 @@
         <div class="sidebar-account">
           <i class="bi bi-bell"></i>
           <div class="text-16">
-            Admin
+            <img mat-button [matMenuTriggerFor]="menu" class="h-10 w-10 cursor-pointer" [src]="checkAvatar ? infoAcc.avatar : '../../../../assets/image/user.png'" alt="">
+            <mat-menu #menu="matMenu">
+              <a routerLink="trang-ca-nhan"><button mat-menu-item><i class="bi bi-person-circle mr-4"></i> Trang cá nhân</button></a>
+              <button (click)="logOut()" mat-menu-item><i class="bi bi-box-arrow-left mr-4"></i> Đăng xuất</button>
+            </mat-menu>
+          
           </div>
-
         </div>
       </div>
     </div>
@@ -19,7 +23,7 @@
     <div class="container">
 
       <ul>
-        <li *ngFor="let item of menu">
+        <li *ngFor="let item of menuForRole">
           <a [routerLink]="item.url" class="text-16 menu-icon">
             <span class="icon-item" [innerHTML]="item.icon"></span>
             {{item.name}}

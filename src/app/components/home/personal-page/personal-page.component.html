@@ -1,0 +1,47 @@
+<div class=" mt-5  grid grid-cols-12">
+    <div class="col-span-9 bg-white p-5">
+        <div class="flex gap-8 items-center border-b border-gray-300 pb-5">
+
+
+            <label for="upload-file">
+                <img class="h-28 w-28 cursor-pointer rounded-full overflow-hidden" [src]="checkAvatar ? infoAcc.avatar : '../../../../assets/image/user.png'" alt="">
+            </label>
+            <input type="file" name="file" id="upload-file" (change)="uploadAvatar($event)" />
+            
+            <div>
+                <h2 class="font-bold text-xl">{{infoAcc.username}}</h2>
+                <h5>{{infoAcc.email}}</h5>
+            </div>
+        </div>
+        <form>
+
+            <div class=" mt-10  grid grid-cols-12 gap-5">
+                    <app-text-input class=" col-span-6" 
+                    (senData)="hendleName($event)" 
+                    label="Họ và tên" 
+                    [request]="true" 
+                    [value]="formItem.value.name"
+                    [error]="submited ? f['name'].errors : ''">
+                    </app-text-input>
+
+                    <app-text-input class="col-span-6" (senData)="hendlePhone($event)" label="Điện thoại" [value]="formItem.value.phone">
+                    </app-text-input>
+
+                    <app-datepicker class="col-span-6" (senData)="hendleDob($event)" label="Ngày sinh" [value]="formItem.value.dob"></app-datepicker>
+                    
+                    <app-text-input class="col-span-6" 
+                    (senData)="hendleAdress($event)" 
+                    label="Địa chỉ" 
+                    [value]="formItem.value.adress">
+                    </app-text-input>
+            </div>
+        </form>
+
+        <div class="flex mt-6">
+            <app-submit-form-button class="ml-auto" (click)="onSubmit()" btnText="Cập nhật" icon="bi bi-card-checklist"></app-submit-form-button>
+        </div>
+    </div>
+    <div class="col-span-3">
+        
+    </div>
+</div>

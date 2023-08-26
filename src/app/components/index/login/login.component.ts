@@ -31,34 +31,36 @@ export class LoginComponent {
   }
 
   login() {
-      // this.loadding = true;
       this.LoadingService.setValue(true);
   
       this.AccountService.login(this.userLogin).subscribe(response => {
-        console.log("29", response);
-
         localStorage.setItem('setUserInfo', JSON.stringify(this.userLogin));
-  
-  
         if (response.statusCode == 200) {
-            // this.router.navigate(['/Home/bao-cao-vao-ra']);
           this.ToastrcustomService.showSuccess("Đăng nhập thành công")
           this.router.navigate(['/elearning/khoa-hoc']);
         }
-        else {
-          this.ToastrcustomService.showError(response.message)
-          
-        }
-      this.LoadingService.setValue(false);
+        else if (response.statusCode == "ACC013") {
+          this.ToastrcustomService.showError(response.message);
+          this.router.navigate(['/verify']);
 
-        // this.loadding = false;
-  
-      })
+        }
+        else if (response.statusCode == "ACC017") {
+          this.ToastrcustomService.showError(response.message);
+          this.router.navigate([`/update-info`]);
+        }
+        else{
+          this.ToastrcustomService.showError(response.message);
+        }
+        this.LoadingService.setValue(false);
+      },(error) => {
+        
+          this.ToastrcustomService.showError(error.error.message);
+          this.LoadingService.setValue(false);
+      });
+
   }
 
   handleInputUsername(value: string){
-    
-    console.log(value);
     this.userLogin.username = value;
   }
 

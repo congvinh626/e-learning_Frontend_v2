@@ -43,12 +43,15 @@ import { ExamInfoComponent } from '../components/courses/exam/exam-info/exam-inf
 import { ExamResultComponent } from '../components/courses/exam/exam-result/exam-result.component';
 import { ExamHistoryComponent } from '../components/courses/exam/exam-history/exam-history.component';
 import { SafePipe } from '../safe.pipe';
-import { CountdownModule } from 'ngx-countdown';
 import { BrowserModule } from '@angular/platform-browser';
 import { CourseMoreComponent } from '../components/courses/course/course-more/course-more.component';
 import { CourseInfoComponent } from '../components/courses/course/course-info/course-info.component';
 import { CourseNewMemberComponent } from '../components/courses/course/course-new-member/course-new-member.component';
 import { NotificationComponent } from '../components/home/notification/notification.component';
+import { NoDataComponent } from '../components/global/no-data/no-data.component';
+import { CourseMemberComponent } from '../components/courses/course/course-member/course-member.component';
+import { PersonalPageComponent } from '../components/home/personal-page/personal-page.component';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -87,6 +90,9 @@ import { NotificationComponent } from '../components/home/notification/notificat
     CourseInfoComponent,
     CourseNewMemberComponent,
     NotificationComponent,
+    NoDataComponent,
+    CourseMemberComponent,
+    PersonalPageComponent,
 
   ],
   imports: [
@@ -108,7 +114,6 @@ import { NotificationComponent } from '../components/home/notification/notificat
     ShareModule,
     MatAutocompleteModule,
     CountdownModule
-
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

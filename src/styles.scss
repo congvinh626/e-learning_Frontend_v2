@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+$primary-color: #de222f;
+$gray-color: #dde0e4;
+
+$gray-light: #f3f5f9;
+$gray-dark: #52606b;
+$gray-darker: #293741;
 
 
 $font-primary: 'Roboto', sans-serif;
@@ -41,7 +47,13 @@ $wrapper: 1920px;
   
 }
 
+::ng-deep .mat-tab-label {
+  background-color: transparent;
+}
 
+::ng-deep .mat-tab-label.mat-tab-label-active {
+  background-color: transparent;
+}
 
 ul li {
   display: inline-block;
@@ -56,6 +68,7 @@ a {
   color: var(--gray);
   text-decoration: none;
 }
+
 
 .bg-cover {
   background-size: 100% !important;
@@ -405,7 +418,195 @@ text {
   }
 }
 
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(199 12 12 / 80%);
 
+  &-main {
+      border-radius: 10px;
+      border: 1px solid gray;
+      width: 400px;
+      height: auto;
+      background-color: white;
+      padding: 20px;
+      // padding: 40px;
+      // width: 484px;
+  }
+
+  &-title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 32px;
+      text-align: center;
+      margin-bottom: 20px !important;
+
+      &--mb-12 {
+          margin-bottom: 5px;
+      }
+
+      &--mb-32 {
+          margin-bottom: 32px;
+      }
+  }
+
+  &-title-form {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+      color: $gray-dark;
+      display: inline-block;
+      span {
+          color: $primary-color;
+      }
+  }
+
+  &-input {
+      display: flex;
+      gap: 1rem;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 24px;
+      color: $gray-darker;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      &--mb-16 {
+          margin-bottom: 16px;
+      }
+
+      &--mb-32 {
+          margin-bottom: 16px;
+      }
+
+      input {
+          all: unset;
+          width: 100%;
+      }
+
+      .icon-input {
+          font-size: 20px;
+      }
+  }
+
+  ::-webkit-input-placeholder {
+      /* Edge */
+      font-weight: 400;
+  }
+
+  :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      font-weight: 400;
+  }
+
+  ::placeholder {
+      font-weight: 400;
+  }
+
+  &-desc {
+      font-size: 12px;
+      line-height: 20px;
+      color: #768087;
+
+      span {
+          font-weight: 700;
+          color: #090a0b;
+      }
+
+      &--center {
+          text-align: center;
+      }
+
+      &--mb-24 {
+          margin-bottom: 24px;
+      }
+
+      &--mb-32 {
+          margin-bottom: 32px;
+      }
+  }
+
+  &-btn {
+      width: 100%;
+      padding: 10px 0px;
+      background: $primary-color;
+      border-radius: 8px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      outline: 0;
+      border: 1px solid white;
+
+      &--mb-40 {
+          margin-bottom: 30px;
+      }
+
+      &--mb-32 {
+          margin-bottom: 32px;
+      }
+
+      &--gray {
+          background: #98a5ae;
+      }
+  }
+
+  &-sendPage {
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      color: #172026;
+      cursor: pointer;
+
+      //   span {
+      a {
+          font-weight: 700;
+          color: $primary-color !important;
+      }
+
+  // }
+
+  &--mb48 {
+      margin-bottom: 48px;
+  }
+}
+
+.login-more {
+  display: flex;
+  margin-bottom: 32px;
+
+  input {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 14px;
+  }
+
+  label {
+      font-size: 14px;
+      line-height: 20px;
+      color: #172026;
+  }
+
+  .forgotPassword {
+      margin-left: auto;
+  }
+
+  @media screen and (max-width: 1500px) {
+      margin-bottom: 20px;
+
+      input {
+          width: 15px;
+          height: 15px;
+          margin-right: 8px;
+      }
+  }
+}
+}
 
 // th, td{
 //   border: 1px solid gray;

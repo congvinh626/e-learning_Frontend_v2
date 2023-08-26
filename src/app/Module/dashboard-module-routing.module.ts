@@ -8,6 +8,8 @@ import { VideoIndexComponent } from "../components/courses/video/video-index/vid
 import { ExamIndexComponent } from "../components/courses/exam/exam-index/exam-index.component";
 import { ExamHistoryComponent } from "../components/courses/exam/exam-history/exam-history.component";
 import { CourseMoreComponent } from "../components/courses/course/course-more/course-more.component";
+import { RoleGuardService } from "../service/rolo.guard.service";
+import { PersonalPageComponent } from "../components/home/personal-page/personal-page.component";
 
 const routes: Routes = [
   { path: '', component: SidebarComponent,
@@ -20,7 +22,16 @@ const routes: Routes = [
     { path: 'bai-hoc/:slug', component: VideoIndexComponent },
     { path: 'kiem-tra/:lesson_slug/:slug', component: ExamIndexComponent },
     { path: 'lich-su/:id', component: ExamHistoryComponent },
-    
+    { path: 'trang-ca-nhan', component: PersonalPageComponent },
+
+    // {
+    //   path: 'khoa-hoc',
+    //   component: CourseIndexComponent,
+    //   canActivate: [RoleGuardService],
+    //   data: {
+    //     roles: ["student"]
+    //   }
+    // },
   ]},
 
 ]

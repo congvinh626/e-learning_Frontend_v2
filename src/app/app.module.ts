@@ -8,7 +8,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientInterceptor } from './service/http.client.interceptor';
-import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './components/index/login/login.component';
 import { ForgotPasswordComponent } from './components/index/forgot-password/forgot-password.component';
 import { RegisterComponent } from './components/index/register/register.component';
@@ -21,6 +20,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ShareModule } from './Module/share-module.module';
 import { SafePipe } from './safe.pipe';
+import { RoleGuardService } from './service/rolo.guard.service';
+import { VerifyComponent } from './components/index/verify/verify.component';
+import { UpdateUserInfoComponent } from './components/index/update-user-info/update-user-info.component';
+import { CountdownModule } from 'ngx-countdown';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,8 @@ import { SafePipe } from './safe.pipe';
     ForgotPasswordComponent,
     RegisterComponent,
     LandingPageComponent,
+    VerifyComponent,
+    UpdateUserInfoComponent,
 
     
    
@@ -43,15 +49,18 @@ import { SafePipe } from './safe.pipe';
     BrowserAnimationsModule,
     FontAwesomeModule,
     MatDialogModule,
-    MatMenuModule,
     MatAutocompleteModule,
     TextFieldModule,
     MatFormFieldModule,
     ShareModule,
+    CountdownModule,
+    NgOtpInputModule,
     ToastrModule.forRoot()
   ],
   providers: [
     // AsyncPipe,
+    RoleGuardService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpClientInterceptor,

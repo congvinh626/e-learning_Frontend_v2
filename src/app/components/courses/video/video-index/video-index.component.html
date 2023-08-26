@@ -1,4 +1,4 @@
-    <div class="grid grid-cols-12 gap-5">
+    <div class="grid grid-cols-12 gap-5 mt-5">
         <div class="col-span-9">
 
             <!-- <div class="video">
@@ -33,48 +33,58 @@
                 <div class="video-textForm">
                     <!-- <textarea name="" id="" cols="30" rows="4" placeholder="Đặt câu hỏi"></textarea> -->
                 <!-- <TextArea  placeholder="Đặt câu hỏi" v-model:description="description"></TextArea> -->
-
-                    <button class="btn-thin btn--red video-submit mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
+                    <app-text-area></app-text-area>
+                    <div class="flex">
+                        <button class="ml-auto bg-red-600 py-1.5 px-4 rounded text-white font-bold mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
+                    </div>
                 </div>
 
+                
 
-
-                <div class="video-comment">
+                <div *ngFor="let item of sortListComment" class=" border border-solid border-gray-300 p-6 mb-5 rounded">
                     <div class="video-comment-header">
-                        <img class="video-comment-avatar" src="../../../../../assets/image/avatar.png" alt="">
+                        <img class="video-comment-avatar" [src]="item.avatar ? item.avatar : '../../../../../assets/image/user.png'" alt="">
                         <div>
-                            <p class="video-comment-title">Nguyễn Hoàng Anh</p>
-                            <p class="video-comment-desc">10/09/2023 | 8:30</p>
+                            <p class="video-comment-title">{{item.name}}</p>
+                            <p class="video-comment-desc">{{item.created_at | date:'dd/MM/YYYY | HH:mm'}}</p>
                         </div>
                     </div>
                     <div class="video-comment-content">
-                        Cái giao diện của em nó chỉ có background màu xanh, không có from để chat là sai cái gì anh ?
+                        {{item.title}}
                     </div>
-                    <div class="video-comment-more">
+
+                    <div *ngIf="item.child.length > 0 && !visibleComments.includes(item.id)" class="text-center">
+                       <span (click)="toggleVisibleComments(item)" class="cursor-pointer text-red-600 font-bold">Xem thêm ({{item.child.length}})</span> 
+                    </div>
+                    <div *ngIf="visibleComments.includes(item.id)">
+                        <div *ngIf="item.child.length > 0" class="ml-20 mt-5">
+                            <div *ngFor="let comment of item.child" class="border-t border-dashed border-gray-400 py-4">
+                                <div class="video-comment-header">
+                                    <img class="video-comment-avatar" [src]="comment.avatar ? item.avatar : '../../../../../assets/image/user.png'" alt="">
+                                    <div>
+                                        <p class="video-comment-title">{{comment.name}}</p>
+                                        <p class="video-comment-desc">{{comment.created_at | date:'dd/MM/YYYY | HH:mm'}}</p>
+                                    </div>
+                                </div>
+                                <div class="video-comment-content">
+                                    {{comment.title}}
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div *ngIf="visibleComments.includes(item.id)" class="text-center">
+                        <span (click)="toggleVisibleComments(item)" class="cursor-pointer text-red-600 font-bold">Ẩn bình luận</span> 
+                     </div>
+                    <!-- <div class="video-comment-more">
                         <span class="video-comment-more--blue">Trả lời |</span>
-                        <span class="video-comment-more--blue">Sửa |</span>
-                        <span class="video-comment-more--red">Xóa</span>
+                        <span class="video-comment-more--blue"><i class="bi bi-pencil-square"></i> |</span>
+                        <span class="video-comment-more--red"><i class="bi bi-trash"></i></span>
 
-                    </div>
+                    </div> -->
                 </div>
-                <div class="video-comment">
-                    <div class="video-comment-header">
-                        <img class="video-comment-avatar" src="../../../../../assets/image/avatar.png" alt="">
-                        <div>
-                            <p class="video-comment-title">Nguyễn Hoàng Anh</p>
-                            <p class="video-comment-desc">10/09/2023 | 8:30</p>
-                        </div>
-                    </div>
-                    <div class="video-comment-content">
-                        Cái giao diện của em nó chỉ có background màu xanh, không có from để chat là sai cái gì anh ?
-                    </div>
-                    <div class="video-comment-more">
-                        <span class="video-comment-more--blue">Trả lời | </span>
-                        <span class="video-comment-more--blue">Sửa | </span>
-                        <span class="video-comment-more--red">Xóa</span>
-
-                    </div>
-                </div>
+             
             </div>
 
         </div>

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrcustomService } from 'src/app/service/toastrcustom';
 import { PopupConfirmComponent } from 'src/app/components/global/popup-confirm/popup-confirm.component';
+import { AccountService } from 'src/app/service/AccountService';
 
 @Component({
   selector: 'app-course-index',
@@ -25,17 +26,22 @@ export class CourseIndexComponent {
     page: 1,
     pageSize: 10,
     searchText: '',
-    status: 1
+    status: 1,
+    confirm: 'true'
   };
   listData: any = [];
+  permission: any = [];
   constructor(
     private router: Router,
     private dialog: MatDialog,
     private LoadingService: LoadingService,
     private CourseService: CourseService,
+    private AccountService: AccountService,
     private ToastrService: ToastrcustomService
   ) {
     this.Pagingdata();
+    this.permission = this.AccountService.getPermissionForUser();
+    
   }
 
 
@@ -58,6 +64,11 @@ export class CourseIndexComponent {
 
   statusCourse(e: any) {
     this.PageInfo.status = e.target.value;
+    this.Pagingdata();
+  }
+
+  confirmCourse(e: any) {
+    this.PageInfo.confirm = e.target.value;
     this.Pagingdata();
   }
 

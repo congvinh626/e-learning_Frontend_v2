@@ -14,7 +14,11 @@ export class CourseService {
 
 
 getCourse(item: any) {
-    return this.httpService.getRequest(`course?page=${item.page}&pageSize=${item.pageSize}&searchText=${item.searchText}&status=${item.status}`);
+    return this.httpService.getRequest(`course?page=${item.page}&pageSize=${item.pageSize}&searchText=${item.searchText}&status=${item.status}&confirm=${item.confirm}`);
+}
+
+getCourseSuggest(item: any) {
+    return this.httpService.getRequest(`course/suggest?searchText=${item.searchText}&courseCode=${item.courseCode}`);
 }
 
 getDetail(slug: string) {
@@ -49,12 +53,16 @@ addMember(item: any) {
     return this.httpService.postRequest(`course/addMember`, item);
 }
 
+getMember(id: any) {
+    return this.httpService.postRequest(`course/member/${id}`, '');
+}
+
 removeMember(item: any) {
     return this.httpService.postRequest(`course/removeMember`, item);
 }
 
-registerCourse(item: any) {
-    return this.httpService.postRequest(`course/register`, item);
+registerCourse(id: any) {
+    return this.httpService.postRequest(`course/register/${id}`, '');
 }
 
 }

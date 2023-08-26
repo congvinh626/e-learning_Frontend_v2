@@ -11,7 +11,7 @@ import { ToastrcustomService } from 'src/app/service/toastrcustom';
 })
 export class CourseNewMemberComponent {
   @Input() course_id: number = 0;
-  detailItem: any = {};
+  listData: any = [];
   confirmData: any = {
     "course_id": 0,
     "user_id": 0
@@ -24,18 +24,16 @@ export class CourseNewMemberComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getDetail();
+    this.getNewMember();
     this.confirmData.course_id = this.course_id;
   }
 
-  getDetail() {
+  getNewMember() {
     
     this.LoadingService.setValue(true);
     this.CourseService.waitConfirmMember(this.course_id).subscribe((response: any) => {
-      this.detailItem = response.data;
+      this.listData = response.data;
       this.LoadingService.setValue(false);
-      console.log(this.detailItem);
-      
     });
   }
 
@@ -47,7 +45,7 @@ export class CourseNewMemberComponent {
     this.CourseService.addMember(this.confirmData).subscribe((response: any) => {
       if (response.statusCode == 200) {
         this.ToastrcustomService.showSuccess(response.message);
-        this.getDetail();
+        this.getNewMember();
         this.LoadingService.setValue(false);
 
       } else {
@@ -65,7 +63,7 @@ export class CourseNewMemberComponent {
     this.CourseService.removeMember(this.confirmData).subscribe((response: any) => {
       if (response.statusCode == 200) {
         this.ToastrcustomService.showSuccess(response.message);
-        this.getDetail();
+        this.getNewMember();
         this.LoadingService.setValue(false);
 
       } else {
@@ -77,6 +75,6 @@ export class CourseNewMemberComponent {
   }
 
   Close(){
-    this.dialogRef.close();
+    this.dialogRef.close('reload');
   }
 }

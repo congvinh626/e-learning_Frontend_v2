@@ -11,6 +11,7 @@ export class DatepickerComponent {
   @Input() startDate: boolean = false;
   @Input() endDate: boolean = false;
   @Input() request: boolean = false;
+  @Input() value: string = '';
   @Output() senData = new EventEmitter();
 
   DateItem: any = '';
@@ -21,7 +22,9 @@ export class DatepickerComponent {
     }
     else if(this.endDate){
       this.senData.emit(event.target.value + 'T23:59:59');
-
+    }
+    else if(!this.endDate && !this.startDate){
+      this.senData.emit(event.target.value);
     }
   }
 }

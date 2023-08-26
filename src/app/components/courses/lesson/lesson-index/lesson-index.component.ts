@@ -12,6 +12,8 @@ import { LessonTypeComponent } from '../lesson-type/lesson-type.component';
 import { LessonExamComponent } from '../lesson-exam/lesson-exam.component';
 import { ExamInfoComponent } from '../../exam/exam-info/exam-info.component';
 import { CourseNewMemberComponent } from '../../course/course-new-member/course-new-member.component';
+import { AccountService } from 'src/app/service/AccountService';
+import { CourseMemberComponent } from '../../course/course-member/course-member.component';
 
 @Component({
   selector: 'app-lesson-index',
@@ -32,16 +34,20 @@ export class LessonIndexComponent {
     searchText: '',
     status: 1
   };
-  listData: any = [];
+  listData: any = {};
   status: number = 0;
+  permission: any = [];
+  countLesson: number = 0;
   constructor(
     private router: Router,
     private dialog: MatDialog,
     private LoadingService: LoadingService,
     private LessonService: LessonService,
     private ToastrService: ToastrcustomService,
+    private AccountService: AccountService,
     private route: ActivatedRoute
   ) {
+    this.permission = this.AccountService.getPermissionForUser();
     this.slug = this.route.snapshot.paramMap.get('slug');
     this.Pagingdata();
 
@@ -53,6 +59,8 @@ export class LessonIndexComponent {
     this.LessonService.getLesson(this.slug).subscribe(response => {
 
       this.listData = response;
+      this.countLesson = response.lessons.length;
+      
       this.LoadingService.setValue(false);
     },
       (error) => {
@@ -109,15 +117,13 @@ export class LessonIndexComponent {
     });
   }
 
-  openNewMember() {
+  openMember() {
     this.isCreate = false;
-    const dialogRef = this.dialog.open(CourseNewMemberComponent, { width: '550px', disableClose: true });
+    const dialogRef = this.dialog.open(CourseMemberComponent, { width: '550px'});
     dialogRef.componentInstance.course_id = this.listData.id;
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.Pagingdata();
-      }
+      this.Pagingdata();
     });
   }
 
@@ -189,4 +195,29 @@ export class LessonIndexComponent {
       });
   }
 
+  comfirmGetOff() {
+    const dialogRef = this.dialog.open(PopupConfirmComponent);
+    dialogRef.componentInstance.title = "Thoát khóa học";
+    dialogRef.componentInstance.message = `Bạn có chắc chắn muốn thoát khóa học không?`;
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getOff();
+      }
+    });
+  }
+
+  getOff() {
+
+    this.LoadingService.setValue(true);
+    this.LessonService.getOffCourse(this.listData.id).subscribe(response => {
+      this.router.navigate(['/elearning/khoa-hoc']);
+      this.ToastrService.showSuccess('Thoát khóa học thành công!');
+      this.LoadingService.setValue(false);
+    },
+      (error) => {
+        this.ToastrService.showError('Có lỗi xảy ra, xin tải lại !!!');
+        this.LoadingService.setValue(false);
+      });
+  }
 }

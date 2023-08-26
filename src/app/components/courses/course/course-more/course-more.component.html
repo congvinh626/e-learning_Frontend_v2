@@ -11,7 +11,7 @@
                     <app-text-input label="Từ khóa tìm kiếm" (senData)="handleSearch($event)"></app-text-input>
                 </div>
                 <div class="col-span-3">
-                    <app-text-input label="Mã khóa học"></app-text-input>
+                    <app-text-input label="Mã khóa học" (senData)="handleCode($event)"></app-text-input>
                 </div>
             </div>
         </div>
@@ -23,15 +23,18 @@
 
                     </div>
                     <div class="col-span-9">
-                        <div (click)="openCourseInfo()" class="course-item-title mb-1">{{ item.title }}</div>
+                        <div (click)="openCourseInfo(item.slug)" class="course-item-title mb-1">{{ item.title }}</div>
                                
                         <div>{{ item.description }}</div>
                         <div class="course-item-footer">
                             <div>
-                                <i class="bi bi-calendar3"></i> 21 bài
+                                <i class="bi bi-person"></i> {{item.nameTeacher}}
                             </div>
                             <div>
-                                <i class="bi bi-calendar3"></i> 343 thành viên
+                                <i class="bi bi-calendar3"></i> {{item.numberOfLesson}} bài
+                            </div>
+                            <div>
+                                <i class="bi bi-people"></i> {{item.numberOfMember}} thành viên
                             </div>
                             <button *ngIf="item.status" class="btn-thin bg-green-600 text-white py-1 px-3 rounded">
                                 <i class="bi bi-check-circle"></i> Đang hoạt động
@@ -43,7 +46,9 @@
                     </div>
                 </div>
             </div>
-            <!-- <Pagination :pagination="pagination" @update:pagination="getPagination"></Pagination> -->
+
+            <app-no-data *ngIf="listData.length == 0"></app-no-data>
+
         </div>
 
 

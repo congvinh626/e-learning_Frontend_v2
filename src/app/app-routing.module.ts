@@ -4,15 +4,19 @@ import { ForgotPasswordComponent } from './components/index/forgot-password/forg
 import { LoginComponent } from './components/index/login/login.component';
 import { RegisterComponent } from './components/index/register/register.component';
 import { LandingPageComponent } from './components/index/landing-page/landing-page.component';
+import { VerifyComponent } from './components/index/verify/verify.component';
+import { UpdateUserInfoComponent } from './components/index/update-user-info/update-user-info.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'elearning', loadChildren: () => import('./Module/dashboard-module.module').then((m) => m.DashboardModuleModule), },
   { path: 'Home', component: LandingPageComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'quen-mat-khau', component: ForgotPasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dang-nhap', component: LoginComponent },
+  { path: 'verify', component: VerifyComponent },
+  { path: 'update-info', component: UpdateUserInfoComponent },
+  // { path: 'dang-nhap', component: LoginComponent },
 
 ];
 

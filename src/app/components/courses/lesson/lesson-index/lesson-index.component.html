@@ -12,10 +12,12 @@
                     <h4 class="lesson-header-title">{{ listData.title }}</h4>
                     <!-- <button (click)="openModal()" class="btn-thin btn--red"><i class="bi bi-plus-circle"></i> Thêm
                         mới</button> -->
-                        <app-submit-form-button (click)="openNewMember()" class="ml-auto mr-5" icon="bi bi-bell" bgColor="blue"
-                        [btnText]="'Thành viên mới ( + ' + listData.numberOfMemberWaiting + ' )'"></app-submit-form-button>
-                        <app-submit-form-button (click)="openModal()" class="" icon="bi bi-plus-circle"
+                        <app-submit-form-button *ngIf="permission.includes('course-add-member')" (click)="openMember()" class="ml-auto mr-5" icon="bi bi-people" bgColor="blue"
+                        [btnText]="listData.numberOfMemberWaiting == 0 ? 'Thành viên' : 'Thành viên ( + ' + listData.numberOfMemberWaiting + ' )'"></app-submit-form-button>
+                        <app-submit-form-button *ngIf="permission.includes('lesson-create')" (click)="openModal()" class="" icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
+                    <app-submit-form-button *ngIf="permission.includes('course-get-off')" (click)="comfirmGetOff()" class="" icon="bi bi-box-arrow-left"
+                    btnText="Thoát khóa học"></app-submit-form-button>
                     <!-- <router-link class="btn-thin btn--red" to="/side-bar/lesson/create/ngon-ngu-may"><i class="bi bi-plus-circle"></i> Khóa học</router-link> -->
 
                 </div>
@@ -68,7 +70,7 @@
                         </template>
                     </el-dropdown> -->
                     <a routerLink="/elearning/bai-hoc/{{item.slug}}" class="lesson-header-title lesson-title">{{ item.title }}</a>
-                    <button class="lesson-item-icon" mat-button [matMenuTriggerFor]="menu">
+                    <button *ngIf="permission.includes('lesson-update')" class="lesson-item-icon" mat-button [matMenuTriggerFor]="menu">
                         <i class="bi bi-three-dots"></i>
                     </button>
                     <mat-menu #menu="matMenu">
@@ -122,6 +124,9 @@
                     </div>
                 </div>
             </div>
+
+            <app-no-data *ngIf="countLesson == 0"></app-no-data>
+
         </div>
 
     </div>

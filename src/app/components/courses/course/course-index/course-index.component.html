@@ -4,11 +4,11 @@
         <div class="course-header">
             <div class="flex items-center border-b border-solid border-gray-200 pb-3">
                 <h5 class="course-header-title">Khóa học của tôi</h5>
-                <app-submit-form-button (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
+                <app-submit-form-button *ngIf="permission.includes('course-edit')" (click)="openModal()" class="ml-auto " icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
             </div>
             <div class=" grid grid-cols-12 gap-5 mt-5">
-                <div class="col-span-3 grid">
+                <div class="grid col-span-3">
                     <label for="" class="!mb-2 text-sm">Trạng thái</label>
                     <select (change)="statusCourse($event)"
                         class="text-sm appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
@@ -16,7 +16,15 @@
                         <option value="0">Ngừng hoạt động</option>
                     </select>
                 </div>
-                <div class="col-span-9">
+                <div *ngIf="permission.includes('course-register')" class="col-span-3 grid">
+                    <label for="" class="!mb-2 text-sm">Đăng ký</label>
+                    <select (change)="confirmCourse($event)"
+                        class="text-sm appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                        <option value="true">Đã đăng ký</option>
+                        <option value="false">Chờ xác nhận</option>
+                    </select>
+                </div>
+                <div [ngClass]="permission.includes('course-register') ? 'col-span-6' : 'col-span-9'">
                     <app-text-input label="Từ khóa tìm kiếm" (senData)="handleSearch($event)"></app-text-input>
                 </div>
              
@@ -30,9 +38,11 @@
 
                     </div>
                     <div class="col-span-9">
+
                         <div class="course-item-header">
-                            <a routerLink="{{item.slug}}" class="course-item-title">{{ item.title }}</a>
-                                <button class="course-item-icon" mat-button [matMenuTriggerFor]="menu">
+                            <a *ngIf="PageInfo.confirm == 'true'" routerLink="{{item.slug}}" class="course-item-title">{{ item.title }}</a>
+                            <a *ngIf="PageInfo.confirm == 'false'" class="course-item-title">{{ item.title }}</a>
+                                <button *ngIf="permission.includes('course-edit')" class="course-item-icon" mat-button [matMenuTriggerFor]="menu">
                                     <i class="bi bi-three-dots"></i>
                                 </button>
                                 <mat-menu #menu="matMenu">
@@ -60,7 +70,7 @@
                                 <i class="bi bi-calendar3"></i> {{item.numberOfLesson}} bài
                             </div>
                             <div>
-                                <i class="bi bi-calendar3"></i> {{item.numberOfMember}} thành viên
+                                <i class="bi bi-people"></i> {{item.numberOfMember}} thành viên
                             </div>
                             <button *ngIf="item.status" class="btn-thin bg-green-600 text-white py-1 px-3 rounded">
                                 <i class="bi bi-check-circle"></i> Đang hoạt động
@@ -72,6 +82,8 @@
                     </div>
                 </div>
             </div>
+
+            <app-no-data *ngIf="listData.length == 0"></app-no-data>
             <!-- <Pagination :pagination="pagination" @update:pagination="getPagination"></Pagination> -->
         </div>
 

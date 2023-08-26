@@ -1,3 +1,40 @@
+<div class="login">
+    <div class="login-main">
+  
+      <h3 class="login-title">Đăng ký</h3>
+      <div class="login-form">
+        <form class="grid">
+          <app-text-input-icon placeholder="Tên đăng nhập" [request]="true" iconStart="bi bi-person"
+            [error]="errors && errors.username ? errors.username[0] : ''" (senData)="handleInputUsername($event) ">
+          </app-text-input-icon>
+  
+          <app-text-input-icon class="mt-4" placeholder="Mật khẩu" [request]="true" inputType="password"
+            iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye"
+            [error]="errors && errors.password ? errors.password[0] : ''" (senData)="handleInputPassword($event)">
+          </app-text-input-icon>
 
-            Đăng ký tài khoản
-        
+          <app-text-input-icon class="mt-4" placeholder="Nhập lại mật khẩu" [request]="true" inputType="password"
+            iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye"
+             (senData)="handleInputRePassword($event)">
+          </app-text-input-icon>
+          <div class="text-red-600 text-sm mt-3 flex" *ngIf="submited && !rePassword"><i class="bi bi-exclamation-circle  mr-2"></i> Nhập lại mật khẩu bắt buộc nhập</div>
+          <div class="text-red-600 text-sm mt-3 flex" *ngIf="submited && rePassword && rePassword != formItem.value.password"><i class="bi bi-exclamation-circle  mr-2"></i> Nhập lại mật khẩu không chính xác</div>
+          
+          
+          <app-text-input-icon class="mt-4" placeholder="Email" [request]="true" iconStart="bi bi-envelope"
+            [error]="errors && errors.email ? errors.email[0] : ''" (senData)="handleInputEmail($event) ">
+          </app-text-input-icon>
+
+          <app-select-icon class="mt-4" placeholder="Loại tài khoản" [request]="true"
+          iconStart="bi bi-bar-chart" iconEnd="bi bi-chevron-down" [options]="listType"
+          [error]="errors && errors.type ? errors.type[0] : ''" (senData)="handleInputType($event)"></app-select-icon>
+
+          <button (click)="onSubmit()" class="mt-4 login-btn login-btn--mb-40">Đăng ký</button>
+
+        </form>
+        <div class="login-sendPage">Quay lại
+          <a routerLink="/login">đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </div>

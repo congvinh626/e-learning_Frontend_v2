@@ -16,7 +16,7 @@ export class AccountService {
   login(data: any) {
     return this.httpService.postRequest("login", data).pipe(map((data: any) => {
       if (data) {
-        localStorage.setItem('UserInfo', JSON.stringify(data));
+        localStorage.setItem('UserInfo', JSON.stringify(data.data));
       }
       return data;
     }))
@@ -26,27 +26,21 @@ export class AccountService {
     return this.httpService.postRequest("Account/ForgotPassword", data);
   }
 
-  sendOtp(data: any) {
-    return this.httpService.postRequest("Account/SendOtp", data);
+  sendOtp() {
+    return this.httpService.postRequest("sendOtp", '');
   }
-
 
   updatePassword(data: any) {
     return this.httpService.postRequest("Account/SetPassword", data);
   }
 
-
-  verifyCode(data: any) {
-    return this.httpService.postRequest("Account/VerifyOtp", data);
-
+  verifyCode(otp: any) {
+    return this.httpService.postRequest(`verifyOtp/${otp}`, '');
   }
-
 
   register(data: any) {
-    return this.httpService.postRequest("Account/Register", data);
+    return this.httpService.postRequest("register", data);
   }
-
-
 
   SaveTokens(tokendata: any) {
     localStorage.removeItem('UserInfo');
@@ -64,6 +58,11 @@ export class AccountService {
     return UserInfo;
   }
 
+  getPermissionForUser() {
+    const Permission = JSON.parse(localStorage.getItem('UserInfo') || 'null');
+    return Permission.permission;
+  }
+
   getTimeEndToken() {
     const UserInfo = Number(localStorage.getItem('dateEndToken') || 'null');
     return UserInfo;
@@ -76,25 +75,23 @@ export class AccountService {
  
   logOut() {
     localStorage.removeItem('UserName');
+    localStorage.removeItem('setUserInfo');
     localStorage.removeItem('UserInfo');
     localStorage.removeItem('dateEndToken');
     // this.router.navigate(['/Home']);
   }
-  // Paging(data: any) {
-  //     return this.httpService.postRequest("Vehicle/get-list-vehicle",data)
-  // }
+  
+  
+  infoAcc() {
+      return this.httpService.getRequest("user");
+  }
 
-  // Insert(data: any)
-  // {
-  //     return this.httpService.postRequest("Vehicle/add-vehicle", data);
-  // }
+  updateInfo(item: any){
+    return this.httpService.postRequest("user/update", item);
+  }
 
-  // GetDetail(id: string) {
-  //     return this.httpService.getRequest("Vehicle/get-vehicle-by-id/" + id);
-  // }   
-
-  // Update(data : any) {
-  //     return this.httpService.putRequest("Vehicle/update-vehicle",data)
-  // }
+  updateAvatar(item: any){
+    return this.httpService.postRequest("upload/avatar", item);
+  }
 
 }

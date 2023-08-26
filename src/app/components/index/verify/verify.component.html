@@ -1,0 +1,86 @@
+<!-- <div class="login">
+    <div class="login-main">
+  
+      <h3 class="login-title">Đăng ký</h3>
+      <div class="login-form">
+        <form class="grid">
+          <app-text-input-icon placeholder="Tên đăng nhập" [request]="true" iconStart="bi bi-person"
+            [error]="errors && errors.username ? errors.username[0] : ''" (senData)="handleInputUsername($event) ">
+          </app-text-input-icon>
+  
+          <app-text-input-icon class="mt-4" placeholder="Mật khẩu" [request]="true" inputType="password"
+            iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye"
+            [error]="errors && errors.password ? errors.password[0] : ''" (senData)="handleInputPassword($event)">
+          </app-text-input-icon>
+
+          <app-text-input-icon class="mt-4" placeholder="Nhập lại mật khẩu" [request]="true" inputType="password"
+            iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye"
+             (senData)="handleInputRePassword($event)">
+          </app-text-input-icon>
+          <div class="text-red-600 text-sm mt-3 flex" *ngIf="submited && !rePassword"><i class="bi bi-exclamation-circle  mr-2"></i> Nhập lại mật khẩu bắt buộc nhập</div>
+          <div class="text-red-600 text-sm mt-3 flex" *ngIf="submited && rePassword && rePassword != formItem.value.password"><i class="bi bi-exclamation-circle  mr-2"></i> Nhập lại mật khẩu không chính xác</div>
+          
+          
+          <app-text-input-icon class="mt-4" placeholder="Email" [request]="true" iconStart="bi bi-envelope"
+            [error]="errors && errors.email ? errors.email[0] : ''" (senData)="handleInputEmail($event) ">
+          </app-text-input-icon>
+
+          <app-select-icon class="mt-4" placeholder="Loại tài khoản" [request]="true"
+          iconStart="bi bi-lock" iconEnd="bi bi-eye-slash" iconEndChange="bi bi-eye" [options]="listType"
+          [error]="errors && errors.password ? errors.password[0] : ''" (senData)="handleInputType($event)"></app-select-icon>
+
+          <button (click)="onSubmit()" class="mt-4 login-btn login-btn--mb-40">Đăng ký</button>
+
+        </form>
+        <div class="login-sendPage">Quay lại
+          <a routerLink="/login">đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+  <div class="login">
+    <div class="login-main">
+  
+      <h3 class="login-title">Xác minh tài khoản</h3>
+      <div class="login-form text-center">
+        <div class="text-sm text-gray-500">Mã OTP đã được gửi về email. <br> Vui lòng nhập mã OTP để xác minh tài khoản
+        </div>
+        <form (keydown)="EnterSubmit($event)" autocomplete="off">
+          <div class="mt-8">
+              <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="config" #otpInput></ng-otp-input>
+          </div>
+        </form>
+        <div class="reSendOtp">
+            {{notice}}
+        </div>
+        <div class="reSendOtp" *ngIf="checkValidate == true">
+            Mã OTP không được phép để trống
+        </div>
+        <button (click)="onSubmit()" class="mt-8 login-btn">Xác minh tài khoản</button>
+
+        <div *ngIf="!checkEndTime" class="mt-5 text-sm">Mã OTP hết hiệu lực sau:
+            <span class="text-red-600 font-bold">
+                <countdown (event)="handleEvent($event)" #cd [config]="{ leftTime: 120, format: 'mm:ss' }">
+                </countdown>
+            </span>
+        </div>
+        <div *ngIf="checkEndTime" class="mt-5 text-sm">
+            Bạn chưa nhận được mã OTP?
+            <span class="text-red-600 font-bold" style="cursor: pointer;" (click)="reSendOtp()">
+                Gửi lại
+            </span>
+        </div>
+
+        <div class="login-sendPage mt-10">Quay lại
+          <a routerLink="/login">đăng nhập</a>
+        </div>    
+      </div>
+  </div>
+</div>

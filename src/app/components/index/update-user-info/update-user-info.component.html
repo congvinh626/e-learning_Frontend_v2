@@ -1,0 +1,33 @@
+<div class="login">
+    <div class="login-main">
+  
+      <h3 class="login-title">Cập nhật thông tin</h3>
+      <div class="login-form">
+        <form class="grid">
+          <app-text-input-icon placeholder="Họ và tên" [request]="true" iconStart="bi bi-person"
+            [error]="errors && errors.name ? errors.name[0] : ''" (senData)="handleInputName($event) ">
+          </app-text-input-icon>
+  
+          
+        <div class="login-input mt-4">
+            <span><i class="bi bi-calendar-week icon-input"></i></span>
+            <input (input)="searchToDate($event)" placeholder="Ngày sinh" type="text" onfocus="(this.type='date')"
+                onblur="(this.type= this.value ? 'date' : 'text')">
+        </div>
+          
+        <app-text-input-icon class="mt-4" placeholder="Số điện thoại" [request]="true" iconStart="bi bi-telephone"
+        [error]="errors && errors.phone ? errors.phone[0] : ''" (senData)="handleInputPhone($event)">
+        </app-text-input-icon>
+
+        <app-text-input-icon class="mt-4" placeholder="Địa chỉ" [request]="true" iconStart="bi bi-geo-alt" (senData)="handleInputAdress($event) ">
+        </app-text-input-icon>
+
+        <button (click)="onSubmit()" class="mt-4 login-btn login-btn--mb-40">Cập nhật thông tin</button>
+
+        </form>
+        <div class="login-sendPage">Quay lại
+          <a routerLink="/login">đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </div>
