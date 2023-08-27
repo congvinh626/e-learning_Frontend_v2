@@ -52,6 +52,7 @@ import { NoDataComponent } from '../components/global/no-data/no-data.component'
 import { CourseMemberComponent } from '../components/courses/course/course-member/course-member.component';
 import { PersonalPageComponent } from '../components/home/personal-page/personal-page.component';
 import { CountdownModule } from 'ngx-countdown';
+import { NewsComponent } from '../components/home/news/news.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { CountdownModule } from 'ngx-countdown';
     NoDataComponent,
     CourseMemberComponent,
     PersonalPageComponent,
+    NewsComponent,
 
   ],
   imports: [

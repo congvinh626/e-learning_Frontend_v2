@@ -10,24 +10,28 @@ import { PopupConfirmComponent } from '../components/global/popup-confirm/popup-
 })
 export class ShareService {
   constructor(private httpService: CommonService, private http: HttpClient, public dialog: MatDialog,) {}
+  private data: any = [];
 
-  // private data = new BehaviorSubject('default data');
-  // private messageSource = new BehaviorSubject('Default message');
-  // pageNow = this.messageSource.asObservable();
-
-  // private controlName = new BehaviorSubject([{'page': 'Phương tiện'}]);
-  private controlName = new BehaviorSubject([{page: 'Phương tiện'}]);
+  private controlName = new BehaviorSubject([]);
   pageMain = this.controlName.asObservable();
 
   changePageMain(item: any) {
     setTimeout(() => {
+      console.log('item', item);
+
       this.controlName.next(item);
+      
     });
   }
 
-  // sendPageNow(message: string) {
-  //     this.messageSource.next(message);
-  // }
+
+  setData(data: any): void {
+    this.data = data;
+  }
+  
+  getData(): any {
+    return this.data;
+  }
 
   getSector() {
     return this.httpService.getRequest('PartnerSector/get-partner-sector');

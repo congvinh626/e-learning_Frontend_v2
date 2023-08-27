@@ -5,7 +5,7 @@
                 
                 <h4 class="video-header-title">Ngôn ngữ máy</h4>
             </div> -->
-
+------------------ {{test}}
             <div class="video">
                 <div class="video-breadcrumb">
                     <!-- Khóa học &nbsp; > &nbsp; Ngôn ngữ máy &nbsp; > <span>&nbsp; Chương 1</span> -->
@@ -30,29 +30,63 @@
             <div class="video !mt-5">
 
                 <h5 class="video-question">Câu hỏi tới giảng viên</h5>
-                <div class="video-textForm">
-                    <!-- <textarea name="" id="" cols="30" rows="4" placeholder="Đặt câu hỏi"></textarea> -->
-                <!-- <TextArea  placeholder="Đặt câu hỏi" v-model:description="description"></TextArea> -->
-                    <app-text-area></app-text-area>
+                <div class="mb-10">
+                    <app-text-area (senData)="hendleComment($event)" [value]="sendComment.title"></app-text-area>
                     <div class="flex">
-                        <button class="ml-auto bg-red-600 py-1.5 px-4 rounded text-white font-bold mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
+                        <button (click)="onSubmit()" class="ml-auto bg-red-600 py-1.5 px-4 rounded text-white font-bold mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
                     </div>
                 </div>
 
                 
 
                 <div *ngFor="let item of sortListComment" class=" border border-solid border-gray-300 p-6 mb-5 rounded">
-                    <div class="video-comment-header">
-                        <img class="video-comment-avatar" [src]="item.avatar ? item.avatar : '../../../../../assets/image/user.png'" alt="">
-                        <div>
-                            <p class="video-comment-title">{{item.name}}</p>
-                            <p class="video-comment-desc">{{item.created_at | date:'dd/MM/YYYY | HH:mm'}}</p>
+                    <div>
+                        <div class="flex items-center gap-5">
+                            <img class="video-comment-avatar" [src]="item.avatar ? item.avatar : '../../../../../assets/image/user.png'" alt="">
+                            <div>
+                                <p class="video-comment-title">{{item.name}}</p>
+                                <p class="video-comment-desc">{{item.created_at | date:'dd/MM/YYYY | HH:mm'}}</p>
+                            </div>
+                            <div class="ml-auto">
+                                
+                            </div>
                         </div>
+                        
                     </div>
-                    <div class="video-comment-content">
+                    <div class="video-comment-content mt-4">
                         {{item.title}}
                     </div>
+                    <div >
+                        <span (click)="togglebBoxComment(item.id, true)"  class="text-blue-500 text-sm mr-4 cursor-pointer">
+                            Trả lời
+                        </span>
+                        <span *ngIf="username == item.username">
+                            <button class="text-red-700  rounded" mat-button [matMenuTriggerFor]="menu">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button (click)="togglebBoxComment(item.id, false)"
+                                    class="w-full p-2 text-start hover:bg-gray-200 border-b border-solid border-gray-200 text-sm">
+                                    <i class="mr-2 bi bi-pencil-square"></i> Sửa
+        
+                                </button>
+                                <button (click)="deleteItem(item.id)" class="w-full p-2 text-start text-red-600 hover:bg-gray-200 border-b border-solid border-gray-200 text-sm">
+                                    <i class="mr-2 bi bi-trash3"></i> Xóa bình luận
+                                </button>
+                              
+                            </mat-menu>
+                        </span> 
+                    </div>
+                    <div>
+                        <div *ngIf="boxComment.includes(item.id)" class="border-t border-dashed border-gray-400 py-4 mt-4">
 
+                            <app-text-area (senData)="hendleCommentEdit($event, item.id)" [value]="!isCreate ? item.title : ''"></app-text-area>
+
+                            <div class="flex">
+                                <button (click)="onAnswer(item.id)" class="ml-auto bg-red-600 py-1.5 px-4 rounded text-white font-bold mt-5"><i class="bi bi-send"></i> &nbsp; Gửi câu hỏi</button>
+                            </div>
+                        </div>
+                    </div>
                     <div *ngIf="item.child.length > 0 && !visibleComments.includes(item.id)" class="text-center">
                        <span (click)="toggleVisibleComments(item)" class="cursor-pointer text-red-600 font-bold">Xem thêm ({{item.child.length}})</span> 
                     </div>
@@ -77,18 +111,13 @@
                     <div *ngIf="visibleComments.includes(item.id)" class="text-center">
                         <span (click)="toggleVisibleComments(item)" class="cursor-pointer text-red-600 font-bold">Ẩn bình luận</span> 
                      </div>
-                    <!-- <div class="video-comment-more">
-                        <span class="video-comment-more--blue">Trả lời |</span>
-                        <span class="video-comment-more--blue"><i class="bi bi-pencil-square"></i> |</span>
-                        <span class="video-comment-more--red"><i class="bi bi-trash"></i></span>
-
-                    </div> -->
                 </div>
              
             </div>
 
         </div>
         <div class="col-span-3">
+            <app-news></app-news>
             <!-- <chatList></chatList> -->
         </div>
 

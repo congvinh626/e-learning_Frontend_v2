@@ -22,10 +22,10 @@ export class CommentService {
     }
 
     updateComment(item: any) {
-        return this.httpService.postRequest(`/comment/update`, item);
+        return this.httpService.postRequest(`comment/update`, item);
     }
 
     deleteComment(id: number) {
-        return this.httpService.deleteRequest(`/comment/${id}`);
+        return this.httpService.deleteRequest(`comment/${id}`);
     }
 }

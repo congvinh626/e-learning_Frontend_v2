@@ -3,23 +3,19 @@
         <div class="lesson">
             <div class="lesson-header">
                 <div class="lesson-breadcrumb">
-                    <router-link to="/side-bar/course">Khóa học</router-link>
+                    <a routerLink="/elearning/khoa-hoc">Khóa học</a>
                     &nbsp;
                     <i class="bi bi-chevron-right text-sm"></i>
                     <span>&nbsp; {{ listData.title }}</span>
                 </div>
                 <div class="lesson-header-top">
                     <h4 class="lesson-header-title">{{ listData.title }}</h4>
-                    <!-- <button (click)="openModal()" class="btn-thin btn--red"><i class="bi bi-plus-circle"></i> Thêm
-                        mới</button> -->
-                        <app-submit-form-button *ngIf="permission.includes('course-add-member')" (click)="openMember()" class="ml-auto mr-5" icon="bi bi-people" bgColor="blue"
-                        [btnText]="listData.numberOfMemberWaiting == 0 ? 'Thành viên' : 'Thành viên ( + ' + listData.numberOfMemberWaiting + ' )'"></app-submit-form-button>
-                        <app-submit-form-button *ngIf="permission.includes('lesson-create')" (click)="openModal()" class="" icon="bi bi-plus-circle"
+                    <app-submit-form-button *ngIf="permission.includes('course-add-member')" (click)="openMember()" class="ml-auto mr-5" icon="bi bi-people" bgColor="blue"
+                    [btnText]="listData.numberOfMemberWaiting == 0 ? 'Thành viên' : 'Thành viên ( + ' + listData.numberOfMemberWaiting + ' )'"></app-submit-form-button>
+                    <app-submit-form-button *ngIf="permission.includes('lesson-create')" (click)="openModal()" class="" icon="bi bi-plus-circle"
                     btnText="Thêm mới"></app-submit-form-button>
                     <app-submit-form-button *ngIf="permission.includes('course-get-off')" (click)="comfirmGetOff()" class="" icon="bi bi-box-arrow-left"
                     btnText="Thoát khóa học"></app-submit-form-button>
-                    <!-- <router-link class="btn-thin btn--red" to="/side-bar/lesson/create/ngon-ngu-may"><i class="bi bi-plus-circle"></i> Khóa học</router-link> -->
-
                 </div>
 
                 <div class="lesson-header-desc">{{ listData.description }}
@@ -69,7 +65,10 @@
                             </el-dropdown-menu>
                         </template>
                     </el-dropdown> -->
-                    <a routerLink="/elearning/bai-hoc/{{item.slug}}" class="lesson-header-title lesson-title">{{ item.title }}</a>
+                    <!-- <a (click)="sendPage(item)" class="lesson-header-title lesson-title cursor-pointer">{{ item.title }}</a> -->
+                    
+                    <a routerLink="/elearning/bai-hoc/{{item.slug}}" class="lesson-header-title lesson-title cursor-pointer">{{ item.title }}</a>
+                    
                     <button *ngIf="permission.includes('lesson-update')" class="lesson-item-icon" mat-button [matMenuTriggerFor]="menu">
                         <i class="bi bi-three-dots"></i>
                     </button>
@@ -92,10 +91,6 @@
                       
                     </mat-menu>
                 </div>
-                <!-- <div  v-for="file in item.files" :key="item" class="lesson-content">
-                    <img src="../../../../src/assets/images/video.png" alt="">
-                    <router-link class="lesson-header-title lesson-title" to="/side-bar/lesson/gioi-thieu-chung">{{ file.name }}</router-link>
-                </div> -->
                 <div *ngFor="let file of item.files" class="lesson-content">
                     <img *ngIf="file.type == 'docx'" src="../../../../../assets/image/word.png" alt="">
                     <img *ngIf="file.type == 'xlsx'" src="../../../../../assets/image/excel.jpg" alt="">
@@ -106,12 +101,6 @@
                         {{ file.name }}
                     </a>
                 </div>
-                <!-- <div class="lesson-content">
-                    <img src="../../../../src/assets/images/pdf.png" alt="">
-                    <a href="video.html">
-                        Giới thiệu môn học
-                    </a>
-                </div> -->
                 <div *ngFor="let exam of item.exams" class="lesson-content">
                     <div class="lesson-content-item">
                         <img src="../../../../../assets/image/exam.png" alt="">
@@ -131,8 +120,7 @@
 
     </div>
     <div class="col-span-3">
+        <app-news></app-news>
         <!-- <chatList></chatList> -->
     </div>
-    <!-- <lessonTabs style="width: 80vw;" v-if="openModal" v-model="openModal"></lessonTabs> -->
-
 </div>

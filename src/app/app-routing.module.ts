@@ -9,13 +9,14 @@ import { UpdateUserInfoComponent } from './components/index/update-user-info/upd
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'elearning', loadChildren: () => import('./Module/dashboard-module.module').then((m) => m.DashboardModuleModule), },
   { path: 'Home', component: LandingPageComponent},
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'verify', component: VerifyComponent },
   { path: 'update-info', component: UpdateUserInfoComponent },
+  { path: 'elearning', loadChildren: () => import('./Module/dashboard-module.module').then((m) => m.DashboardModuleModule), },
+
   // { path: 'dang-nhap', component: LoginComponent },
 
 ];

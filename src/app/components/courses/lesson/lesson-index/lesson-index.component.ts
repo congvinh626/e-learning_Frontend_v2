@@ -14,6 +14,7 @@ import { ExamInfoComponent } from '../../exam/exam-info/exam-info.component';
 import { CourseNewMemberComponent } from '../../course/course-new-member/course-new-member.component';
 import { AccountService } from 'src/app/service/AccountService';
 import { CourseMemberComponent } from '../../course/course-member/course-member.component';
+import { ShareService } from 'src/app/service/ShareService';
 
 @Component({
   selector: 'app-lesson-index',
@@ -45,7 +46,8 @@ export class LessonIndexComponent {
     private LessonService: LessonService,
     private ToastrService: ToastrcustomService,
     private AccountService: AccountService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ShareService: ShareService
   ) {
     this.permission = this.AccountService.getPermissionForUser();
     this.slug = this.route.snapshot.paramMap.get('slug');
@@ -53,6 +55,7 @@ export class LessonIndexComponent {
 
   }
 
+  
 
   Pagingdata() {
     this.LoadingService.setValue(true);
@@ -219,5 +222,22 @@ export class LessonIndexComponent {
         this.ToastrService.showError('Có lỗi xảy ra, xin tải lại !!!');
         this.LoadingService.setValue(false);
       });
+  }
+
+  sendPage(item: any){
+    // this.ShareService.changePageMain([{
+    //   page: item.title,
+    //   link: `/elearning/khoa-hoc/${this.slug}`
+    // }]);
+
+    this.ShareService.setData([{
+      page: item.title,
+      link: `/elearning/khoa-hoc/${this.slug}`
+    }]);
+
+    // window.location.href = `/elearning/bai-hoc/${item.slug}`;
+    
+    // this.ShareService.pageMain.subscribe(message => this.message = message);
+
   }
 }

@@ -19,7 +19,6 @@ import { AutocomplateComponent } from './components/global/autocomplate/autocomp
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ShareModule } from './Module/share-module.module';
-import { SafePipe } from './safe.pipe';
 import { RoleGuardService } from './service/rolo.guard.service';
 import { VerifyComponent } from './components/index/verify/verify.component';
 import { UpdateUserInfoComponent } from './components/index/update-user-info/update-user-info.component';
