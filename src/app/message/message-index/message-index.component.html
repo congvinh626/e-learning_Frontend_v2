@@ -1,0 +1,8 @@
+<div>
+    <div *ngFor="let item of detailItem">{{item.content}}</div>
+    <div>
+        <input type="text" [(ngModel)]="sendmess">
+        <button (click)="onSubmit()" class="text-white bg-red-600 p-2 rounded mt-10">Gửi</button>
+
+    </div>
+</div>

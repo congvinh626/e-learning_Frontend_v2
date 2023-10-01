@@ -10,6 +10,7 @@ import { ExamHistoryComponent } from "../components/courses/exam/exam-history/ex
 import { CourseMoreComponent } from "../components/courses/course/course-more/course-more.component";
 import { RoleGuardService } from "../service/rolo.guard.service";
 import { PersonalPageComponent } from "../components/home/personal-page/personal-page.component";
+import { MessageIndexComponent } from "../message/message-index/message-index.component";
 
 const routes: Routes = [
   { path: '', component: SidebarComponent,
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: 'kiem-tra/:lesson_slug/:slug', component: ExamIndexComponent },
     { path: 'lich-su/:id', component: ExamHistoryComponent },
     { path: 'trang-ca-nhan', component: PersonalPageComponent },
+    { path: 'nhan-tin', component: MessageIndexComponent },
 
     // {
     //   path: 'khoa-hoc',

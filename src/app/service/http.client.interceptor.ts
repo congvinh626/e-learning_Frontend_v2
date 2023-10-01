@@ -52,7 +52,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
     this.check = true;
     const userInfo = this.accountService.getUserInfo();
     if (!userInfo?.token) {
-      this.router.navigate(['/Home']);
+      this.router.navigate(['/']);
     }
     let obj = {
       accessToken: userInfo.token,

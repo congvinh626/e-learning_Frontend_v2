@@ -53,6 +53,7 @@ import { CourseMemberComponent } from '../components/courses/course/course-membe
 import { PersonalPageComponent } from '../components/home/personal-page/personal-page.component';
 import { CountdownModule } from 'ngx-countdown';
 import { NewsComponent } from '../components/home/news/news.component';
+import { MessageIndexComponent } from '../message/message-index/message-index.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { NewsComponent } from '../components/home/news/news.component';
     CourseMemberComponent,
     PersonalPageComponent,
     NewsComponent,
+    MessageIndexComponent,
 
   ],
   imports: [

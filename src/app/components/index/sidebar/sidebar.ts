@@ -67,5 +67,9 @@ export const ROUTE_DATA: TypeRoute[] = [
     ]
   },
 
-
+  {
+    name: 'Nhắn tin',
+    url: 'nhan-tin',
+    icon: '<i class="bi bi-cart"></i>',
+  },
 ]
