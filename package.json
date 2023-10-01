@@ -26,6 +26,7 @@
     "boostrap": "^2.0.0",
     "bootstrap-icons": "^1.10.3",
     "boxicons": "^2.1.4",
+    "laravel-echo": "^1.15.3",
     "ng-otp-input": "^1.8.5",
     "ngx-countdown": "^15.0.0",
     "ngx-toastr": "^16.0.1",

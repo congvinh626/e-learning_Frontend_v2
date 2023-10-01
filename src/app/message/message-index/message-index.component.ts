@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 import { AccountService } from 'src/app/service/AccountService';
 import { MessageService } from 'src/app/service/MessageService';
@@ -17,6 +18,7 @@ export class MessageIndexComponent {
   slug: any = '';
   sendmess: string = '';
   messages: any = [];
+  usersOnline: any = [];
   constructor(
     private LoadingService: LoadingService,
     // private LessonService: LessonService,
@@ -31,14 +33,14 @@ export class MessageIndexComponent {
   }
 
   ngOnInit(): void {
-    this.getMessages()
+    this.getMessages();
     const userInfo = this.accountService.getUserInfo();
    
     Pusher.logToConsole = true;
 
-    // var pusher = new Pusher('75863e98639024fd7f30', {
-    //   cluster: 'ap1'
-    // });
+    var pusher = new Pusher('75863e98639024fd7f30', {
+      cluster: 'ap1'
+    });
 
     // var pusher = new Pusher("app_key", { channelAuthorization: { endpoint: "/pusher_auth.php"}  });
     var pusher = new Pusher("75863e98639024fd7f30", {
@@ -54,11 +56,79 @@ export class MessageIndexComponent {
       }
     });
     
-    var channel = pusher.subscribe('presence-chat');
-    channel.bind('send-message', function(data: any) {
-            alert(JSON.stringify(data));
+    // var channel = pusher.subscribe('presence-chat');
+    // channel.bind('send-message', function(data: any) {
+    //         alert(JSON.stringify(data));
+
+    // });
+
+    const echo = new Echo({
+      broadcaster: 'pusher',
+      key: '75863e98639024fd7f30',
+      cluster: 'ap1',
+      encrypted: true,
+      // csrfToken: 'WORKING TOKEN',
+      authEndpoint: 'http://127.0.0.1:8000/api/channels/authorize',
+      auth: {
+        headers: {
+          "Authorization": "Bearer " + userInfo.token,
+          "Access-Control-Allow-Origin": "*"
+        }
+      },
+      forceTLS: true,
+      // authEndpoint: "/broadcasting/auth",      // Thêm các cấu hình khác nếu cần
+    });
+    
+    const roomChannel = echo.join(`chat`);
+
+    roomChannel.here((users: any) => {
+      this.usersOnline = users;
+      console.log('here', this.usersOnline);
+      
+    });
+    
+    roomChannel.joining((user: any) => {
+      this.usersOnline.push(user);
+      console.log('joining', this.usersOnline);
 
     });
+    
+    roomChannel.leaving((user: any) => {
+      const index = this.usersOnline.findIndex((item: any) => item.id === user.id);
+      if (index > -1) {
+        this.usersOnline.splice(index, 1);
+      console.log('leaving', this.usersOnline);
+
+      }
+    });
+    
+    roomChannel.listen('send-message', (e: any) => {
+      this.messages.push(e.message);
+
+      // this.scrollToBottom(document.getElementById('shared_room'), true);
+    });
+
+
+    // Echo.join(`room.${this.currentRoom.id}`)
+    // .here((users) => { // gọi ngay thời điểm ta join vào phòng, trả về tổng số user hiện tại có trong phòng (cả ta)
+    //   this.usersOnline = users
+    // })
+    // .joining((user) => { // gọi khi có user mới join vào phòng
+    //   this.usersOnline.push(user)
+    // })
+    // .leaving((user) => { // gọi khi có user rời phòng
+    //   const index = this.usersOnline.findIndex(item => item.id === user.id)
+    //   if (index > -1) {
+    //     this.usersOnline.splice(index, 1)
+    //   }
+    // })
+    // .listen('MessagePosted', (e) => {
+    //   this.messages.push(e.message)
+    //   this.scrollToBottom(document.getElementById('shared_room'), true)
+    // })
+}
+  
+  
 
     // var presenceChannel = pusher.subscribe("presence-example");
     // presenceChannel.bind("pusher:subscription_succeeded", function () {
@@ -81,7 +151,7 @@ export class MessageIndexComponent {
     // });
 
    
-  }
+  // }
 
   getMessages() {
 
