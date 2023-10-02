@@ -35,7 +35,7 @@ export class MessageIndexComponent {
   ngOnInit(): void {
     this.getMessages();
     const userInfo = this.accountService.getUserInfo();
-   
+
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('75863e98639024fd7f30', {
@@ -43,19 +43,19 @@ export class MessageIndexComponent {
     });
 
     // var pusher = new Pusher("app_key", { channelAuthorization: { endpoint: "/pusher_auth.php"}  });
-    var pusher = new Pusher("75863e98639024fd7f30", {
-      authEndpoint: `http://127.0.0.1:8000/api/channels/authorize`,
-      cluster: 'ap1',
-      // 'encrypted': 'true',
+    // var pusher = new Pusher("75863e98639024fd7f30", {
+    //   authEndpoint: `http://127.0.0.1:8000/api/channels/authorize`,
+    //   cluster: 'ap1',
+    //   // 'encrypted': 'true',
 
-      auth: {
-        headers: {
-          "Authorization": "Bearer " + userInfo.token,
-          "Access-Control-Allow-Origin": "*"
-        }
-      }
-    });
-    
+    //   auth: {
+    //     headers: {
+    //       "Authorization": "Bearer " + userInfo.token,
+    //       "Access-Control-Allow-Origin": "*"
+    //     }
+    //   }
+    // });
+
     // var channel = pusher.subscribe('presence-chat');
     // channel.bind('send-message', function(data: any) {
     //         alert(JSON.stringify(data));
@@ -67,46 +67,89 @@ export class MessageIndexComponent {
       key: '75863e98639024fd7f30',
       cluster: 'ap1',
       encrypted: true,
-      // csrfToken: 'WORKING TOKEN',
-      authEndpoint: 'http://127.0.0.1:8000/api/channels/authorize',
+      authEndpoint: `http://127.0.0.1:8000/api/channels/authorize`,
+
+      // broadcaster: 'socket.io',
+      // host: window.location.hostname + ':6001',
       auth: {
         headers: {
-          "Authorization": "Bearer " + userInfo.token,
+          'Authorization': 'Bearer ' + userInfo.token, // Thay thế token bằng token đăng nhập của người dùng (nếu cần)
           "Access-Control-Allow-Origin": "*"
-        }
+        },
       },
-      forceTLS: true,
-      // authEndpoint: "/broadcasting/auth",      // Thêm các cấu hình khác nếu cần
     });
-    
-    const roomChannel = echo.join(`chat`);
 
-    roomChannel.here((users: any) => {
-      this.usersOnline = users;
-      console.log('here', this.usersOnline);
-      
-    });
-    
-    roomChannel.joining((user: any) => {
-      this.usersOnline.push(user);
-      console.log('joining', this.usersOnline);
+    echo.join("chat") // Thay "presence-online" bằng tên presence channel của bạn
+      .here((user: any) => {
+        console.log('here', user);
 
-    });
-    
-    roomChannel.leaving((user: any) => {
-      const index = this.usersOnline.findIndex((item: any) => item.id === user.id);
-      if (index > -1) {
-        this.usersOnline.splice(index, 1);
-      console.log('leaving', this.usersOnline);
+        // users chứa danh sách người dùng đang online
+        // Cập nhật danh sách người dùng online trong component Angular
+      })
+      .joining((user: any) => {
+        console.log('joining', user);
 
-      }
-    });
-    
-    roomChannel.listen('send-message', (e: any) => {
-      this.messages.push(e.message);
+        // user là người dùng mới đã tham gia channel
+        // Cập nhật danh sách người dùng online trong component Angular
+      })
+      .leaving((user: any) => {
+        console.log('leaving', user);
 
-      // this.scrollToBottom(document.getElementById('shared_room'), true);
-    });
+        // user là người dùng rời khỏi channel
+        // Cập nhật danh sách người dùng online trong component Angular
+      })
+      .listen('MessagePosted', (e: any) => {
+        console.log('leaving', e);
+
+        this.messages.push(e.message)
+        // this.scrollToBottom(document.getElementById('shared_room'), true)
+      });
+    // const echo = new Echo({
+    //   broadcaster: 'pusher',
+    //   key: '75863e98639024fd7f30',
+    //   cluster: 'ap1',
+    //   encrypted: true,
+    //   forceTLS: true,
+    //   endpoint: "http://127.0.0.1:8000/pusher_jsonp_user_auth",
+    //   auth: {
+    //     headers: {
+    //       "Authorization": "Bearer " + userInfo.token,
+    //       "Access-Control-Allow-Origin": "*"
+    //     }
+    //   },
+    // });
+
+
+    // const roomChannel = echo.join(`chat`);
+
+    // roomChannel.here((users: any) => {
+    //   this.usersOnline = users;
+    //   console.log('here', this.usersOnline);
+
+    // });
+
+    // roomChannel.joining((user: any) => {
+    //   this.usersOnline.push(user);
+    //   console.log('joining', this.usersOnline);
+
+    // });
+
+    // roomChannel.leaving((user: any) => {
+    //   const index = this.usersOnline.findIndex((item: any) => item.id === user.id);
+    //   if (index > -1) {
+    //     this.usersOnline.splice(index, 1);
+    //   console.log('leaving', this.usersOnline);
+
+    //   }
+    // });
+
+    // roomChannel.listen('send-message', (e: any) => {
+    //   console.log(33333333333);
+
+    //   this.messages.push(e.message);
+
+    //   // this.scrollToBottom(document.getElementById('shared_room'), true);
+    // });
 
 
     // Echo.join(`room.${this.currentRoom.id}`)
@@ -126,31 +169,31 @@ export class MessageIndexComponent {
     //   this.messages.push(e.message)
     //   this.scrollToBottom(document.getElementById('shared_room'), true)
     // })
-}
-  
-  
-
-    // var presenceChannel = pusher.subscribe("presence-example");
-    // presenceChannel.bind("pusher:subscription_succeeded", function () {
-    //   var me = presenceChannel.members.me;
-    //   var userId = me.id;
-    //   var userInfo = me.info;
-      
-    // });
-
-    
-    // var channel = pusher.subscribe('private-room2');
-
-    // channel.bind('message', function(data: any) {
-    //   alert(JSON.stringify(data));
-    // });
+  }
 
 
-    // channel.bind('pusher:subscription_succeeded', function(data: any) {
-    //   alert(JSON.stringify(data));
-    // });
 
-   
+  // var presenceChannel = pusher.subscribe("presence-example");
+  // presenceChannel.bind("pusher:subscription_succeeded", function () {
+  //   var me = presenceChannel.members.me;
+  //   var userId = me.id;
+  //   var userInfo = me.info;
+
+  // });
+
+
+  // var channel = pusher.subscribe('private-room2');
+
+  // channel.bind('message', function(data: any) {
+  //   alert(JSON.stringify(data));
+  // });
+
+
+  // channel.bind('pusher:subscription_succeeded', function(data: any) {
+  //   alert(JSON.stringify(data));
+  // });
+
+
   // }
 
   getMessages() {
@@ -159,7 +202,7 @@ export class MessageIndexComponent {
     this.MessageService.getMessageRoom().subscribe((response: any) => {
       this.detailItem = response;
       console.log('this.detailItem', this.detailItem);
-      
+
       this.LoadingService.setValue(false);
     });
   }
@@ -172,11 +215,11 @@ export class MessageIndexComponent {
     }
     this.MessageService.createMessage(item).subscribe((data: any) => {
       // if (data.statusCode == 200) {
-        this.ToastrcustomService.showSuccess('Thêm bình luận thành công !!!');
-        this.detailItem.push(data.message)
-       console.log('this.detailItem1232', this.detailItem);
-       
-        this.LoadingService.setValue(false);
+      this.ToastrcustomService.showSuccess('Thêm bình luận thành công !!!');
+      this.detailItem.push(data.message)
+      console.log('this.detailItem1232', this.detailItem);
+
+      this.LoadingService.setValue(false);
       // } else {
       //   this.ToastrcustomService.showSuccess(data.message);
       //   this.LoadingService.setValue(false);
